@@ -20,7 +20,7 @@ const Search = () => (
         maxWidth: 500,
         padding: 7,
         borderRadius: 7,
-        boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)',
+        boxShadow: '0 5px 15px 0 rgba(37,44,97,0.25)',
         backgroundColor: 'white'
       }}
     >

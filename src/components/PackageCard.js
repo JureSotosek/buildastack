@@ -6,6 +6,7 @@ const PackageCard = ({ title, description }) => (
       width: '100%',
       maxWidth: 400,
       minWidth: 300,
+      minHeight: 70,
       marginTop: 20,
       borderRadius: 5,
       boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)',
@@ -31,7 +32,7 @@ const PackageCard = ({ title, description }) => (
         }}
       >
         <span style={{ fontSize: 25, color: 'black' }}>{title}</span>
-        <span style={{ color: 'grey', fontSize: 15 }}>Facebook</span>
+        <span style={{ color: 'grey', fontSize: 15 }}>🔥📉11m</span>
       </div>
       <div style={{ color: 'lightGrey', fontSize: 15 }}>{description}</div>
     </div>

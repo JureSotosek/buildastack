@@ -8,8 +8,8 @@ const Title = () => (
       textAlign: 'center'
     }}
   >
-    <div style={{ fontSize: 50, fontWeight: 'bold' }}>Build a stack.</div>
-    <div style={{ fontSize: 20, marginTop: 10 }}>
+    <div style={{ fontSize: 70, fontWeight: 'bold' }}>Build a stack.</div>
+    <div style={{ fontSize: 30, marginTop: 10 }}>
       Suggestions are packages📦 that best suit your existing dependencies👇🏼
     </div>
   </div>
