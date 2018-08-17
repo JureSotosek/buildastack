@@ -1,0 +1,33 @@
+import React from 'react';
+
+const Header = () => (
+  <div
+    style={{
+      width: '100%',
+      maxWidth: 1200,
+      marginTop: 10,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      fontFamily: 'Signika Negative'
+    }}
+  >
+    <div
+      style={{
+        fontSize: 30,
+        fontWeight: 'bold'
+      }}
+    >
+      emma.
+    </div>
+    <img
+      style={{ height: 30 }}
+      src={
+        'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
+      }
+    />
+  </div>
+);
+
+export default Header;
