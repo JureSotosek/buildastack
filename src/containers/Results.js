@@ -14,9 +14,17 @@ const ResultsStack = () => (
     }}
   >
     <div>Search results:</div>
-    <PackageCard />
-    <PackageCard />
-    <PackageCard />
+    <PackageCard
+      title={'react'}
+      description={
+        'React is a JavaScript library for building user interfaces.'
+      }
+    />
+    <PackageCard
+      title={'react-dom'}
+      description={'React package for working with the DOM.'}
+    />
+    <PackageCard title={'babel-core'} description={'Babel compiler core.'} />
   </div>
 );
 
