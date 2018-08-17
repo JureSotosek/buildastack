@@ -12,9 +12,7 @@ const PackageCard = () => (
       borderRadius: 20,
       boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)'
     }}
-  >
-    Jure
-  </div>
+  />
 );
 
 export default PackageCard;
