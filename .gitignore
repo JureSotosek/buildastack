@@ -2,7 +2,7 @@
 /node_modules
 
 # production
-/dist
+/dist/bundle.js
 
 # misc
 .DS_Store
