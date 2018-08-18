@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Title from '../components/Title';
-import Search from './Search';
-import Results from './Results';
-import Stack from './Stack';
+import Search from '../components/Search';
+import Results from '../components/Results';
+import Stack from '../components/Stack';
 
 class StackBuilder extends React.Component {
   render() {

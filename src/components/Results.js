@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PackageCard from '../components/PackageCard';
-import ResultsPlaceholder from '../components/ResultsPlaceholder';
+import PackageCard from './PackageCard';
+import ResultsPlaceholder from './ResultsPlaceholder';
 
 const ResultsStack = ({ title, msg, loading }) => (
   <div

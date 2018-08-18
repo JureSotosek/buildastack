@@ -1,7 +1,7 @@
 import React from 'react';
 
-import StackCard from '../components/StackCard';
-import StackPlaceholder from '../components/StackPlaceholder';
+import StackCard from './StackCard';
+import StackPlaceholder from './StackPlaceholder';
 
 const Stack = () => (
   <div
