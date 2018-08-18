@@ -5,6 +5,7 @@ import PackageCard from '../components/PackageCard';
 const ResultsStack = () => (
   <div
     style={{
+      width: '100%',
       margin: 20,
       display: 'flex',
       flexDirection: 'column',
@@ -14,17 +15,7 @@ const ResultsStack = () => (
     }}
   >
     <div>Search results:</div>
-    <PackageCard
-      title={'react'}
-      description={
-        'React is a JavaScript library for building user interfaces.'
-      }
-    />
-    <PackageCard
-      title={'react-dom'}
-      description={'React package for working with the DOM.'}
-    />
-    <PackageCard title={'babel-core'} description={'Babel compiler core.'} />
+    <PackageCard />
   </div>
 );
 

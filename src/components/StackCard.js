@@ -1,16 +1,11 @@
 import React from 'react';
 
-const placeholderTitle = 'ink-divider';
-const placeholderDescription = '👨🏼‍🎨Divider component for Ink';
-
-const PackageCard = ({ title, description, placeholder }) => (
+const StackCard = ({ title, author }) => (
   <div
     style={{
       width: '100%',
-      maxWidth: 400,
-      minWidth: 300,
-      minHeight: 70,
-      marginTop: 20,
+      width: 250,
+      marginTop: 10,
       borderRadius: 5,
       boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)',
       display: 'flex',
@@ -34,30 +29,27 @@ const PackageCard = ({ title, description, placeholder }) => (
           alignItems: 'center'
         }}
       >
-        <span style={{ fontSize: 20, color: 'black' }}>
-          {title || placeholderTitle}
-        </span>
-        <span style={{ color: 'grey', fontSize: 15 }}>🔥📉11m</span>
-      </div>
-      <div style={{ color: 'lightGrey', fontSize: 15 }}>
-        {description || placeholderDescription}
+        <span style={{ fontSize: 15, color: 'black' }}>{title}</span>
+        <span style={{ color: 'grey', fontSize: 10 }}>{author}</span>
       </div>
     </div>
     <div
       style={{
-        minWidth: 80,
+        minWidth: 30,
+        paddingLeft: 5,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         textAlign: 'center',
-        backgroundColor: '#7fffd4',
+        backgroundColor: '#ff7faa',
         borderTopRightRadius: 5,
-        borderBottomRightRadius: 5
+        borderBottomRightRadius: 5,
+        fontSize: 15
       }}
     >
-      👍🏼
+      👎🏼
     </div>
   </div>
 );
 
-export default PackageCard;
+export default StackCard;

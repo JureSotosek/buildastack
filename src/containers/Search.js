@@ -1,10 +1,12 @@
 import React from 'react';
 
+import SearchField from '../components/SearchField';
+
 const Search = () => (
   <div
     style={{
       width: '100%',
-      marginTop: 30,
+      marginTop: 40,
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
@@ -13,7 +15,9 @@ const Search = () => (
       fontSize: 20
     }}
   >
-    <div style={{ margin: 20 }}>Search to add packages: </div>
+    <div style={{ margin: 20, textShadow: '1px 1px lightGrey', fontSize: 23 }}>
+      🕵🏼Search to add packages:{' '}
+    </div>
     <div
       style={{
         width: '100%',
@@ -24,17 +28,7 @@ const Search = () => (
         backgroundColor: 'white'
       }}
     >
-      <input
-        type="text"
-        placeholder="react, react-dom, graphql,..."
-        style={{
-          width: '100%',
-          border: '0px solid',
-          outline: 'none',
-          backgroundColor: 'transparent',
-          fontSize: 20
-        }}
-      />
+      <SearchField />
     </div>
   </div>
 );
