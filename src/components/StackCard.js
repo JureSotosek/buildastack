@@ -1,17 +1,19 @@
 import React from 'react';
 
-const StackCard = ({ title, author }) => (
+const StackCard = ({ title, author, onSelect }) => (
   <div
     style={{
       width: '100%',
       width: 250,
       marginTop: 10,
       borderRadius: 5,
-      boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)',
+      boxShadow: '0 5px 15px 0 rgba(37,44,97,0.30)',
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      backgroundColor: 'white'
     }}
+    onClick={onSelect}
   >
     <div
       style={{

@@ -1,9 +1,14 @@
 import React from 'react';
 
-const placeholderTitle = 'ink-divider';
-const placeholderDescription = '👨🏼‍🎨Divider component for Ink';
-
-const PackageCard = ({ title, description, placeholder }) => (
+const PackageCard = ({
+  title,
+  description,
+  author,
+  version,
+  downloads,
+  popular,
+  onSelect
+}) => (
   <div
     style={{
       width: '100%',
@@ -12,11 +17,13 @@ const PackageCard = ({ title, description, placeholder }) => (
       minHeight: 70,
       marginTop: 20,
       borderRadius: 5,
-      boxShadow: '0 5px 15px 0 rgba(37,44,97,0.15)',
+      boxShadow: '0 5px 15px 0 rgba(37,44,97,0.30)',
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      backgroundColor: 'white'
     }}
+    onClick={onSelect}
   >
     <div
       style={{
@@ -34,13 +41,25 @@ const PackageCard = ({ title, description, placeholder }) => (
           alignItems: 'center'
         }}
       >
-        <span style={{ fontSize: 20, color: 'black' }}>
-          {title || placeholderTitle}
+        <span style={{ fontSize: 20 }}>{title}</span>
+        <span style={{ color: 'grey', fontSize: 15 }}>
+          {popular && '🔥'}
+          📉
+          {downloads}
         </span>
-        <span style={{ color: 'grey', fontSize: 15 }}>🔥📉11m</span>
       </div>
-      <div style={{ color: 'lightGrey', fontSize: 15 }}>
-        {description || placeholderDescription}
+      <div style={{ color: 'grey', fontSize: 15 }}>{description}</div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: 2
+        }}
+      >
+        <span style={{ fontSize: 15, color: 'grey' }}>{version}</span>
+        <span style={{ fontSize: 15 }}>{author}</span>
       </div>
     </div>
     <div

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../components/Header';
-import Suggestions from './Suggestions';
+import StackBuilder from './StackBuilder';
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       }}
     >
       <Header />
-      <Suggestions />
+      <StackBuilder />
     </div>
   );
 };

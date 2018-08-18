@@ -14,7 +14,7 @@ const Title = () => (
         textShadow: '2px 2px lightGrey'
       }}
     >
-      Build a stack.
+      Build your stack.
     </div>
     <div style={{ fontSize: 20, marginTop: 5 }}>
       Suggestions are packages📦 that best suit your existing dependencies👇🏼

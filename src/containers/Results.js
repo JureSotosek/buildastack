@@ -1,8 +1,9 @@
 import React from 'react';
 
 import PackageCard from '../components/PackageCard';
+import ResultsPlaceholder from '../components/ResultsPlaceholder';
 
-const ResultsStack = () => (
+const ResultsStack = ({ title, msg, loading }) => (
   <div
     style={{
       width: '100%',
@@ -14,8 +15,8 @@ const ResultsStack = () => (
       fontSize: 20
     }}
   >
-    <div>Search results:</div>
-    <PackageCard />
+    <div>{title}</div>
+    <ResultsPlaceholder msg={msg} loading={loading} />
   </div>
 );
 
@@ -29,8 +30,14 @@ const Results = () => (
       justifyContent: 'space-around'
     }}
   >
-    <ResultsStack />
-    <ResultsStack />
+    <ResultsStack
+      title={'Search results:'}
+      msg={'Start typing to get results📝'}
+    />
+    <ResultsStack
+      title={'Suggestions:'}
+      msg={'Select a package to get suggestions📦'}
+    />
   </div>
 );
 

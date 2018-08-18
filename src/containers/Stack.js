@@ -1,6 +1,7 @@
 import React from 'react';
 
 import StackCard from '../components/StackCard';
+import StackPlaceholder from '../components/StackPlaceholder';
 
 const Stack = () => (
   <div
@@ -16,9 +17,7 @@ const Stack = () => (
     }}
   >
     <div>Your stack:</div>
-    <StackCard title={'react'} author={'Facebook'} />
-    <StackCard title={'react-dom'} author={'Facebook'} />
-    <StackCard title={'ink-divider'} author={'juresotosek'} />
+    <StackPlaceholder />
   </div>
 );
 
