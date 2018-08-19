@@ -35,9 +35,11 @@ class StackBuilder extends React.Component {
       )
     ) {
       this.setState({
-        selectedPackages: [...selectedPackages, pkg]
+        selectedPackages: [...selectedPackages, pkg],
+        query: ''
       });
     }
+    this.search.focus();
   }
 
   handleStackOnSelect(pkg) {
@@ -82,7 +84,13 @@ class StackBuilder extends React.Component {
           }}
         >
           <div style={{ width: '100%', maxWidth: 900 }}>
-            <Search value={query} onChange={this.handleSearchOnChange} />
+            <Search
+              value={query}
+              onChange={this.handleSearchOnChange}
+              ref={search => {
+                this.search = search;
+              }}
+            />
             <Results
               query={query}
               selectedPackages={selectedPackages}

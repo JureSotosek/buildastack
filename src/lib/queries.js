@@ -10,6 +10,7 @@ export const searchQuery = gql`
         name
       }
       humanDownloadsLast30Days
+      popular
     }
   }
 `;
@@ -25,6 +26,7 @@ export const suggestionsQuery = gql`
           name
         }
         humanDownloadsLast30Days
+        popular
       }
     }
   }

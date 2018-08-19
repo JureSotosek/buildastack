@@ -31,6 +31,7 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
             description={pkg.description}
             author={pkg.owner.name}
             downloads={pkg.humanDownloadsLast30Days}
+            popular={pkg.popular}
             onSelect={() => onSelect(pkg)}
           />
         ));

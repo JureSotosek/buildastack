@@ -26,6 +26,16 @@ const Results = ({ query, selectedPackages, onSelect }) => (
     >
       <div>{'Search results:'}</div>
       <SearchResults query={query} onSelect={onSelect} />
+      <a href="https://www.algolia.com">
+        <img
+          src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
+          class=""
+          alt="Powered by Algolia"
+          width="260"
+          height="36"
+          style={{ margin: 30 }}
+        />
+      </a>
     </div>
     <div
       style={{
@@ -43,6 +53,18 @@ const Results = ({ query, selectedPackages, onSelect }) => (
         selectedPackages={selectedPackages}
         onSelect={onSelect}
       />
+      <a
+        style={{
+          textDecoration: 'none',
+          margin: 25,
+          fontFamily: 'Signika Negative',
+          fontSize: 36,
+          color: 'black'
+        }}
+        href="https://github.com/JureSotosek/emma-suggestions"
+      >
+        emma-suggestions
+      </a>
     </div>
   </div>
 );

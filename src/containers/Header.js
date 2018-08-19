@@ -21,12 +21,14 @@ const Header = () => (
     >
       emma.
     </div>
-    <img
-      style={{ height: 30 }}
-      src={
-        'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
-      }
-    />
+    <a href="https://github.com/JureSotosek/emma-www">
+      <img
+        style={{ height: 30 }}
+        src={
+          'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
+        }
+      />
+    </a>
   </div>
 );
 
