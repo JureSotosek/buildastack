@@ -15,11 +15,10 @@ const Header = () => (
   >
     <div
       style={{
-        fontSize: 30,
-        fontWeight: 'bold'
+        fontSize: 25
       }}
     >
-      emma.
+      BuildAStack
     </div>
     <a href="https://github.com/JureSotosek/emma-www">
       <img

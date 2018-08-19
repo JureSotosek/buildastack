@@ -62,7 +62,7 @@ const Results = ({ query, selectedPackages, onSelect }) => (
         }}
         href="https://github.com/JureSotosek/emma-suggestions"
       >
-        emma-suggestions
+        npm-suggestions
       </a>
     </div>
   </div>

@@ -14,7 +14,7 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
     {({ loading, error, data }) => {
       if (selectedPackages.length === 0) {
         return (
-          <PackagePlaceholder msg={'Select a package to get suggestions📦'} />
+          <PackagePlaceholder msg={'Select a package for suggestions📦'} />
         );
       } else if (error) {
         return <PackagePlaceholder error />;
