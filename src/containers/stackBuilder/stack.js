@@ -1,7 +1,7 @@
 import React from 'react';
 
-import StackCard from './StackCard';
-import StackPlaceholder from './StackPlaceholder';
+import SelectionCard from '../../components/SelectionCard';
+import SelectionPlaceholder from '../../components/SelectionPlaceholder';
 
 const Stack = () => (
   <div
@@ -17,7 +17,7 @@ const Stack = () => (
     }}
   >
     <div>Your stack:</div>
-    <StackPlaceholder />
+    <SelectionPlaceholder />
   </div>
 );
 

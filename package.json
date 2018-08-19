@@ -21,8 +21,11 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.14",
     "babel-preset-env": "^1.7.0",
+    "graphql": "^0.13.2",
     "react": "^16.4.1",
+    "react-apollo": "^2.1.11",
     "react-dom": "^16.4.1",
     "react-loading-skeleton": "^0.5.0"
   }

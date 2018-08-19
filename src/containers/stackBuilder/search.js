@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchField from './SearchField';
+import SearchField from '../../components/SearchField';
 
 const Search = () => (
   <div
