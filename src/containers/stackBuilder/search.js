@@ -12,7 +12,7 @@ class Search extends React.Component {
       <div
         style={{
           width: '100%',
-          marginTop: 40,
+          marginTop: 20,
           display: 'flex',
           flexDirection: 'row',
           flexWrap: 'wrap',
@@ -22,7 +22,12 @@ class Search extends React.Component {
         }}
       >
         <div
-          style={{ margin: 20, textShadow: '1px 1px lightGrey', fontSize: 23 }}
+          style={{
+            margin: 20,
+            marginRight: 0,
+            textShadow: '1px 1px lightGrey',
+            fontSize: 23
+          }}
         >
           🕵🏼Search to add packages:{' '}
         </div>
@@ -31,6 +36,8 @@ class Search extends React.Component {
             width: '100%',
             maxWidth: 500,
             padding: 7,
+            marginLeft: 20,
+            marginRight: 20,
             borderRadius: 7,
             boxShadow: '0 5px 15px 0 rgba(37,44,97,0.25)',
             backgroundColor: 'white'

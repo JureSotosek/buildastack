@@ -29,7 +29,6 @@ const Results = ({ query, selectedPackages, onSelect }) => (
       <a href="https://www.algolia.com">
         <img
           src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
-          class=""
           alt="Powered by Algolia"
           width="260"
           height="36"
