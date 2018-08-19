@@ -3,7 +3,7 @@ import React from 'react';
 import SearchResults from './searchResults';
 import SuggestionsResults from './suggestionsResults';
 
-const Results = () => (
+const Results = ({ query, selectedPackages, onSelect }) => (
   <div
     style={{
       width: '100%',
@@ -13,14 +13,37 @@ const Results = () => (
       justifyContent: 'space-around'
     }}
   >
-    <SearchResults
-      title={'Search results:'}
-      msg={'Start typing to get results📝'}
-    />
-    <SuggestionsResults
-      title={'Suggestions:'}
-      msg={'Select a package to get suggestions📦'}
-    />
+    <div
+      style={{
+        width: '100%',
+        margin: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        flex: 1,
+        fontSize: 20
+      }}
+    >
+      <div>{'Search results:'}</div>
+      <SearchResults query={query} onSelect={onSelect} />
+    </div>
+    <div
+      style={{
+        width: '100%',
+        margin: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        flex: 1,
+        fontSize: 20
+      }}
+    >
+      <div>{'Suggestions:'}</div>
+      <SuggestionsResults
+        selectedPackages={selectedPackages}
+        onSelect={onSelect}
+      />
+    </div>
   </div>
 );
 

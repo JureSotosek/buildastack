@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StackCard = ({ title, author, onSelect }) => (
+const StackCard = ({ name, author, onSelect }) => (
   <div
     style={{
       width: '100%',
@@ -31,7 +31,7 @@ const StackCard = ({ title, author, onSelect }) => (
           alignItems: 'center'
         }}
       >
-        <span style={{ fontSize: 15, color: 'black' }}>{title}</span>
+        <span style={{ fontSize: 15, color: 'black' }}>{name}</span>
         <span style={{ color: 'grey', fontSize: 10 }}>{author}</span>
       </div>
     </div>

@@ -6,7 +6,56 @@ import Results from '../containers/stackBuilder/results';
 import Stack from '../containers/stackBuilder/stack';
 
 class StackBuilder extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      query: '',
+      selectedPackages: []
+    };
+
+    this.handleSearchOnChange = this.handleSearchOnChange.bind(this);
+    this.handleResultsOnSelect = this.handleResultsOnSelect.bind(this);
+    this.handleStackOnSelect = this.handleStackOnSelect.bind(this);
+  }
+
+  handleSearchOnChange(query) {
+    this.setState({
+      query
+    });
+  }
+
+  handleResultsOnSelect(pkg) {
+    const { selectedPackages } = this.state;
+
+    if (
+      !selectedPackages.some(
+        myPackage =>
+          myPackage.name === pkg.name && myPackage.version === pkg.version
+      )
+    ) {
+      this.setState({
+        selectedPackages: [...selectedPackages, pkg]
+      });
+    }
+  }
+
+  handleStackOnSelect(pkg) {
+    const { selectedPackages } = this.state;
+
+    const newSelectedPackages = selectedPackages.filter(
+      myPackage =>
+        myPackage.name !== pkg.name || myPackage.version !== pkg.version
+    );
+
+    this.setState({
+      selectedPackages: newSelectedPackages
+    });
+  }
+
   render() {
+    const { query, selectedPackages } = this.state;
+
     return (
       <div
         style={{
@@ -18,7 +67,12 @@ class StackBuilder extends React.Component {
           fontFamily: 'Source Sans Pro'
         }}
       >
-        <Title />
+        <Title
+          title={'Build your stack.'}
+          subtitle={
+            'Suggestions are packages📦 that best suit your existing dependencies👇🏼'
+          }
+        />
         <div
           style={{
             width: '100%',
@@ -28,10 +82,17 @@ class StackBuilder extends React.Component {
           }}
         >
           <div style={{ width: '100%', maxWidth: 900 }}>
-            <Search />
-            <Results />
+            <Search value={query} onChange={this.handleSearchOnChange} />
+            <Results
+              query={query}
+              selectedPackages={selectedPackages}
+              onSelect={this.handleResultsOnSelect}
+            />
           </div>
-          <Stack />
+          <Stack
+            selectedPackages={selectedPackages}
+            onSelect={this.handleStackOnSelect}
+          />
         </div>
       </div>
     );

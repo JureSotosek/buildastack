@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Title = () => (
+const Title = ({ title, subtitle }) => (
   <div
     style={{
       width: '100%',
@@ -14,11 +14,9 @@ const Title = () => (
         textShadow: '2px 2px lightGrey'
       }}
     >
-      Build your stack.
+      {title}
     </div>
-    <div style={{ fontSize: 20, marginTop: 5 }}>
-      Suggestions are packages📦 that best suit your existing dependencies👇🏼
-    </div>
+    <div style={{ fontSize: 20, marginTop: 5 }}>{subtitle}</div>
   </div>
 );
 

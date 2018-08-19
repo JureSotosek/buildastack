@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PackageCard = ({
-  title,
+  name,
   description,
   author,
   version,
@@ -14,7 +14,6 @@ const PackageCard = ({
       width: '100%',
       maxWidth: 400,
       minWidth: 300,
-      minHeight: 70,
       marginTop: 20,
       borderRadius: 5,
       boxShadow: '0 5px 15px 0 rgba(37,44,97,0.30)',
@@ -41,7 +40,7 @@ const PackageCard = ({
           alignItems: 'center'
         }}
       >
-        <span style={{ fontSize: 20 }}>{title}</span>
+        <span style={{ fontSize: 20 }}>{name}</span>
         <span style={{ color: 'grey', fontSize: 15 }}>
           {popular && '🔥'}
           📉
@@ -58,7 +57,7 @@ const PackageCard = ({
           marginBottom: 2
         }}
       >
-        <span style={{ fontSize: 15, color: 'grey' }}>{version}</span>
+        <span style={{ fontSize: 15 }}>{version}</span>
         <span style={{ fontSize: 15 }}>{author}</span>
       </div>
     </div>

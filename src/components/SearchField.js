@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchField = ({ onChange, value }) => (
+const SearchField = ({ value, onChange }) => (
   <input
     type="text"
     placeholder="react, react-dom, graphql,..."
@@ -11,8 +11,8 @@ const SearchField = ({ onChange, value }) => (
       backgroundColor: 'transparent',
       fontSize: 20
     }}
-    onChange={onChange}
     value={value}
+    onChange={event => onChange(event.target.value)}
   />
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import SearchField from '../../components/SearchField';
 
-const Search = () => (
+const Search = ({ value, onChange }) => (
   <div
     style={{
       width: '100%',
@@ -28,7 +28,7 @@ const Search = () => (
         backgroundColor: 'white'
       }}
     >
-      <SearchField />
+      <SearchField value={value} onChange={onChange} />
     </div>
   </div>
 );

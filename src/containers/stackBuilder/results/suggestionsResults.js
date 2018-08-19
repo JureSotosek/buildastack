@@ -1,23 +1,44 @@
 import React from 'react';
 
+import { Query } from 'react-apollo';
+import { suggestionsQuery } from '../../../lib/queries';
+
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
 
-const SuggestionResults = ({ title, msg, loading }) => (
-  <div
-    style={{
-      width: '100%',
-      margin: 20,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      flex: 1,
-      fontSize: 20
-    }}
+const SuggestionResults = ({ selectedPackages, onSelect }) => (
+  <Query
+    query={suggestionsQuery}
+    variables={{ dependencies: selectedPackages.map(pkg => pkg.name) }}
   >
-    <div>{title}</div>
-    <PackagePlaceholder msg={msg} loading={loading} />
-  </div>
+    {({ loading, error, data }) => {
+      if (selectedPackages.length === 0) {
+        return (
+          <PackagePlaceholder msg={'Select a package to get suggestions📦'} />
+        );
+      } else if (error) {
+        return <PackagePlaceholder error />;
+      } else if (loading) {
+        return <PackagePlaceholder loading />;
+      } else if (data.suggestions.dependencies.length !== 0) {
+        const packages = data.suggestions.dependencies;
+
+        return packages.map(pkg => (
+          <PackageCard
+            key={pkg.name + pkg.version}
+            name={pkg.name}
+            version={pkg.version}
+            description={pkg.description}
+            author={pkg.owner.name}
+            downloads={pkg.humanDownloadsLast30Days}
+            onSelect={() => onSelect(pkg)}
+          />
+        ));
+      } else {
+        return <PackagePlaceholder msg={'Sorry, no suggestions found😔'} />;
+      }
+    }}
+  </Query>
 );
 
 export default SuggestionResults;
