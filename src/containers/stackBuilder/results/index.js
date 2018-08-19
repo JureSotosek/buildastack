@@ -60,7 +60,7 @@ const Results = ({ query, selectedPackages, onSelect }) => (
           fontSize: 36,
           color: 'black'
         }}
-        href="https://github.com/JureSotosek/emma-suggestions"
+        href="https://github.com/JureSotosek/npm-suggestions"
       >
         npm-suggestions
       </a>

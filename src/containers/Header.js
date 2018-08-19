@@ -20,7 +20,7 @@ const Header = () => (
     >
       BuildAStack
     </div>
-    <a href="https://github.com/JureSotosek/emma-www">
+    <a href="https://github.com/JureSotosek/buildastack">
       <img
         style={{ height: 30 }}
         src={
