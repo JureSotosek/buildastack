@@ -2,6 +2,7 @@
 /node_modules
 
 # production
+/dist/bundle.js
 
 # misc
 .DS_Store
