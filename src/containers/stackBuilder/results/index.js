@@ -1,71 +1,64 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import SearchResults from './searchResults';
 import SuggestionsResults from './suggestionsResults';
 
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const ResultsColumnWrapper = styled.div`
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  font-size: 20px;
+`;
+
+const AlgoliaLogo = styled.img`
+  margin: 30px;
+  width: 260px;
+`;
+
+const NpmSuggestionsLogo = styled.a`
+  text-decoration: none;
+  margin: 25px;
+  font-family: Signika Negative;
+  font-size: 36px;
+  color: black;
+`;
+
 const Results = ({ query, selectedPackages, onSelect }) => (
-  <div
-    style={{
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around'
-    }}
-  >
-    <div
-      style={{
-        width: '100%',
-        margin: 20,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        flex: 1,
-        fontSize: 20
-      }}
-    >
+  <Wrapper>
+    <ResultsColumnWrapper>
       <div>{'Search results:'}</div>
       <SearchResults query={query} onSelect={onSelect} />
       <a href="https://www.algolia.com">
-        <img
+        <AlgoliaLogo
           src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
           alt="Powered by Algolia"
-          width="260"
-          height="36"
-          style={{ margin: 30 }}
         />
       </a>
-    </div>
-    <div
-      style={{
-        width: '100%',
-        margin: 20,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        flex: 1,
-        fontSize: 20
-      }}
-    >
+    </ResultsColumnWrapper>
+    <ResultsColumnWrapper>
       <div>{'Suggestions:'}</div>
       <SuggestionsResults
         selectedPackages={selectedPackages}
         onSelect={onSelect}
       />
-      <a
-        style={{
-          textDecoration: 'none',
-          margin: 25,
-          fontFamily: 'Signika Negative',
-          fontSize: 36,
-          color: 'black'
-        }}
-        href="https://github.com/JureSotosek/npm-suggestions"
-      >
+      <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
         npm-suggestions
-      </a>
-    </div>
-  </div>
+      </NpmSuggestionsLogo>
+    </ResultsColumnWrapper>
+  </Wrapper>
 );
 
 export default Results;

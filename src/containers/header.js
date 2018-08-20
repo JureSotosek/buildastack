@@ -1,34 +1,37 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Signika Negative;
+`;
+
+const Logo = styled.div`
+  font-size: 25px;
+`;
+
+const GithubLogo = styled.img`
+  height: 30px;
+`;
+
 const Header = () => (
-  <div
-    style={{
-      width: '100%',
-      maxWidth: 1200,
-      marginTop: 10,
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      fontFamily: 'Signika Negative'
-    }}
-  >
-    <div
-      style={{
-        fontSize: 25
-      }}
-    >
-      BuildAStack
-    </div>
+  <Wrapper>
+    <Logo>BuildAStack</Logo>
     <a href="https://github.com/JureSotosek/buildastack">
-      <img
-        style={{ height: 30 }}
+      <GithubLogo
         src={
           'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
         }
       />
     </a>
-  </div>
+  </Wrapper>
 );
 
 export default Header;

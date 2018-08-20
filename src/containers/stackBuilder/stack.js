@@ -1,7 +1,20 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import SelectionCard from '../../components/SelectionCard';
 import SelectionPlaceholder from '../../components/SelectionPlaceholder';
+
+const Wrapper = styled.div`
+  margin-top: 60px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1px;
+  font-size: 25px;
+  font-weight: bold;
+`;
 
 const Stack = ({ selectedPackages, onSelect }) => {
   const renderStack = () => {
@@ -20,21 +33,10 @@ const Stack = ({ selectedPackages, onSelect }) => {
   };
 
   return (
-    <div
-      style={{
-        marginTop: 60,
-        marginRight: 20,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        flex: 1,
-        fontSize: 25,
-        fontWeight: 'bold'
-      }}
-    >
-      <div>Your stack:</div>
+    <Wrapper>
+      Your stack:
       {renderStack()}
-    </div>
+    </Wrapper>
   );
 };
 

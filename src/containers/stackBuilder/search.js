@@ -1,5 +1,44 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+`;
+
+const SearchTitle = styled.div`
+  margin: 20px;
+  margin-right: 0px;
+  text-shadow: 1px 1px lightGrey;
+  fonts-size: 23px;
+`;
+
+const SearchField = styled.div`
+  width: 100%;
+  max-width: 500px;
+  padding: 7px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 7px;
+  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.25);
+  background-color: white;
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  border: 0 solid;
+  outline: none;
+  background-color: transparent;
+  font-size: 20px;
+`;
+
 class Search extends React.Component {
   focus() {
     this.input.focus();
@@ -9,58 +48,20 @@ class Search extends React.Component {
     const { value, onChange } = this.props;
 
     return (
-      <div
-        style={{
-          width: '100%',
-          marginTop: 20,
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 20
-        }}
-      >
-        <div
-          style={{
-            margin: 20,
-            marginRight: 0,
-            textShadow: '1px 1px lightGrey',
-            fontSize: 23
-          }}
-        >
-          🕵🏼Search to add packages:{' '}
-        </div>
-        <div
-          style={{
-            width: '100%',
-            maxWidth: 500,
-            padding: 7,
-            marginLeft: 20,
-            marginRight: 20,
-            borderRadius: 7,
-            boxShadow: '0 5px 15px 0 rgba(37,44,97,0.25)',
-            backgroundColor: 'white'
-          }}
-        >
-          <input
+      <Wrapper>
+        <SearchTitle>🕵🏼Search to add packages: </SearchTitle>
+        <SearchField>
+          <StyledInput
             type="text"
             placeholder="react, react-dom, graphql,..."
-            style={{
-              width: '100%',
-              border: '0px solid',
-              outline: 'none',
-              backgroundColor: 'transparent',
-              fontSize: 20
-            }}
             value={value}
             onChange={event => onChange(event.target.value)}
             ref={input => {
               this.input = input;
             }}
           />
-        </div>
-      </div>
+        </SearchField>
+      </Wrapper>
     );
   }
 }

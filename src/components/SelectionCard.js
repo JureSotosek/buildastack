@@ -1,57 +1,59 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  width: 250px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-clor: white;
+`;
+
+const DetailsSection = styled.div`
+  margin: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Detail = styled.div`
+  font-size: 15px;
+`;
+
+const DetailGrey = styled(Detail)`
+  color: grey;
+`;
+
+const RemoveSection = styled.div`
+  min-width: 30px;
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #ff7faa;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 15px;
+`;
+
 const StackCard = ({ name, version, onSelect }) => (
-  <div
-    style={{
-      width: '100%',
-      width: 250,
-      marginTop: 10,
-      borderRadius: 5,
-      boxShadow: '0 5px 15px 0 rgba(37,44,97,0.30)',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      backgroundColor: 'white'
-    }}
-    onClick={onSelect}
-  >
-    <div
-      style={{
-        margin: 5,
-        marginLeft: 15,
-        marginRight: 15,
-        width: '100%'
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
-      >
-        <span style={{ fontSize: 15, color: 'black' }}>{name}</span>
-        <span style={{ color: 'grey', fontSize: 10 }}>{version}</span>
-      </div>
-    </div>
-    <div
-      style={{
-        minWidth: 30,
-        paddingLeft: 5,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        textAlign: 'center',
-        backgroundColor: '#ff7faa',
-        borderTopRightRadius: 5,
-        borderBottomRightRadius: 5,
-        fontSize: 15
-      }}
-    >
-      👎🏼
-    </div>
-  </div>
+  <Wrapper onClick={onSelect}>
+    <DetailsSection>
+      <Detail>{name}</Detail>
+      <DetailGrey>{version}</DetailGrey>
+    </DetailsSection>
+    <RemoveSection>👎🏼</RemoveSection>
+  </Wrapper>
 );
 
 export default StackCard;

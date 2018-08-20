@@ -1,9 +1,32 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import Title from '../components/Title';
 import Search from '../containers/stackBuilder/search';
 import Results from '../containers/stackBuilder/results';
 import Stack from '../containers/stackBuilder/stack';
+
+const Wrapper = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Source Sans Pro;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+`;
+
+const SearchResultsSection = styled.div`
+  width: 100%;
+  max-width: 900px;
+`;
 
 class StackBuilder extends React.Component {
   constructor() {
@@ -59,31 +82,15 @@ class StackBuilder extends React.Component {
     const { query, selectedPackages } = this.state;
 
     return (
-      <div
-        style={{
-          width: '100%',
-          maxWidth: 1200,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          fontFamily: 'Source Sans Pro'
-        }}
-      >
+      <Wrapper>
         <Title
           title={'Build your stack.'}
           subtitle={
             'Suggestions are packages📦 that best suit your existing dependencies👇🏼'
           }
         />
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap-reverse'
-          }}
-        >
-          <div style={{ width: '100%', maxWidth: 900 }}>
+        <Content>
+          <SearchResultsSection>
             <Search
               value={query}
               onChange={this.handleSearchOnChange}
@@ -96,13 +103,13 @@ class StackBuilder extends React.Component {
               selectedPackages={selectedPackages}
               onSelect={this.handleResultsOnSelect}
             />
-          </div>
+          </SearchResultsSection>
           <Stack
             selectedPackages={selectedPackages}
             onSelect={this.handleStackOnSelect}
           />
-        </div>
-      </div>
+        </Content>
+      </Wrapper>
     );
   }
 }

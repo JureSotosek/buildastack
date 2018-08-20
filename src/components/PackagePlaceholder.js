@@ -1,68 +1,59 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import Skeleton from 'react-loading-skeleton';
+
+const Wrapper = styled.div`
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+  min-height: 70px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+  background-color: 'white';
+`;
+
+const Message = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
+
+const SkeletonWrapperBig = styled.div`
+  font-size: 25px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
+const SkeletonWrapperSmall = styled.div`
+  font-size: 15px;
+  padding: 10px;
+  padding-top: 0;
+`;
 
 const ResultsPlaceholder = ({ loading, msg, error }) => {
   const cardBody = () => {
     if (error) {
-      return (
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 20
-          }}
-        >
-          ❗️An error occured🤦🏼‍
-        </div>
-      );
+      return <Message>❗️An error occured🤦🏼‍</Message>;
     } else if (msg) {
-      return (
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 20
-          }}
-        >
-          {msg}
-        </div>
-      );
+      return <Message>{msg}</Message>;
     } else if (loading) {
       return (
         <div>
-          <div
-            style={{
-              fontSize: 25,
-              padding: 5,
-              paddingRight: 10,
-              paddingLeft: 10
-            }}
-          >
+          <SkeletonWrapperBig>
             <Skeleton />
-          </div>
+          </SkeletonWrapperBig>
 
-          <div style={{ fontSize: 15, padding: 10, paddingTop: 0 }}>
+          <SkeletonWrapperSmall>
             <Skeleton count={2} />
-          </div>
+          </SkeletonWrapperSmall>
         </div>
       );
     }
   };
 
-  return (
-    <div
-      style={{
-        width: '100%',
-        maxWidth: 400,
-        minWidth: 300,
-        minHeight: 70,
-        marginTop: 20,
-        borderRadius: 5,
-        boxShadow: '0 5px 15px 0 rgba(37,44,97,0.30)',
-        backgroundColor: 'white'
-      }}
-    >
-      {cardBody()}
-    </div>
-  );
+  return <Wrapper>{cardBody()}</Wrapper>;
 };
 export default ResultsPlaceholder;

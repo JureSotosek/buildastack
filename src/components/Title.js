@@ -1,23 +1,28 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+`;
+
+const MainTitle = styled.div`
+  font-size: 70px;
+  text-shadow: 2px 2px lightGrey;
+`;
+
+const SubTitle = styled.div`
+  font-size: 20px;
+  margin-top: 5px;
+`;
+
 const Title = ({ title, subtitle }) => (
-  <div
-    style={{
-      width: '100%',
-      marginTop: 40,
-      textAlign: 'center'
-    }}
-  >
-    <div
-      style={{
-        fontSize: 70,
-        textShadow: '2px 2px lightGrey'
-      }}
-    >
-      {title}
-    </div>
-    <div style={{ fontSize: 20, marginTop: 5 }}>{subtitle}</div>
-  </div>
+  <Wrapper>
+    <MainTitle>{title}</MainTitle>
+    <SubTitle>{subtitle}</SubTitle>
+  </Wrapper>
 );
 
 export default Title;
