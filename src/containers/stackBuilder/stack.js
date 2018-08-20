@@ -12,7 +12,7 @@ const Stack = ({ selectedPackages, onSelect }) => {
         <SelectionCard
           key={pkg.name + pkg.version}
           name={pkg.name}
-          author={pkg.owner.name}
+          version={pkg.version}
           onSelect={() => onSelect(pkg)}
         />
       ));

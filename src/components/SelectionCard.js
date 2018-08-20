@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StackCard = ({ name, author, onSelect }) => (
+const StackCard = ({ name, version, onSelect }) => (
   <div
     style={{
       width: '100%',
@@ -32,7 +32,7 @@ const StackCard = ({ name, author, onSelect }) => (
         }}
       >
         <span style={{ fontSize: 15, color: 'black' }}>{name}</span>
-        <span style={{ color: 'grey', fontSize: 10 }}>{author}</span>
+        <span style={{ color: 'grey', fontSize: 10 }}>{version}</span>
       </div>
     </div>
     <div
