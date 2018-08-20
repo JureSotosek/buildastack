@@ -1,7 +1,10 @@
 {
   "name": "build-a-stack",
-  "version": "0.1.0",
   "description": "",
+  "author": {
+    "name": "Jure Sotosek",
+    "url": "https://www.github.com/juresotosek"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -9,18 +12,7 @@
     "build": "webpack --config ./webpack.config.js --mode production"
   },
   "keywords": [],
-  "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "react-hot-loader": "^4.3.3",
-    "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
-  },
   "dependencies": {
     "apollo-boost": "^0.1.14",
     "babel-preset-env": "^1.7.0",
@@ -31,5 +23,15 @@
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.1",
     "react-loading-skeleton": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react-hot-loader": "^4.3.3",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }
