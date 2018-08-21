@@ -6,7 +6,7 @@ import { suggestionsQuery } from '../../../graphql/queries';
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
 
-const SuggestionResults = ({ selectedPackages, onSelect }) => (
+const SuggestionResults = ({ selectedPackages, onSelect, onSelectDev }) => (
   <Query
     query={suggestionsQuery}
     variables={{ dependencies: selectedPackages.map(pkg => pkg.name) }}
@@ -32,7 +32,8 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
             author={pkg.owner.name}
             downloads={pkg.humanDownloadsLast30Days}
             popular={pkg.popular}
-            onSelect={() => onSelect(pkg)}
+            onSelect={() => onSelect(pkg, false)}
+            onSelectDev={() => onSelect(pkg, true)}
           />
         ));
       } else {

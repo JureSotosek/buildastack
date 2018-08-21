@@ -14,6 +14,7 @@ const Stack = ({ selectedPackages, onSelect }) => {
         key={pkg.name + pkg.version}
         name={pkg.name}
         version={pkg.version}
+        dev={pkg.dev}
         onSelect={() => onSelect(pkg)}
       />
     ));

@@ -49,22 +49,36 @@ class CommandButtons extends React.Component {
 
     switch (installer) {
       case 'yarn':
-        return (
-          'yarn add' +
-          selectedPackages.reduce(
-            (command, pkg) => command + ' ' + pkg.name,
-            ''
-          )
-        );
+        const yarnDependencies = selectedPackages
+          .filter(pkg => !pkg.dev)
+          .reduce((command, pkg) => command + ' ' + pkg.name, 'yarn add');
+
+        const yarnDevDependencies = selectedPackages
+          .filter(pkg => pkg.dev)
+          .reduce((command, pkg) => command + ' ' + pkg.name, 'yarn add --dev');
+
+        const yarnCommand = yarnDependencies + ' && ' + yarnDevDependencies;
+
+        return yarnCommand;
 
       case 'npm':
-        return (
-          'npm install --save' +
-          selectedPackages.reduce(
+        const npmDependencies = selectedPackages
+          .filter(pkg => !pkg.dev)
+          .reduce(
             (command, pkg) => command + ' ' + pkg.name,
-            ''
-          )
-        );
+            'npm install --save'
+          );
+
+        const npmDevDependencies = selectedPackages
+          .filter(pkg => pkg.dev)
+          .reduce(
+            (command, pkg) => command + ' ' + pkg.name,
+            'npm install --save-dev'
+          );
+
+        const npmCommand = npmDependencies + ' && ' + npmDevDependencies;
+
+        return npmCommand;
     }
 
     return null;

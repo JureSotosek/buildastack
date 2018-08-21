@@ -6,7 +6,7 @@ import { searchQuery } from '../../../graphql/queries';
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
 
-const SearchResults = ({ query, onSelect }) => {
+const SearchResults = ({ query, onSelect, onSelectDev }) => {
   return (
     <Query query={searchQuery} variables={{ query }}>
       {({ loading, error, data }) => {
@@ -28,7 +28,8 @@ const SearchResults = ({ query, onSelect }) => {
               author={pkg.owner.name}
               downloads={pkg.humanDownloadsLast30Days}
               popular={pkg.popular}
-              onSelect={() => onSelect(pkg)}
+              onSelect={() => onSelect(pkg, false)}
+              onSelectDev={() => onSelect(pkg, true)}
             />
           ));
         } else {

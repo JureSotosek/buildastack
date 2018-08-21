@@ -37,11 +37,13 @@ const DetailsSection = styled.div`
 `;
 
 const Detail = styled.div`
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 `;
 
-const DetailGrey = styled(Detail)`
+const Version = styled.div`
+  font-size: 15px;
+  font-weight: bold;
   color: grey;
 `;
 
@@ -58,11 +60,14 @@ const RemoveSection = styled.div`
   font-size: 15px;
 `;
 
-const StackCard = ({ name, version, onSelect }) => (
+const StackCard = ({ name, version, dev, onSelect }) => (
   <Wrapper onClick={onSelect}>
     <DetailsSection>
-      <Detail>{name}</Detail>
-      <DetailGrey>{version}</DetailGrey>
+      <Detail>
+        {name}
+        {dev && <span style={{ color: 'grey', fontSize: 15 }}>{' dev'}</span>}
+      </Detail>
+      <Version>{version}</Version>
     </DetailsSection>
     <RemoveSection>{'👎🏼'}</RemoveSection>
   </Wrapper>

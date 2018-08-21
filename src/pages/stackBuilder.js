@@ -69,7 +69,7 @@ class StackBuilder extends React.Component {
     });
   }
 
-  handleResultsOnSelect(pkg) {
+  handleResultsOnSelect(pkg, dev) {
     const { selectedPackages } = this.state;
 
     if (selectedPackages.length !== 0) {
@@ -83,7 +83,7 @@ class StackBuilder extends React.Component {
       )
     ) {
       this.setState({
-        selectedPackages: [...selectedPackages, pkg],
+        selectedPackages: [...selectedPackages, { ...pkg, dev }],
         query: ''
       });
     }

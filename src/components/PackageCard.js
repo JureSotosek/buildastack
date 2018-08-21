@@ -62,9 +62,6 @@ const AddSection = styled.div`
   min-width: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background-color: #7fffd4;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 `;
@@ -76,10 +73,11 @@ const PackageCard = ({
   version,
   downloads,
   popular,
-  onSelect
+  onSelect,
+  onSelectDev
 }) => (
-  <Wrapper onClick={onSelect}>
-    <DetailsSection>
+  <Wrapper>
+    <DetailsSection onClick={onSelect}>
       <DetailsTopSection>
         <Name>{name}</Name>
         <DetailGrey>
@@ -94,7 +92,37 @@ const PackageCard = ({
         <DetailBlack>{author}</DetailBlack>
       </DetailsBottomSection>
     </DetailsSection>
-    <AddSection>{'👍🏼'}</AddSection>
+    <AddSection>
+      <div
+        onClick={onSelect}
+        style={{
+          flex: 2,
+          backgroundColor: '#7fffd4',
+          borderTopRightRadius: 5,
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}
+      >
+        ☁️
+      </div>
+      <div
+        onClick={onSelectDev}
+        style={{
+          flex: 1,
+          backgroundColor: 'lightGrey',
+          borderBottomRightRadius: 5,
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          fontSize: 15
+        }}
+      >
+        💻
+      </div>
+    </AddSection>
   </Wrapper>
 );
 
