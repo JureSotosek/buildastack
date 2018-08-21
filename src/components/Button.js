@@ -18,6 +18,7 @@ const Button = styled.button`
   font-weight: bold;
   font-size: 15px;
   font-family: Source Sans Pro;
+  color: white;
 
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);

@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   width: 100%;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: row;
 `;
@@ -76,16 +77,17 @@ class CommandButtons extends React.Component {
       <Wrapper>
         <ButtonsWrapper>
           <CopyToClipboard text={this.setCommandToCopy('yarn')}>
-            <Button onClick={this.setCoppied} color={'#2088b6'}>
+            <Button onClick={this.setCoppied} color={'#5ac8fa'}>
               {'Yarn'}
             </Button>
           </CopyToClipboard>
           <CopyToClipboard text={this.setCommandToCopy('npm')}>
-            <Button onClick={this.setCoppied} color={'#cb3837'}>
+            <Button onClick={this.setCoppied} color={'#ff2d55'}>
               {'npm'}
             </Button>
           </CopyToClipboard>
         </ButtonsWrapper>
+
         {coppied && 'Coppied to clipboard!'}
       </Wrapper>
     );

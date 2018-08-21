@@ -55,14 +55,14 @@ class Search extends React.Component {
 
     return (
       <Wrapper>
-        <SearchTitle>{'🕵🏼Search to add packages:'}</SearchTitle>
+        <SearchTitle>{'🔎Search to add packages:'}</SearchTitle>
         <SearchField>
           <StyledInput
             type="text"
             placeholder="react, react-dom, graphql,..."
             value={value}
             onChange={event => onChange(event.target.value)}
-            ref={input => {
+            innerRef={input => {
               this.input = input;
             }}
           />
