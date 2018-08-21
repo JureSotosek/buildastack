@@ -96,7 +96,7 @@ const PackageCard = ({
       <div
         onClick={onSelect}
         style={{
-          flex: 2,
+          flex: 1.1,
           backgroundColor: '#7fffd4',
           borderTopRightRadius: 5,
           textAlign: 'center',
