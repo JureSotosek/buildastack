@@ -13,6 +13,18 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
+
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+
+  &:hover {
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg);
+  }
 `;
 
 const DetailsSection = styled.div`
@@ -72,7 +84,7 @@ const PackageCard = ({
         <Name>{name}</Name>
         <DetailGrey>
           {popular && '🔥'}
-          📉
+          {'📉'}
           {downloads}
         </DetailGrey>
       </DetailsTopSection>
@@ -82,7 +94,7 @@ const PackageCard = ({
         <DetailBlack>{author}</DetailBlack>
       </DetailsBottomSection>
     </DetailsSection>
-    <AddSection>👍🏼</AddSection>
+    <AddSection>{'👍🏼'}</AddSection>
   </Wrapper>
 );
 

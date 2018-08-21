@@ -6,6 +6,7 @@ import Title from '../components/Title';
 import Search from '../containers/stackBuilder/search';
 import Results from '../containers/stackBuilder/results';
 import Stack from '../containers/stackBuilder/stack';
+import CommandButtons from '../containers/stackBuilder/commandButtons';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -26,6 +27,26 @@ const Content = styled.div`
 const SearchResultsSection = styled.div`
   width: 100%;
   max-width: 900px;
+`;
+
+const StackSection = styled.div`
+  margin-top: 60px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1px;
+`;
+
+const StackTitle = styled.div`
+  font-size: 25px;
+  font-weight: bold;
+`;
+
+const CommandsTitle = styled.div`
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 class StackBuilder extends React.Component {
@@ -51,6 +72,10 @@ class StackBuilder extends React.Component {
   handleResultsOnSelect(pkg) {
     const { selectedPackages } = this.state;
 
+    if (selectedPackages.length !== 0) {
+      this.commandButtons.setCoppiedNot();
+    }
+
     if (
       !selectedPackages.some(
         myPackage =>
@@ -67,6 +92,8 @@ class StackBuilder extends React.Component {
 
   handleStackOnSelect(pkg) {
     const { selectedPackages } = this.state;
+
+    this.commandButtons.setCoppiedNot();
 
     const newSelectedPackages = selectedPackages.filter(
       myPackage =>
@@ -104,10 +131,24 @@ class StackBuilder extends React.Component {
               onSelect={this.handleResultsOnSelect}
             />
           </SearchResultsSection>
-          <Stack
-            selectedPackages={selectedPackages}
-            onSelect={this.handleStackOnSelect}
-          />
+          <StackSection>
+            <StackTitle>{'Your stack:'}</StackTitle>
+            <Stack
+              selectedPackages={selectedPackages}
+              onSelect={this.handleStackOnSelect}
+            />
+            {selectedPackages.length !== 0 && (
+              <React.Fragment>
+                <CommandsTitle>{'Install Commands:'}</CommandsTitle>
+                <CommandButtons
+                  selectedPackages={selectedPackages}
+                  ref={commandButtons => {
+                    this.commandButtons = commandButtons;
+                  }}
+                />
+              </React.Fragment>
+            )}
+          </StackSection>
         </Content>
       </Wrapper>
     );

@@ -40,6 +40,12 @@ const StyledInput = styled.input`
 `;
 
 class Search extends React.Component {
+  constructor() {
+    super();
+
+    this.focus = this.focus.bind(this);
+  }
+
   focus() {
     this.input.focus();
   }
@@ -49,7 +55,7 @@ class Search extends React.Component {
 
     return (
       <Wrapper>
-        <SearchTitle>🕵🏼Search to add packages: </SearchTitle>
+        <SearchTitle>{'🕵🏼Search to add packages:'}</SearchTitle>
         <SearchField>
           <StyledInput
             type="text"

@@ -23,7 +23,7 @@ const GithubLogo = styled.img`
 
 const Header = () => (
   <Wrapper>
-    <Logo>buildastack</Logo>
+    <Logo>{'build a stack'}</Logo>
     <a href="https://github.com/JureSotosek/buildastack">
       <GithubLogo
         src={

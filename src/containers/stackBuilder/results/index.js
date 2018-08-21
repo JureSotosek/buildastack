@@ -39,7 +39,7 @@ const NpmSuggestionsLogo = styled.a`
 const Results = ({ query, selectedPackages, onSelect }) => (
   <Wrapper>
     <ResultsColumnWrapper>
-      <div>{'Search results:'}</div>
+      {'Search results:'}
       <SearchResults query={query} onSelect={onSelect} />
       <a href="https://www.algolia.com">
         <AlgoliaLogo
@@ -49,13 +49,13 @@ const Results = ({ query, selectedPackages, onSelect }) => (
       </a>
     </ResultsColumnWrapper>
     <ResultsColumnWrapper>
-      <div>{'Suggestions:'}</div>
+      {'Suggestions:'}
       <SuggestionsResults
         selectedPackages={selectedPackages}
         onSelect={onSelect}
       />
       <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
-        npm-suggestions
+        {'npm-suggestions'}
       </NpmSuggestionsLogo>
     </ResultsColumnWrapper>
   </Wrapper>
