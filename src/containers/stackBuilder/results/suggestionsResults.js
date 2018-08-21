@@ -6,10 +6,17 @@ import { suggestionsQuery } from '../../../lib/graphql/queries';
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
 
-const SuggestionResults = ({ selectedPackages, onSelect, onSelectDev }) => (
+const SuggestionResults = ({ selectedPackages, onSelect }) => (
   <Query
     query={suggestionsQuery}
-    variables={{ dependencies: selectedPackages.map(pkg => pkg.name) }}
+    variables={{
+      dependencies: selectedPackages
+        .filter(pkg => !pkg.dev)
+        .map(pkg => pkg.name),
+      devDependencies: selectedPackages
+        .filter(pkg => pkg.dev)
+        .map(pkg => pkg.name)
+    }}
   >
     {({ loading, error, data }) => {
       if (selectedPackages.length === 0) {

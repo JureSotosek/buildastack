@@ -36,15 +36,11 @@ const NpmSuggestionsLogo = styled.a`
   color: black;
 `;
 
-const Results = ({ query, selectedPackages, onSelect, onSelectDev }) => (
+const Results = ({ query, selectedPackages, onSelect }) => (
   <Wrapper>
     <ResultsColumnWrapper>
       {'Search results:'}
-      <SearchResults
-        query={query}
-        onSelect={onSelect}
-        onSelectDev={onSelectDev}
-      />
+      <SearchResults query={query} onSelect={onSelect} />
       <a href="https://www.algolia.com">
         <AlgoliaLogo
           src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
@@ -57,7 +53,6 @@ const Results = ({ query, selectedPackages, onSelect, onSelectDev }) => (
       <SuggestionsResults
         selectedPackages={selectedPackages}
         onSelect={onSelect}
-        onSelectDev={onSelectDev}
       />
       <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
         {'npm-suggestions'}

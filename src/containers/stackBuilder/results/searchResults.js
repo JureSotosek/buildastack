@@ -6,7 +6,7 @@ import { searchQuery } from '../../../lib/graphql/queries';
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
 
-const SearchResults = ({ query, onSelect, onSelectDev }) => {
+const SearchResults = ({ query, onSelect }) => {
   return (
     <Query query={searchQuery} variables={{ query }}>
       {({ loading, error, data }) => {
