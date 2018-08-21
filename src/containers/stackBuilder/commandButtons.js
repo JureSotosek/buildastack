@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import Button from '../../components/Button';
 
+import { npmInstallCommand, yarnAddCommand } from '../../lib/installCommands';
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 250px;
@@ -49,36 +51,10 @@ class CommandButtons extends React.Component {
 
     switch (installer) {
       case 'yarn':
-        const yarnDependencies = selectedPackages
-          .filter(pkg => !pkg.dev)
-          .reduce((command, pkg) => command + ' ' + pkg.name, 'yarn add');
-
-        const yarnDevDependencies = selectedPackages
-          .filter(pkg => pkg.dev)
-          .reduce((command, pkg) => command + ' ' + pkg.name, 'yarn add --dev');
-
-        const yarnCommand = yarnDependencies + ' && ' + yarnDevDependencies;
-
-        return yarnCommand;
+        return yarnAddCommand(selectedPackages);
 
       case 'npm':
-        const npmDependencies = selectedPackages
-          .filter(pkg => !pkg.dev)
-          .reduce(
-            (command, pkg) => command + ' ' + pkg.name,
-            'npm install --save'
-          );
-
-        const npmDevDependencies = selectedPackages
-          .filter(pkg => pkg.dev)
-          .reduce(
-            (command, pkg) => command + ' ' + pkg.name,
-            'npm install --save-dev'
-          );
-
-        const npmCommand = npmDependencies + ' && ' + npmDevDependencies;
-
-        return npmCommand;
+        return npmInstallCommand(selectedPackages);
     }
 
     return null;

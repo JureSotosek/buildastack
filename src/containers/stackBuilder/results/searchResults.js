@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Query } from 'react-apollo';
-import { searchQuery } from '../../../graphql/queries';
+import { searchQuery } from '../../../lib/graphql/queries';
 
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';

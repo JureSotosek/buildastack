@@ -28,7 +28,6 @@ const SearchField = styled.div`
   margin-right: 20px;
   border-radius: 7px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.25);
-  background-color: white;
 `;
 
 const StyledInput = styled.input`

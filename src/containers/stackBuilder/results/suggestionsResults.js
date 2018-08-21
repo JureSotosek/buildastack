@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Query } from 'react-apollo';
-import { suggestionsQuery } from '../../../graphql/queries';
+import { suggestionsQuery } from '../../../lib/graphql/queries';
 
 import PackageCard from '../../../components/PackageCard';
 import PackagePlaceholder from '../../../components/PackagePlaceholder';
@@ -20,8 +20,8 @@ const SuggestionResults = ({ selectedPackages, onSelect, onSelectDev }) => (
         return <PackagePlaceholder error />;
       } else if (loading) {
         return <PackagePlaceholder loading />;
-      } else if (data.suggestions.dependencies.length !== 0) {
-        const packages = data.suggestions.dependencies;
+      } else if (data.suggestions.allDependencies.length !== 0) {
+        const packages = data.suggestions.allDependencies;
 
         return packages.map(pkg => (
           <PackageCard

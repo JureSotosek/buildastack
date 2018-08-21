@@ -18,7 +18,7 @@ export const searchQuery = gql`
 export const suggestionsQuery = gql`
   query Suggestions($dependencies: [String!]!) {
     suggestions(dependencies: $dependencies) {
-      dependencies {
+      allDependencies {
         name
         description
         version

@@ -18,7 +18,7 @@ const Logo = styled.div`
 `;
 
 const GithubLogo = styled.img`
-  height: 30px;
+  height: 35px;
 `;
 
 const Header = () => (
@@ -27,7 +27,7 @@ const Header = () => (
     <a href="https://github.com/JureSotosek/buildastack">
       <GithubLogo
         src={
-          'https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
+          'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
         }
       />
     </a>
