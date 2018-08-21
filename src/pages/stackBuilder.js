@@ -113,7 +113,7 @@ class StackBuilder extends React.Component {
         <Title
           title={'Build your stack.'}
           subtitle={
-            'Suggestions are packages📦 that best suit your existing dependencies👇🏼'
+            '🥞A tool for building an npm stack. Suggestions are packages📦 that best suit your existing dependencies👇🏼'
           }
         />
         <Content>
