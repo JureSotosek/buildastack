@@ -47,11 +47,16 @@ const DetailsBottomSection = styled(DetailsTopSection)`
 
 const Name = styled.div`
   font-size: 20px;
+  word-break: break-all;
 `;
 
 const DetailGrey = styled.div`
   color: grey;
   font-size: 15px;
+`;
+
+const Decription = styled(DetailGrey)`
+  word-break: break-all;
 `;
 
 const DetailBlack = styled.div`
@@ -86,7 +91,7 @@ const PackageCard = ({
           {downloads}
         </DetailGrey>
       </DetailsTopSection>
-      <DetailGrey>{description}</DetailGrey>
+      <Decription>{description}</Decription>
       <DetailsBottomSection>
         <DetailBlack>{version}</DetailBlack>
         <DetailBlack>{author}</DetailBlack>

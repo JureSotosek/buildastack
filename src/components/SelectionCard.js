@@ -37,8 +37,23 @@ const DetailsSection = styled.div`
 `;
 
 const Detail = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-size: 17px;
   font-weight: bold;
+`;
+
+const Name = styled.div`
+  word-break: break-all;
+`;
+
+const Dev = styled.div`
+  margin-left: 5px;
+  margin-right: 5px;
+  color: grey;
+  font-size: 15px;
 `;
 
 const Version = styled.div`
@@ -64,8 +79,8 @@ const StackCard = ({ name, version, dev, onSelect }) => (
   <Wrapper onClick={onSelect}>
     <DetailsSection>
       <Detail>
-        {name}
-        {dev && <span style={{ color: 'grey', fontSize: 15 }}>{' dev'}</span>}
+        <Name>{name}</Name>
+        {dev && <Dev>{' dev'}</Dev>}
       </Detail>
       <Version>{version}</Version>
     </DetailsSection>
