@@ -4,12 +4,15 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
+
   margin-top: 20px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   font-size: 20px;
 `;
 
@@ -17,12 +20,14 @@ const SearchTitle = styled.div`
   margin: 20px;
   margin-right: 0px;
   text-shadow: 1px 1px lightGrey;
+
   fonts-size: 23px;
 `;
 
 const SearchField = styled.div`
   width: 100%;
   max-width: 500px;
+
   padding: 7px;
   margin-left: 20px;
   margin-right: 20px;
@@ -32,8 +37,10 @@ const SearchField = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
+
   border: 0 solid;
   outline: none;
+
   background-color: transparent;
   font-size: 20px;
 `;

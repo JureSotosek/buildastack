@@ -14,8 +14,8 @@ const MainTitle = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 20px;
   margin-top: 5px;
+  font-size: 20px;
 `;
 
 const Title = ({ title, subtitle }) => (

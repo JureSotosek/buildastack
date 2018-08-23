@@ -5,14 +5,14 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 100%;
   width: 250px;
+
   margin-top: 10px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  cursor: pointer;
 
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -25,13 +25,17 @@ const Wrapper = styled.div`
     -webkit-transform: rotate(1deg);
     transform: rotate(1deg);
   }
+
+  cursor: pointer;
 `;
 
 const DetailsSection = styled.div`
+  width: 100%;
+
   margin: 5px;
   margin-left: 15px;
   margin-right: 15px;
-  width: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,6 +47,7 @@ const Detail = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   font-size: 17px;
   font-weight: bold;
 `;
@@ -54,8 +59,9 @@ const Name = styled.div`
 const Dev = styled.div`
   margin-left: 5px;
   margin-right: 5px;
-  color: grey;
+
   font-size: 15px;
+  color: grey;
 `;
 
 const Version = styled.div`
@@ -66,14 +72,17 @@ const Version = styled.div`
 
 const RemoveSection = styled.div`
   min-width: 30px;
+
   padding-left: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+
   background-color: #ff7faa;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
   font-size: 15px;
 `;
 

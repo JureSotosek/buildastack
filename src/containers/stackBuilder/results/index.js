@@ -7,6 +7,7 @@ import SuggestionsResults from './suggestionsResults';
 
 const Wrapper = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -15,22 +16,26 @@ const Wrapper = styled.div`
 
 const ResultsColumnWrapper = styled.div`
   width: 100%;
+
   margin: 20px;
+
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+
   font-size: 20px;
 `;
 
 const AlgoliaLogo = styled.img`
-  margin: 30px;
   width: 260px;
+  margin: 30px;
 `;
 
 const NpmSuggestionsLogo = styled.a`
-  text-decoration: none;
   margin: 25px;
+
+  text-decoration: none;
   font-family: Signika Negative;
   font-size: 36px;
   color: black;

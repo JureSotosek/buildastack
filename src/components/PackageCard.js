@@ -6,15 +6,16 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 400px;
   min-width: 300px;
+
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: white;
 
-  cursor: pointer;
+  background-color: white;
 
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -27,13 +28,16 @@ const Wrapper = styled.div`
     -webkit-transform: rotate(1deg);
     transform: rotate(1deg);
   }
+
+  cursor: pointer;
 `;
 
 const DetailsSection = styled.div`
+  width: 100%;
+
   margin: 5px;
   margin-left: 15px;
   margin-right: 15px;
-  width: 100%;
 `;
 
 const DetailsTopSection = styled.div`
@@ -53,8 +57,8 @@ const Name = styled.div`
 `;
 
 const DetailGrey = styled.div`
-  color: grey;
   font-size: 15px;
+  color: grey;
 `;
 
 const Decription = styled(DetailGrey)`
@@ -67,10 +71,12 @@ const DetailBlack = styled.div`
 
 const AddSection = styled.div`
   min-width: 80px;
-  display: flex;
-  flex-direction: column;
+
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const PackageCard = ({

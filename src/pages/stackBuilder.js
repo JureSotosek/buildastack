@@ -11,16 +11,20 @@ import CommandButtons from '../containers/stackBuilder/commandButtons';
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   font-family: Source Sans Pro;
 `;
 
 const Content = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap-reverse;
 `;
 
@@ -32,10 +36,11 @@ const SearchResultsSection = styled.div`
 const StackSection = styled.div`
   margin-top: 60px;
   margin-right: 20px;
+
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1px;
 `;
 
 const StackTitle = styled.div`

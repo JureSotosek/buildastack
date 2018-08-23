@@ -10,6 +10,7 @@ import { npmInstallCommand, yarnAddCommand } from '../../lib/installCommands';
 const Wrapper = styled.div`
   width: 100%;
   max-width: 250px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +18,9 @@ const Wrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   width: 100%;
+
   padding-bottom: 10px;
+
   display: flex;
   flex-direction: row;
 `;

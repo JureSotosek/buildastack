@@ -9,9 +9,11 @@ const Wrapper = styled.div`
   max-width: 400px;
   min-width: 300px;
   min-height: 70px;
+
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+
   background-color: 'white';
 `;
 
@@ -21,16 +23,17 @@ const Message = styled.div`
 `;
 
 const SkeletonWrapperBig = styled.div`
-  font-size: 25px;
   padding: 5px;
   padding-right: 10px;
   padding-left: 10px;
+
+  font-size: 25px;
 `;
 
 const SkeletonWrapperSmall = styled.div`
-  font-size: 15px;
   padding: 10px;
   padding-top: 0;
+  font-size: 15px;
 `;
 
 const ResultsPlaceholder = ({ loading, msg, error }) => {
