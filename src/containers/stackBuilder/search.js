@@ -54,7 +54,7 @@ class Search extends React.Component {
 
     return (
       <Wrapper>
-        <SearchTitle>{'🔎Search to add packages:'}</SearchTitle>
+        <SearchTitle>{'🔎 Search to add packages:'}</SearchTitle>
         <SearchField>
           <StyledInput
             type="text"

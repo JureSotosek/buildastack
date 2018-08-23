@@ -12,6 +12,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
+  cursor: pointer;
+
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;

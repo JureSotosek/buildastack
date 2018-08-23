@@ -21,7 +21,7 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
     {({ loading, error, data }) => {
       if (selectedPackages.length === 0) {
         return (
-          <PackagePlaceholder msg={'Select a package for suggestions📦'} />
+          <PackagePlaceholder msg={'Select a package for suggestions 📦'} />
         );
       } else if (error) {
         return <PackagePlaceholder error />;
@@ -44,7 +44,7 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
           />
         ));
       } else {
-        return <PackagePlaceholder msg={'Sorry, no suggestions found😔'} />;
+        return <PackagePlaceholder msg={'Sorry, no suggestions found 😔'} />;
       }
     }}
   </Query>

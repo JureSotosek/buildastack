@@ -14,6 +14,8 @@ const Wrapper = styled.div`
   justify-content: space-between;
   background-color: white;
 
+  cursor: pointer;
+
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;

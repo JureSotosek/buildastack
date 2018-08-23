@@ -36,7 +36,7 @@ const SkeletonWrapperSmall = styled.div`
 const ResultsPlaceholder = ({ loading, msg, error }) => {
   const cardBody = () => {
     if (error) {
-      return <Message>{'❗️An error occured🤦🏼‍'}</Message>;
+      return <Message>{'❗️An error occured 🤦🏼‍'}</Message>;
     } else if (msg) {
       return <Message>{msg}</Message>;
     } else if (loading) {

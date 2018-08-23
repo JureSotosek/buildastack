@@ -11,7 +11,7 @@ const SearchResults = ({ query, onSelect }) => {
     <Query query={searchQuery} variables={{ query }}>
       {({ loading, error, data }) => {
         if (query.length === 0) {
-          return <PackagePlaceholder msg={'Start typing to get results📝'} />;
+          return <PackagePlaceholder msg={'Start typing to get results 📝'} />;
         } else if (error) {
           return <PackagePlaceholder error />;
         } else if (loading) {
@@ -33,7 +33,9 @@ const SearchResults = ({ query, onSelect }) => {
             />
           ));
         } else {
-          return <PackagePlaceholder msg={'Sorry, search yielded nothing😕'} />;
+          return (
+            <PackagePlaceholder msg={'Sorry, search yielded nothing 😕'} />
+          );
         }
       }}
     </Query>
