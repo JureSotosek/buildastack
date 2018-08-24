@@ -80,7 +80,6 @@ class CommandButtons extends React.Component {
             </Button>
           </CopyToClipboard>
         </ButtonsWrapper>
-
         {coppied && 'Coppied to clipboard!'}
       </Wrapper>
     );

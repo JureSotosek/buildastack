@@ -27,8 +27,8 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
         return <PackagePlaceholder error />;
       } else if (loading) {
         return <PackagePlaceholder loading />;
-      } else if (data.suggestions.allDependencies.length !== 0) {
-        const packages = data.suggestions.allDependencies;
+      } else if (data.suggestions.dependencies.length !== 0) {
+        const packages = data.suggestions.dependencies;
 
         return packages.map(pkg => (
           <PackageCard

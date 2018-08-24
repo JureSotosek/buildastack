@@ -43,6 +43,8 @@ const Button = styled.button`
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
   }
+
+  cursor: pointer;
 `;
 
 export default Button;
