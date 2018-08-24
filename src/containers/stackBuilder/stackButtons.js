@@ -25,7 +25,7 @@ const ButtonsWrapper = styled.div`
   flex-direction: row;
 `;
 
-class CommandButtons extends React.Component {
+class StackButtons extends React.Component {
   constructor() {
     super();
 
@@ -86,4 +86,4 @@ class CommandButtons extends React.Component {
   }
 }
 
-export default CommandButtons;
+export default StackButtons;

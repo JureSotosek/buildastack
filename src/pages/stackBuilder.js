@@ -6,7 +6,7 @@ import Title from '../components/Title';
 import Search from '../containers/stackBuilder/search';
 import Results from '../containers/stackBuilder/results';
 import Stack from '../containers/stackBuilder/stack';
-import CommandButtons from '../containers/stackBuilder/commandButtons';
+import StackButtons from '../containers/stackBuilder/stackButtons';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -78,7 +78,7 @@ class StackBuilder extends React.Component {
     const { selectedPackages } = this.state;
 
     if (selectedPackages.length !== 0) {
-      this.commandButtons.setCoppiedNot();
+      this.stackButtons.setCoppiedNot();
     }
 
     if (
@@ -98,7 +98,7 @@ class StackBuilder extends React.Component {
   handleStackOnSelect(pkg) {
     const { selectedPackages } = this.state;
 
-    this.commandButtons.setCoppiedNot();
+    this.stackButtons.setCoppiedNot();
 
     const newSelectedPackages = selectedPackages.filter(
       myPackage =>
@@ -145,10 +145,10 @@ class StackBuilder extends React.Component {
             {selectedPackages.length !== 0 && (
               <React.Fragment>
                 <CommandsTitle>{'Install Commands:'}</CommandsTitle>
-                <CommandButtons
+                <StackButtons
                   selectedPackages={selectedPackages}
-                  ref={commandButtons => {
-                    this.commandButtons = commandButtons;
+                  ref={stackButtons => {
+                    this.stackButtons = stackButtons;
                   }}
                 />
               </React.Fragment>
