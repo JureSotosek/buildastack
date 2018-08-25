@@ -3,10 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Title from '../components/Title';
-import Search from '../containers/stackBuilder/search';
-import Results from '../containers/stackBuilder/results';
-import Stack from '../containers/stackBuilder/stack';
-import StackButtons from '../containers/stackBuilder/stackButtons';
+import Search from '../containers/builder/search';
+import Results from '../containers/builder/results';
+import SelectedPackages from '../containers/builder/selectedPackages';
+import StackActions from '../containers/builder/stackActions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -54,7 +54,7 @@ const CommandsTitle = styled.div`
   font-weight: bold;
 `;
 
-class StackBuilder extends React.Component {
+class Builder extends React.Component {
   constructor() {
     super();
 
@@ -78,7 +78,7 @@ class StackBuilder extends React.Component {
     const { selectedPackages } = this.state;
 
     if (selectedPackages.length !== 0) {
-      this.stackButtons.setCoppiedNot();
+      this.stackActions.setCoppiedNot();
     }
 
     if (
@@ -98,7 +98,7 @@ class StackBuilder extends React.Component {
   handleStackOnSelect(pkg) {
     const { selectedPackages } = this.state;
 
-    this.stackButtons.setCoppiedNot();
+    this.stackActions.setCoppiedNot();
 
     const newSelectedPackages = selectedPackages.filter(
       myPackage =>
@@ -138,17 +138,17 @@ class StackBuilder extends React.Component {
           </SearchResultsSection>
           <StackSection>
             <StackTitle>{'Your stack:'}</StackTitle>
-            <Stack
+            <SelectedPackages
               selectedPackages={selectedPackages}
               onSelect={this.handleStackOnSelect}
             />
             {selectedPackages.length !== 0 && (
               <React.Fragment>
                 <CommandsTitle>{'Install Commands:'}</CommandsTitle>
-                <StackButtons
+                <StackActions
                   selectedPackages={selectedPackages}
-                  ref={stackButtons => {
-                    this.stackButtons = stackButtons;
+                  ref={stackActions => {
+                    this.stackActions = stackActions;
                   }}
                 />
               </React.Fragment>
@@ -160,4 +160,4 @@ class StackBuilder extends React.Component {
   }
 }
 
-export default StackBuilder;
+export default Builder;

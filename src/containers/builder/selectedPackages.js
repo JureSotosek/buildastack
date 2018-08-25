@@ -1,7 +1,5 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import SelectionCard from '../../components/SelectionCard';
 import SelectionPlaceholder from '../../components/SelectionPlaceholder';
 

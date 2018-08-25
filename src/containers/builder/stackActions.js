@@ -11,6 +11,8 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 250px;
 
+  padding: 5px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,33 +21,36 @@ const Wrapper = styled.div`
 const ButtonsWrapper = styled.div`
   width: 100%;
 
-  padding-bottom: 10px;
-
   display: flex;
   flex-direction: row;
 `;
 
-class StackButtons extends React.Component {
+const ShareSaveButtonsWrapper = styled(ButtonsWrapper)`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+class StackActions extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      coppied: false
+      msg: null
     };
 
-    this.setCoppied = this.setCoppied.bind(this);
+    this.setMsg = this.setMsg.bind(this);
     this.setCommandToCopy = this.setCommandToCopy.bind(this);
   }
 
-  setCoppied() {
+  setMsg(msg) {
     this.setState({
-      coppied: true
+      msg
     });
   }
 
   setCoppiedNot() {
     this.setState({
-      coppied: false
+      msg: false
     });
   }
 
@@ -64,26 +69,42 @@ class StackButtons extends React.Component {
   }
 
   render() {
-    const { coppied } = this.state;
+    const { msg } = this.state;
 
     return (
       <Wrapper>
         <ButtonsWrapper>
           <CopyToClipboard text={this.setCommandToCopy('yarn')}>
-            <Button onClick={this.setCoppied} color={'#5ac8fa'}>
+            <Button
+              color={'#5ac8fa'}
+              onClick={() => this.setMsg('Yarn command coppied')}
+            >
               {'Yarn'}
             </Button>
           </CopyToClipboard>
           <CopyToClipboard text={this.setCommandToCopy('npm')}>
-            <Button onClick={this.setCoppied} color={'#ff2d55'}>
+            <Button
+              color={'#ff2d55'}
+              onClick={() => this.setMsg('npm command coppied')}
+            >
               {'npm'}
             </Button>
           </CopyToClipboard>
         </ButtonsWrapper>
-        {coppied && 'Coppied to clipboard!'}
+        <ShareSaveButtonsWrapper>
+          <Button color={'#5856d6'}>Share</Button>
+          <Button
+            style={{ color: 'lightGrey' }}
+            color={'grey'}
+            onClick={() => this.setMsg('Save coming Soon!')}
+          >
+            Save
+          </Button>
+        </ShareSaveButtonsWrapper>
+        {msg || ''}
       </Wrapper>
     );
   }
 }
 
-export default StackButtons;
+export default StackActions;
