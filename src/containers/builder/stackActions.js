@@ -92,7 +92,13 @@ class StackActions extends React.Component {
           </CopyToClipboard>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
-          <Button color={'#5856d6'}>Share</Button>
+          <Button
+            style={{ color: 'lightGrey' }}
+            color={'grey'}
+            onClick={() => this.setMsg('Share coming Soon!')}
+          >
+            Share
+          </Button>
           <Button
             style={{ color: 'lightGrey' }}
             color={'grey'}
