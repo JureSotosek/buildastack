@@ -118,7 +118,7 @@ class Builder extends React.Component {
         <Title
           title={'Build your stack.'}
           subtitle={
-            '🥞 A tool for building an npm stack. Suggestions are packages 📦 that best suit your existing dependencies 👇🏼'
+            '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
           }
         />
         <Content>

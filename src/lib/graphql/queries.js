@@ -21,7 +21,7 @@ export const suggestionsQuery = gql`
       dependencies: $dependencies
       devDependencies: $devDependencies
     ) {
-      dependencies {
+      suggestions {
         name
         description
         version

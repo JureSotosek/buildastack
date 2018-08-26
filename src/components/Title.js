@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
+  max-width: 840px;
   margin-top: 30px;
   text-align: center;
 `;
