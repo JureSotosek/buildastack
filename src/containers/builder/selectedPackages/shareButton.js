@@ -61,7 +61,7 @@ class ShareButton extends React.Component {
               {showModal && (
                 <Modal
                   title={'Stack made'}
-                  subTitleOne={'A shareable link was created: '}
+                  subTitle={'A shareable link was created: '}
                   link={'buildastack.io/stack/' + data.createStack.id}
                   closeModal={this.closeModal}
                 />
