@@ -2,10 +2,10 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import CopyToClipboard from 'react-copy-to-clipboard';
 import Button from '../../../components/Button';
 import ShareButton from './shareButton';
 
+import copyToClipboard from 'copy-to-clipboard';
 import {
   npmInstallCommand,
   yarnAddCommand
@@ -43,7 +43,8 @@ class SelectedPackagesActions extends React.Component {
     };
 
     this.setMsg = this.setMsg.bind(this);
-    this.setCommandToCopy = this.setCommandToCopy.bind(this);
+    this.getCommandToCopy = this.getCommandToCopy.bind(this);
+    this.handleButtonOnClick = this.handleButtonOnClick.bind(this);
   }
 
   setMsg(msg) {
@@ -58,7 +59,13 @@ class SelectedPackagesActions extends React.Component {
     });
   }
 
-  setCommandToCopy(installer) {
+  handleButtonOnClick(toCopy, msg) {
+    copyToClipboard(toCopy);
+
+    this.setMsg(msg);
+  }
+
+  getCommandToCopy(installer) {
     const { selectedPackages } = this.props;
 
     switch (installer) {
@@ -79,22 +86,28 @@ class SelectedPackagesActions extends React.Component {
     return (
       <Wrapper>
         <ButtonsWrapper>
-          <CopyToClipboard text={this.setCommandToCopy('yarn')}>
-            <Button
-              color={'#5ac8fa'}
-              onClick={() => this.setMsg('Yarn command coppied')}
-            >
-              {'Yarn'}
-            </Button>
-          </CopyToClipboard>
-          <CopyToClipboard text={this.setCommandToCopy('npm')}>
-            <Button
-              color={'#ff2d55'}
-              onClick={() => this.setMsg('npm command coppied')}
-            >
-              {'npm'}
-            </Button>
-          </CopyToClipboard>
+          <Button
+            color={'#5ac8fa'}
+            onClick={() =>
+              this.handleButtonOnClick(
+                this.getCommandToCopy('yarn'),
+                'Yarn command coppied!'
+              )
+            }
+          >
+            {'Yarn'}
+          </Button>
+          <Button
+            color={'#ff2d55'}
+            onClick={() =>
+              this.handleButtonOnClick(
+                this.getCommandToCopy('npm'),
+                'npm command coppied!'
+              )
+            }
+          >
+            {'npm'}
+          </Button>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
           <ShareButton selectedPackages={selectedPackages} />
@@ -103,7 +116,7 @@ class SelectedPackagesActions extends React.Component {
             color={'grey'}
             onClick={() => this.setMsg('Save coming Soon!')}
           >
-            Save
+            save
           </Button>
         </ShareSaveButtonsWrapper>
         {msg || ''}

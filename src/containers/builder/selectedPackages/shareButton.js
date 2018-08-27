@@ -3,11 +3,11 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { CreateStackMutation } from '../../../lib/graphql/mutations';
 
-import { Redirect } from 'react-router-dom';
+import copy from 'copy-to-clipboard';
 
 import Button from '../../../components/Button';
 
-const ShareButton = ({ selectedPackages }) => {
+const ShareButton = ({ selectedPackages, onShare }) => {
   const getDependencies = packages => {
     return packages.map(pkg => ({
       name: pkg.name,
@@ -16,26 +16,24 @@ const ShareButton = ({ selectedPackages }) => {
     }));
   };
 
+  const handleShareOnClick = createStack => {
+    createStack({
+      variables: { dependencies: getDependencies(selectedPackages) }
+    }).then(({ data: { createStack: { id } } }) =>
+      copy('buildastack.io/stack/' + id)
+    );
+  };
+
   return (
     <Mutation mutation={CreateStackMutation}>
-      {(createStack, { data, loading, error }) => {
-        if (data) {
-          return <Redirect to={'/stack/' + data.createStack.id} />;
-        } else {
-          return (
-            <Button
-              color={'#ff954f'}
-              onClick={() =>
-                createStack({
-                  variables: { dependencies: getDependencies(selectedPackages) }
-                })
-              }
-            >
-              {loading ? 'Loading...' : error ? 'Error!' : 'Share'}
-            </Button>
-          );
-        }
-      }}
+      {(createStack, { loading, error }) => (
+        <Button
+          color={'#ff954f'}
+          onClick={() => handleShareOnClick(createStack)}
+        >
+          {loading ? 'Loading...' : error ? 'Error!' : 'Share'}
+        </Button>
+      )}
     </Mutation>
   );
 };

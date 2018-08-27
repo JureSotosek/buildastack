@@ -2,9 +2,9 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import CopyToClipboard from 'react-copy-to-clipboard';
 import Button from '../../components/Button';
 
+import copyToClipboard from 'copy-to-clipboard';
 import { npmInstallCommand, yarnAddCommand } from '../../lib/installCommands';
 
 const Wrapper = styled.div`
@@ -41,7 +41,7 @@ class StackActions extends React.Component {
     };
 
     this.setMsg = this.setMsg.bind(this);
-    this.setCommandToCopy = this.setCommandToCopy.bind(this);
+    this.getCommandToCopy = this.getCommandToCopy.bind(this);
   }
 
   setMsg(msg) {
@@ -50,13 +50,13 @@ class StackActions extends React.Component {
     });
   }
 
-  setCoppiedNot() {
-    this.setState({
-      msg: false
-    });
+  handleButtonOnClick(toCopy, msg) {
+    copyToClipboard(toCopy);
+
+    this.setMsg(msg);
   }
 
-  setCommandToCopy(installer) {
+  getCommandToCopy(installer) {
     const { selectedPackages } = this.props;
 
     switch (installer) {
@@ -77,38 +77,43 @@ class StackActions extends React.Component {
     return (
       <Wrapper>
         <ButtonsWrapper>
-          <CopyToClipboard text={this.setCommandToCopy('yarn')}>
-            <Button
-              color={'#5ac8fa'}
-              onClick={() => this.setMsg('Yarn command coppied')}
-            >
-              {'Yarn'}
-            </Button>
-          </CopyToClipboard>
-          <CopyToClipboard text={this.setCommandToCopy('npm')}>
-            <Button
-              color={'#ff2d55'}
-              onClick={() => this.setMsg('npm command coppied')}
-            >
-              {'npm'}
-            </Button>
-          </CopyToClipboard>
+          <Button
+            color={'#5ac8fa'}
+            onClick={() =>
+              this.handleButtonOnClick(
+                this.getCommandToCopy('yarn'),
+                'Yarn command coppied!'
+              )
+            }
+          >
+            {'Yarn'}
+          </Button>
+          <Button
+            color={'#ff2d55'}
+            onClick={() =>
+              this.handleButtonOnClick(
+                this.getCommandToCopy('npm'),
+                'npm command coppied!'
+              )
+            }
+          >
+            {'npm'}
+          </Button>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
-          <CopyToClipboard text={'buildastack.io/stack/' + id}>
-            <Button
-              color={'#ff954f'}
-              onClick={() => this.setMsg('Link coppied')}
-            >
-              {'Link'}
-            </Button>
-          </CopyToClipboard>
           <Button
             style={{ color: 'lightGrey' }}
             color={'grey'}
             onClick={() => this.setMsg('Edit coming Soon!')}
           >
-            Edit
+            {'Edit'}
+          </Button>
+          <Button
+            style={{ color: 'lightGrey' }}
+            color={'grey'}
+            onClick={() => this.setMsg('Save coming Soon!')}
+          >
+            {'Save'}
           </Button>
         </ShareSaveButtonsWrapper>
         {msg || ''}
