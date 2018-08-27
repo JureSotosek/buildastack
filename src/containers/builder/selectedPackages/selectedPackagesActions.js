@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from '../../../components/Button';
 import ShareButton from './shareButton';
 
-import copyToClipboard from 'copy-to-clipboard';
+import copy from 'copy-to-clipboard';
 import {
   npmInstallCommand,
   yarnAddCommand
@@ -60,7 +60,7 @@ class SelectedPackagesActions extends React.Component {
   }
 
   handleButtonOnClick(toCopy, msg) {
-    copyToClipboard(toCopy);
+    copy(toCopy);
 
     this.setMsg(msg);
   }
