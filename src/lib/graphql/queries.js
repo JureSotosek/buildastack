@@ -34,3 +34,16 @@ export const suggestionsQuery = gql`
     }
   }
 `;
+
+export const stackQuery = gql`
+  query Stack($id: ID!) {
+    stack(id: $id) {
+      id
+      dependencies {
+        name
+        version
+        dev
+      }
+    }
+  }
+`;

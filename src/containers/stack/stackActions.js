@@ -21,6 +21,8 @@ const Wrapper = styled.div`
 const ButtonsWrapper = styled.div`
   width: 100%;
 
+  margin-top: 20px;
+
   display: flex;
   flex-direction: row;
 `;
@@ -70,6 +72,7 @@ class StackActions extends React.Component {
 
   render() {
     const { msg } = this.state;
+    const { id } = this.props;
 
     return (
       <Wrapper>
@@ -92,19 +95,20 @@ class StackActions extends React.Component {
           </CopyToClipboard>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
+          <CopyToClipboard text={'buildastack.io/stack/' + id}>
+            <Button
+              color={'#ff954f'}
+              onClick={() => this.setMsg('Link coppied')}
+            >
+              {'Link'}
+            </Button>
+          </CopyToClipboard>
           <Button
             style={{ color: 'lightGrey' }}
             color={'grey'}
-            onClick={() => this.setMsg('Share coming Soon!')}
+            onClick={() => this.setMsg('Edit coming Soon!')}
           >
-            Share
-          </Button>
-          <Button
-            style={{ color: 'lightGrey' }}
-            color={'grey'}
-            onClick={() => this.setMsg('Save coming Soon!')}
-          >
-            Save
+            Edit
           </Button>
         </ShareSaveButtonsWrapper>
         {msg || ''}

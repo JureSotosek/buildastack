@@ -19,22 +19,19 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const App = () => {
-  return (
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        <Wrapper>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Builder} />
-            <Route path="/stack" component={Stack} />
-            <Route path="/saved" component={Saved} />
-          </Switch>
-        </Wrapper>
-      </BrowserRouter>
-    </ApolloProvider>
-  );
-};
+const App = () => (
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <Wrapper>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Builder} />
+          <Route path="/stack/:id" component={Stack} />
+        </Switch>
+      </Wrapper>
+    </BrowserRouter>
+  </ApolloProvider>
+);
 
 ReactDOM.render(<App />, document.getElementById('app'));
 

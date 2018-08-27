@@ -16,8 +16,10 @@ const Wrapper = styled.div`
   font-family: Signika Negative;
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
+  text-decoration: none;
   font-size: 25px;
+  color: black;
 `;
 
 const GithubLogo = styled.img`
@@ -26,7 +28,7 @@ const GithubLogo = styled.img`
 
 const Header = () => (
   <Wrapper>
-    <Logo>{'Buildastack'}</Logo>
+    <Logo href={'https://buildastack.io'}>{'Buildastack'}</Logo>
     <a href="https://github.com/JureSotosek/buildastack">
       <GithubLogo
         src={

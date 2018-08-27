@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SelectionCard from '../../components/SelectionCard';
-import SelectionPlaceholder from '../../components/SelectionPlaceholder';
+import SelectionCard from '../../../components/SelectionCard';
+import SelectionPlaceholder from '../../../components/SelectionPlaceholder';
 
-const Stack = ({ selectedPackages, onSelect }) => {
+const SelectedPackages = ({ selectedPackages, onSelect }) => {
   if (selectedPackages.length === 0) {
-    return <SelectionPlaceholder />;
+    return <SelectionPlaceholder msg={'Empty 📭'} />;
   } else {
     return selectedPackages.map(pkg => (
       <SelectionCard
@@ -19,4 +19,4 @@ const Stack = ({ selectedPackages, onSelect }) => {
   }
 };
 
-export default Stack;
+export default SelectedPackages;

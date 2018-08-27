@@ -18,6 +18,6 @@ const Wrapper = styled.div`
   font-weight: bold;
 `;
 
-const StackPlaceholder = () => <Wrapper>Empty 📭</Wrapper>;
+const StackPlaceholder = ({ msg }) => <Wrapper>{msg}</Wrapper>;
 
 export default StackPlaceholder;
