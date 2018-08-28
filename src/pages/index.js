@@ -9,6 +9,8 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
 
+  padding-top: 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;

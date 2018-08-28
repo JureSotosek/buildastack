@@ -33,7 +33,8 @@ const AlgoliaLogo = styled.img`
 `;
 
 const NpmSuggestionsLogo = styled.a`
-  margin: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 
   text-decoration: none;
   font-family: Signika Negative;
