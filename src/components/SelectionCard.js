@@ -95,7 +95,7 @@ const StackCard = ({ name, version, dev, onSelect }) => (
       </Detail>
       <Version>{version}</Version>
     </DetailsSection>
-    <RemoveSection>{'👎🏼'}</RemoveSection>
+    <RemoveSection>{'📍'}</RemoveSection>
   </Wrapper>
 );
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Button from '../../components/Button';
 
-import copyToClipboard from 'copy-to-clipboard';
+import copy from 'copy-to-clipboard';
 import { npmInstallCommand, yarnAddCommand } from '../../lib/installCommands';
 
 const Wrapper = styled.div`
@@ -51,7 +51,7 @@ class StackActions extends React.Component {
   }
 
   handleButtonOnClick(toCopy, msg) {
-    copyToClipboard(toCopy);
+    copy(toCopy);
 
     this.setMsg(msg);
   }
@@ -72,7 +72,6 @@ class StackActions extends React.Component {
 
   render() {
     const { msg } = this.state;
-    const { id } = this.props;
 
     return (
       <Wrapper>

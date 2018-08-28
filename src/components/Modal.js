@@ -43,7 +43,7 @@ const SubTitle = styled.div`
 `;
 
 const Link = styled.a`
-  margin-top: 5px;
+  margin-top: 10px;
 
   text-align: center;
 
@@ -51,6 +51,7 @@ const Link = styled.a`
   font-weight: bold;
   text-decoration: none;
   color: black;
+  word-break: break-all;
 `;
 
 const ButtonsWrapper = styled.div`

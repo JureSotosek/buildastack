@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Mutation } from 'react-apollo';
-import { CreateStackMutation } from '../../../lib/graphql/mutations';
+import { createStackMutation } from '../../../lib/graphql/mutations';
 
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal';
@@ -48,7 +48,7 @@ class ShareButton extends React.Component {
     const { showModal } = this.state;
 
     return (
-      <Mutation mutation={CreateStackMutation}>
+      <Mutation mutation={createStackMutation}>
         {(createStack, { data, loading, error }) => {
           return (
             <React.Fragment>
