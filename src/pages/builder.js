@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { graphql } from 'react-apollo';
+import { stackQuery } from '../lib/graphql/queries';
+
 import styled from 'styled-components';
 
 import Title from '../components/Title';
@@ -38,7 +41,8 @@ class Builder extends React.Component {
 
     this.state = {
       query: '',
-      selectedPackages: []
+      selectedPackages: [],
+      loadingStack: false
     };
 
     this.handleSearchOnChange = this.handleSearchOnChange.bind(this);
@@ -90,6 +94,7 @@ class Builder extends React.Component {
 
   render() {
     const { query, selectedPackages } = this.state;
+    const { data } = this.props;
 
     return (
       <Wrapper>
@@ -127,4 +132,7 @@ class Builder extends React.Component {
   }
 }
 
-export default Builder;
+export default graphql(stackQuery, {
+  skip: props => !props.match.params.id,
+  options: props => ({ variables: { id: props.match.params.id } })
+})(Builder);

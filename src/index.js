@@ -26,10 +26,10 @@ const App = () => (
       <Wrapper>
         <Header />
         <Switch>
-          <Route exact path="/" component={IndexPage} />
-          <Route path="/builder" component={BuilderPage} />
-          <Route path="/stack" component={StackPage} />
+          <Route path="/builder/:id?" component={BuilderPage} />
+          <Route path="/s/:id" component={StackPage} />
           <Route path="/saved" component={SavedPage} />
+          <Route path="/" component={IndexPage} />
         </Switch>
       </Wrapper>
     </BrowserRouter>
