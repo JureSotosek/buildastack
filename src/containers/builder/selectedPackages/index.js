@@ -38,13 +38,14 @@ class SelectedPackages extends React.Component {
   }
 
   render() {
-    const { selectedPackages, onSelect } = this.props;
+    const { selectedPackages, loading, onSelect } = this.props;
 
     return (
       <StackSection>
         <StackTitle>{'Your stack:'}</StackTitle>
         <SelectedPackagesStack
           selectedPackages={selectedPackages}
+          loading={loading}
           onSelect={onSelect}
         />
         {selectedPackages.length !== 0 && (

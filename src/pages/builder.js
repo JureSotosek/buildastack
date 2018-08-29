@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql } from 'react-apollo';
+import { Query } from 'react-apollo';
 import { stackQuery } from '../lib/graphql/queries';
 
 import styled from 'styled-components';
@@ -45,9 +45,18 @@ class Builder extends React.Component {
       loadingStack: false
     };
 
+    this.handleQueryOnCompleted = this.handleQueryOnCompleted.bind(this);
     this.handleSearchOnChange = this.handleSearchOnChange.bind(this);
     this.handleResultsOnSelect = this.handleResultsOnSelect.bind(this);
     this.handleStackOnSelect = this.handleStackOnSelect.bind(this);
+  }
+
+  handleQueryOnCompleted(data) {
+    if (data.stack) {
+      this.setState({
+        selectedPackages: data.stack.dependencies
+      });
+    }
   }
 
   handleSearchOnChange(query) {
@@ -94,45 +103,57 @@ class Builder extends React.Component {
 
   render() {
     const { query, selectedPackages } = this.state;
-    const { data } = this.props;
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
 
     return (
-      <Wrapper>
-        <Title
-          title={'Build your stack.'}
-          subtitle={
-            '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
-          }
-        />
-        <Content>
-          <SearchResultsSection>
-            <Search
-              value={query}
-              onChange={this.handleSearchOnChange}
-              ref={search => {
-                this.search = search;
-              }}
+      <Query
+        query={stackQuery}
+        skip={!id}
+        variables={{ id }}
+        onCompleted={this.handleQueryOnCompleted}
+        fetchPolicy={'network-only'} //TODO
+      >
+        {({ loading, networkStatus }) => (
+          <Wrapper>
+            <Title
+              title={'Build a stack.'}
+              subtitle={
+                '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
+              }
             />
-            <Results
-              query={query}
-              selectedPackages={selectedPackages}
-              onSelect={this.handleResultsOnSelect}
-            />
-          </SearchResultsSection>
-          <SelectedPackages
-            selectedPackages={selectedPackages}
-            onSelect={this.handleStackOnSelect}
-            ref={selectedPackages => {
-              this.selectedPackages = selectedPackages;
-            }}
-          />
-        </Content>
-      </Wrapper>
+            <Content>
+              <SearchResultsSection>
+                <Search
+                  value={query}
+                  onChange={this.handleSearchOnChange}
+                  ref={search => {
+                    this.search = search;
+                  }}
+                />
+                <Results
+                  query={query}
+                  selectedPackages={selectedPackages}
+                  onSelect={this.handleResultsOnSelect}
+                />
+              </SearchResultsSection>
+              <SelectedPackages
+                selectedPackages={selectedPackages}
+                onSelect={this.handleStackOnSelect}
+                loading={loading && id}
+                ref={selectedPackages => {
+                  this.selectedPackages = selectedPackages;
+                }}
+              />
+            </Content>
+          </Wrapper>
+        )}
+      </Query>
     );
   }
 }
 
-export default graphql(stackQuery, {
-  skip: props => !props.match.params.id,
-  options: props => ({ variables: { id: props.match.params.id } })
-})(Builder);
+export default Builder;

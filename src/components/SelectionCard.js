@@ -73,7 +73,8 @@ const Version = styled.div`
 const RemoveSection = styled.div`
   min-width: 30px;
 
-  padding-left: 5px;
+  padding-left: 4px;
+
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 
@@ -95,7 +96,7 @@ const StackCard = ({ name, version, dev, onSelect }) => (
       </Detail>
       <Version>{version}</Version>
     </DetailsSection>
-    <RemoveSection>{'📍'}</RemoveSection>
+    <RemoveSection>{'📤'}</RemoveSection>
   </Wrapper>
 );
 

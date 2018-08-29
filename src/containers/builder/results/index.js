@@ -29,12 +29,11 @@ const ResultsColumnWrapper = styled.div`
 
 const AlgoliaLogo = styled.img`
   width: 260px;
-  margin: 30px;
+  margin-top: 30px;
 `;
 
 const NpmSuggestionsLogo = styled.a`
   margin-top: 25px;
-  margin-bottom: 25px;
 
   text-decoration: none;
   font-family: Signika Negative;

@@ -72,6 +72,7 @@ class StackActions extends React.Component {
 
   render() {
     const { msg } = this.state;
+    const { history, id } = this.props;
 
     return (
       <Wrapper>
@@ -101,9 +102,8 @@ class StackActions extends React.Component {
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
           <Button
-            style={{ color: 'lightGrey' }}
-            color={'grey'}
-            onClick={() => this.setMsg('Edit coming Soon!')}
+            color={'#ff954f'}
+            onClick={() => history.push('/builder/' + id)}
           >
             {'Edit'}
           </Button>

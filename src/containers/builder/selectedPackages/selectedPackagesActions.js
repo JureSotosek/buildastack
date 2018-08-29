@@ -116,7 +116,7 @@ class SelectedPackagesActions extends React.Component {
             color={'grey'}
             onClick={() => this.setMsg('Save coming Soon!')}
           >
-            save
+            Save
           </Button>
         </ShareSaveButtonsWrapper>
         {msg || ''}

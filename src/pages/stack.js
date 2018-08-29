@@ -26,7 +26,8 @@ class Stack extends React.Component {
     const {
       match: {
         params: { id }
-      }
+      },
+      history
     } = this.props;
 
     return (
@@ -53,7 +54,11 @@ class Stack extends React.Component {
                       dev={dependency.dev}
                     />
                   ))}
-                  <StackActions id={id} selectedPackages={dependencies} />
+                  <StackActions
+                    id={id}
+                    history={history}
+                    selectedPackages={dependencies}
+                  />
                 </React.Fragment>
               );
             } else {
