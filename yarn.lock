@@ -20,9 +20,17 @@
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
 
+"@types/cookie@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.1.tgz#720a756ea8e760a258708b52441bd341f1ef4296"
+
 "@types/graphql@0.12.6":
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.6.tgz#3d619198585fcabe5f4e1adfb5cf5f3388c66c13"
+
+"@types/object-assign@^4.0.30":
+  version "4.0.30"
+  resolved "https://registry.yarnpkg.com/@types/object-assign/-/object-assign-4.0.30.tgz#8949371d5a99f4381ee0f1df0a9b7a187e07e652"
 
 "@types/zen-observable@^0.8.0":
   version "0.8.0"
@@ -1515,7 +1523,7 @@ cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
 
-cookie@0.3.1:
+cookie@0.3.1, cookie@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
@@ -1551,6 +1559,10 @@ core-js@^2.4.0, core-js@^2.5.0:
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+crc@3.4.4:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-3.4.4.tgz#9da1e980e3bd44fc5c93bf5ab3da3378d85e466b"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -1986,6 +1998,20 @@ expand-brackets@^2.1.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+express-session@^1.15.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.15.6.tgz#47b4160c88f42ab70fe8a508e31cbff76757ab0a"
+  dependencies:
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
+    crc "3.4.4"
+    debug "2.6.9"
+    depd "~1.1.1"
+    on-headers "~1.0.1"
+    parseurl "~1.3.2"
+    uid-safe "~2.1.5"
+    utils-merge "1.0.1"
 
 express@^4.16.2:
   version "4.16.3"
@@ -3706,6 +3732,10 @@ querystringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.0.0.tgz#fa3ed6e68eb15159457c89b37bc6472833195755"
 
+random-bytes@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/random-bytes/-/random-bytes-1.0.0.tgz#4f68a1dc0ae58bd3fb95848c30324db75d64360b"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.6.tgz#d302c522948588848a8d300c932b44c24231da80"
@@ -3759,6 +3789,10 @@ react-dom@^16.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-github-login@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-github-login/-/react-github-login-1.0.3.tgz#e3fdc29c1162ecc0704d9fe6096c69d6f53315e7"
 
 react-hot-loader@^4.3.3:
   version "4.3.4"
@@ -4592,6 +4626,12 @@ uglifyjs-webpack-plugin@^1.2.4:
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
+uid-safe@~2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/uid-safe/-/uid-safe-2.1.5.tgz#2b3d5c7240e8fc2e58f8aa269e5ee49c0857bd3a"
+  dependencies:
+    random-bytes "~1.0.0"
+
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -4612,6 +4652,15 @@ unique-slug@^2.0.0:
   resolved "https://registry.yarnpkg.com/unique-slug/-/unique-slug-2.0.0.tgz#db6676e7c7cc0629878ff196097c78855ae9f4ab"
   dependencies:
     imurmurhash "^0.1.4"
+
+universal-cookie@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/universal-cookie/-/universal-cookie-3.0.4.tgz#22c1a0dca6bb9e72da20d9e331d9d8f93d95e9dc"
+  dependencies:
+    "@types/cookie" "^0.3.1"
+    "@types/object-assign" "^4.0.30"
+    cookie "^0.3.1"
+    object-assign "^4.1.0"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
