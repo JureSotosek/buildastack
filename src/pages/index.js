@@ -6,7 +6,7 @@ import Title from '../components/Title';
 import Button from '../components/Button';
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 90%;
   max-width: 1200px;
 
   padding-top: 40px;
