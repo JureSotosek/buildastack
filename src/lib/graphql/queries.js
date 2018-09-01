@@ -1,13 +1,5 @@
 import gql from 'graphql-tag';
 
-export const authenticateQuery = gql`
-  query Authenticate($code: String!) {
-    authenticate(code: $code) {
-      token
-    }
-  }
-`;
-
 export const userQuery = gql`
   query User {
     user {

@@ -1,14 +1,15 @@
 import Cookie from 'universal-cookie';
 
 import GithubPopup from './githubPopup';
-import { authenticateQuery } from '../graphql/queries';
+import { authenticateMutation } from '../graphql/mutations';
 
 const cookies = new Cookie();
 
 const getToken = (client, code) => {
-  return client.query({
-    query: authenticateQuery,
-    variables: { code }
+  return client.mutate({
+    mutation: authenticateMutation,
+    variables: { code },
+    refetchQueries: ['User']
   });
 };
 
