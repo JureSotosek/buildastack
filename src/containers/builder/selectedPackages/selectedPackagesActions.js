@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Button from '../../../components/Button';
 import ShareButton from './shareButton';
+import SaveButton from './saveButton';
 
 import copy from 'copy-to-clipboard';
 import {
@@ -111,13 +112,10 @@ class SelectedPackagesActions extends React.Component {
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
           <ShareButton selectedPackages={selectedPackages} />
-          <Button
-            style={{ color: 'lightGrey' }}
-            color={'grey'}
-            onClick={() => this.setMsg('Save coming Soon!')}
-          >
-            Save
-          </Button>
+          <SaveButton
+            selectedPackages={selectedPackages}
+            setMsg={this.setMsg}
+          />
         </ShareSaveButtonsWrapper>
         {msg || ''}
       </Wrapper>

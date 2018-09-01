@@ -3,7 +3,7 @@ import React from 'react';
 import SelectionCard from '../../../components/SelectionCard';
 import SelectionPlaceholder from '../../../components/SelectionPlaceholder';
 
-const SelectedPackages = ({ selectedPackages, loading, onSelect }) => {
+const SelectedPackagesStack = ({ selectedPackages, loading, onSelect }) => {
   if (loading) {
     return <SelectionPlaceholder msg={'Loading...'} />;
   } else if (selectedPackages.length === 0) {
@@ -21,4 +21,4 @@ const SelectedPackages = ({ selectedPackages, loading, onSelect }) => {
   }
 };
 
-export default SelectedPackages;
+export default SelectedPackagesStack;

@@ -12,7 +12,7 @@ import Header from './containers/header';
 import IndexPage from './pages/index';
 import BuilderPage from './pages/builder';
 import StackPage from './pages/stack';
-import SavedPage from './pages/saved';
+import ProfilePage from './pages/profile';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const App = () => (
         <Switch>
           <Route path="/builder/:id?" component={BuilderPage} />
           <Route path="/s/:id" component={StackPage} />
-          <Route path="/saved" component={SavedPage} />
+          <Route path="/u/:id" component={ProfilePage} />
           <Route path="/" component={IndexPage} />
         </Switch>
       </Wrapper>

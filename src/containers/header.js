@@ -100,7 +100,6 @@ class Header extends React.Component {
               if (loading || stateLoading) {
                 return 'Loading...';
               } else if (error) {
-                console.log(error);
                 return (
                   <ApolloConsumer>
                     {client => (

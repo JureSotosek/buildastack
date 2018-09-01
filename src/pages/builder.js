@@ -117,7 +117,7 @@ class Builder extends React.Component {
         onCompleted={this.handleQueryOnCompleted}
         fetchPolicy={'network-only'} //TODO
       >
-        {({ loading, networkStatus }) => (
+        {({ loading }) => (
           <Wrapper>
             <Title
               title={'Build a stack.'}

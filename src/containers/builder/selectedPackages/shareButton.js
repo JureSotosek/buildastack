@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import { createStackMutation } from '../../../lib/graphql/mutations';
 
 import Button from '../../../components/Button';
-import Modal from '../../../components/Modal';
+import ShareModal from './shareModal';
 
 const formatPackages = packages => {
   return packages.map(pkg => ({
@@ -59,7 +59,7 @@ class ShareButton extends React.Component {
                 {loading ? 'Loading...' : error ? 'Error!' : 'Share'}
               </Button>
               {showModal && (
-                <Modal
+                <ShareModal
                   title={'Stack made'}
                   subTitle={'A shareable link was created: '}
                   link={'buildastack.io/s/' + data.createStack.id}

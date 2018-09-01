@@ -7,3 +7,11 @@ export const createStackMutation = gql`
     }
   }
 `;
+
+export const saveStackNewMutation = gql`
+  mutation SaveStackNew($stack: InputStack!) {
+    saveStackNew(stack: $stack) {
+      id
+    }
+  }
+`;
