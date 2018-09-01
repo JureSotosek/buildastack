@@ -56,77 +56,57 @@ const GithubLogo = styled.img`
   height: 35px;
 `;
 
-class Header extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      loading: false
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-  }
-
-  async handleLogin(client, refetch) {
-    this.setState({
-      loading: true
-    });
+const Header = () => {
+  const handleLogin = async (client, refetch) => {
     await loginWithGithub(client);
-    await refetch();
-    this.setState({
-      loading: false
-    });
-  }
+    refetch();
+  };
 
-  render() {
-    const { loading: stateLoading } = this.state;
-
-    return (
-      <Wrapper>
-        <RightSide>
-          <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
-          <Divider />
-          <a href="https://github.com/JureSotosek/buildastack">
-            <GithubLogo
-              src={
-                'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
-              }
-            />
-          </a>
-        </RightSide>
-        <LeftSide>
-          <Query query={userQuery}>
-            {({ loading, error, data, refetch }) => {
-              if (loading || stateLoading) {
-                return 'Loading...';
-              } else if (error) {
-                return (
-                  <ApolloConsumer>
-                    {client => (
-                      <div onClick={() => this.handleLogin(client, refetch)}>
-                        Login with Github!
-                      </div>
-                    )}
-                  </ApolloConsumer>
-                );
-              } else if (data) {
-                return (
-                  <div
-                    onClick={() => {
-                      logout();
-                      refetch();
-                    }}
-                  >
-                    {data.user.name}
-                  </div>
-                );
-              }
-            }}
-          </Query>
-        </LeftSide>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <RightSide>
+        <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
+        <Divider />
+        <a href="https://github.com/JureSotosek/buildastack">
+          <GithubLogo
+            src={
+              'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
+            }
+          />
+        </a>
+      </RightSide>
+      <LeftSide>
+        <Query query={userQuery}>
+          {({ loading, error, data, refetch }) => {
+            if (loading) {
+              return 'Loading...';
+            } else if (error) {
+              return (
+                <ApolloConsumer>
+                  {client => (
+                    <div onClick={() => handleLogin(client, refetch)}>
+                      Login with Github!
+                    </div>
+                  )}
+                </ApolloConsumer>
+              );
+            } else if (data) {
+              return (
+                <div
+                  onClick={() => {
+                    logout();
+                    refetch();
+                  }}
+                >
+                  {data.user.name}
+                </div>
+              );
+            }
+          }}
+        </Query>
+      </LeftSide>
+    </Wrapper>
+  );
+};
 
 export default Header;
