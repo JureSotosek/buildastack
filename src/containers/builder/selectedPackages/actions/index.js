@@ -2,10 +2,12 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import Button from '../../components/Button';
+import Button from '../../../../components/Button';
+import ShareButton from './shareButton';
+import SaveButton from './saveButton';
 
 import copy from 'copy-to-clipboard';
-import { npmInstallCommand, yarnAddCommand } from '../../lib/installCommands';
+import { npmInstallCommand, yarnAddCommand } from '../../../../utils';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -21,8 +23,6 @@ const Wrapper = styled.div`
 const ButtonsWrapper = styled.div`
   width: 100%;
 
-  margin-top: 20px;
-
   display: flex;
   flex-direction: row;
 `;
@@ -32,7 +32,7 @@ const ShareSaveButtonsWrapper = styled(ButtonsWrapper)`
   margin-bottom: 10px;
 `;
 
-class StackActions extends React.Component {
+class SelectedPackagesActions extends React.Component {
   constructor() {
     super();
 
@@ -42,11 +42,18 @@ class StackActions extends React.Component {
 
     this.setMsg = this.setMsg.bind(this);
     this.getCommandToCopy = this.getCommandToCopy.bind(this);
+    this.handleButtonOnClick = this.handleButtonOnClick.bind(this);
   }
 
   setMsg(msg) {
     this.setState({
       msg
+    });
+  }
+
+  setCoppiedNot() {
+    this.setState({
+      msg: false
     });
   }
 
@@ -72,7 +79,7 @@ class StackActions extends React.Component {
 
   render() {
     const { msg } = this.state;
-    const { history, id } = this.props;
+    const { selectedPackages } = this.props;
 
     return (
       <Wrapper>
@@ -101,19 +108,11 @@ class StackActions extends React.Component {
           </Button>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
-          <Button
-            color={'#ff954f'}
-            onClick={() => history.push('/builder/' + id)}
-          >
-            {'Edit'}
-          </Button>
-          <Button
-            style={{ color: 'lightGrey' }}
-            color={'grey'}
-            onClick={() => this.setMsg('Save coming Soon!')}
-          >
-            {'Save'}
-          </Button>
+          <ShareButton selectedPackages={selectedPackages} />
+          <SaveButton
+            selectedPackages={selectedPackages}
+            setMsg={this.setMsg}
+          />
         </ShareSaveButtonsWrapper>
         {msg || ''}
       </Wrapper>
@@ -121,4 +120,4 @@ class StackActions extends React.Component {
   }
 }
 
-export default StackActions;
+export default SelectedPackagesActions;

@@ -2,8 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import SelectedPackagesStack from './selectedPackagesStack';
-import SelectedPackagesActions from './selectedPackagesActions';
+import SelectedPackagesList from './selectedPackagesList';
+import Actions from './actions';
 
 const StackSection = styled.div`
   margin-top: 60px;
@@ -43,7 +43,7 @@ class SelectedPackages extends React.Component {
     return (
       <StackSection>
         <StackTitle>{'Your stack:'}</StackTitle>
-        <SelectedPackagesStack
+        <SelectedPackagesList
           selectedPackages={selectedPackages}
           loading={loading}
           onSelect={onSelect}
@@ -51,7 +51,7 @@ class SelectedPackages extends React.Component {
         {selectedPackages.length !== 0 && (
           <React.Fragment>
             <CommandsTitle>{'Install Commands:'}</CommandsTitle>
-            <SelectedPackagesActions
+            <Actions
               selectedPackages={selectedPackages}
               ref={actions => {
                 this.actions = actions;

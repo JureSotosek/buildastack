@@ -6,7 +6,7 @@ import { Query } from 'react-apollo';
 import { stackQuery } from '../lib/graphql/queries';
 
 import Title from '../components/Title';
-import StackActions from '../containers/stack/stackActions';
+import Actions from '../containers/stack/actions';
 import StackCard from '../components/StackCard';
 import SelectionPlaceholder from '../components/SelectionPlaceholder';
 
@@ -54,7 +54,7 @@ class Stack extends React.Component {
                       dev={dependency.dev}
                     />
                   ))}
-                  <StackActions
+                  <Actions
                     id={id}
                     history={history}
                     selectedPackages={dependencies}

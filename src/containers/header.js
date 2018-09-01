@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { ApolloConsumer } from 'react-apollo';
 import { Query } from 'react-apollo';
 import { userQuery } from '../lib/graphql/queries';
-import { loginWithGithub, logout } from '../lib/auth';
+import { loginWithGithub, logout } from '../lib/loginWithGithub';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -76,7 +76,7 @@ const Header = () => {
         </a>
       </RightSide>
       <LeftSide>
-        <Query query={userQuery}>
+        <Query query={userQuery} pollInterval={3000}>
           {({ loading, error, data, refetch }) => {
             if (loading) {
               return 'Loading...';

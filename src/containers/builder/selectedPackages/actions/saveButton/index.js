@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '../../../components/Button';
-import SaveModal from './saveModal';
+import Button from '../../../../../components/Button';
+import Modal from './modal';
 
 class SaveButton extends React.Component {
   constructor() {
@@ -45,7 +45,7 @@ class SaveButton extends React.Component {
           {'Save'}
         </Button>
         {showModal && (
-          <SaveModal
+          <Modal
             selectedPackages={selectedPackages}
             onSave={this.handleSaveConfirmation}
             closeModal={this.closeModal}

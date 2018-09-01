@@ -8,8 +8,7 @@ const cookies = new Cookie();
 const getToken = (client, code) => {
   return client.mutate({
     mutation: authenticateMutation,
-    variables: { code },
-    refetchQueries: ['User']
+    variables: { code }
   });
 };
 
@@ -37,6 +36,7 @@ export const loginWithGithub = client => {
     popup.then(handleSuccess, reject);
   });
 };
+
 export const logout = () => {
   cookies.remove('token', { path: '/' });
 };

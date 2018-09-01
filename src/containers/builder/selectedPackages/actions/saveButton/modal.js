@@ -3,12 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Mutation } from 'react-apollo';
-import { saveStackNewMutation } from '../../../lib/graphql/mutations';
+import { saveStackNewMutation } from '../../../../../lib/graphql/mutations';
 
 import { ApolloConsumer } from 'react-apollo';
-import { loginWithGithub } from '../../../lib/auth';
+import { loginWithGithub } from '../../../../../lib/loginWithGithub';
 
-import Button from '../../../components/Button';
+import Button from '../../../../../components/Button';
 
 const Background = styled.div`
   position: fixed;
@@ -168,8 +168,8 @@ class Modal extends React.Component {
                           </StyledButton>
                         )}
                       </ApolloConsumer>
-                      {loginError && 'Error!'}
                     </ButtonsWrapper>
+                    {loginError && 'Error!'}
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
