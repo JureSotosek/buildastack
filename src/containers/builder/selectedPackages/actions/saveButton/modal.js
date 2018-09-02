@@ -151,7 +151,7 @@ class Modal extends React.Component {
                 <Title>{'Save this stack'}</Title>
                 {isErrorForbiden(error) ? (
                   <React.Fragment>
-                    <SubTitle>{'You need to log in to save'}</SubTitle>
+                    <SubTitle>{'You need to log in to save.'}</SubTitle>
                     <ButtonsWrapper>
                       <StyledButton color={'grey'} onClick={closeModal}>
                         {'Close'}

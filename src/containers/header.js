@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { ApolloConsumer } from 'react-apollo';
 import { Query } from 'react-apollo';
-import { userQuery } from '../lib/graphql/queries';
+import { viewerQuery } from '../lib/graphql/queries';
 import { loginWithGithub, logout } from '../lib/loginWithGithub';
 
 const Wrapper = styled.div`
@@ -56,57 +56,49 @@ const GithubLogo = styled.img`
   height: 35px;
 `;
 
-const Header = () => {
-  const handleLogin = async (client, refetch) => {
-    await loginWithGithub(client);
-    refetch();
-  };
-
-  return (
-    <Wrapper>
-      <RightSide>
-        <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
-        <Divider />
-        <a href="https://github.com/JureSotosek/buildastack">
-          <GithubLogo
-            src={
-              'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
-            }
-          />
-        </a>
-      </RightSide>
-      <LeftSide>
-        <Query query={userQuery} pollInterval={3000}>
-          {({ loading, error, data, refetch }) => {
-            if (loading) {
-              return 'Loading...';
-            } else if (error) {
-              return (
-                <ApolloConsumer>
-                  {client => (
-                    <div onClick={() => handleLogin(client, refetch)}>
-                      Login with Github!
-                    </div>
-                  )}
-                </ApolloConsumer>
-              );
-            } else if (data) {
-              return (
-                <div
-                  onClick={() => {
-                    logout();
-                    refetch();
-                  }}
-                >
-                  {data.user.name}
-                </div>
-              );
-            }
-          }}
-        </Query>
-      </LeftSide>
-    </Wrapper>
-  );
-};
+const Header = () => (
+  <Wrapper>
+    <RightSide>
+      <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
+      <Divider />
+      <a href="https://github.com/JureSotosek/buildastack">
+        <GithubLogo
+          src={
+            'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
+          }
+        />
+      </a>
+    </RightSide>
+    <LeftSide>
+      <Query query={viewerQuery} pollInterval={2000}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return 'Loading...';
+          } else if (error) {
+            return (
+              <ApolloConsumer>
+                {client => (
+                  <div onClick={() => loginWithGithub(client)}>
+                    Login with Github!
+                  </div>
+                )}
+              </ApolloConsumer>
+            );
+          } else if (data) {
+            return (
+              <div
+                onClick={() => {
+                  logout();
+                }}
+              >
+                {data.viewer.name}
+              </div>
+            );
+          }
+        }}
+      </Query>
+    </LeftSide>
+  </Wrapper>
+);
 
 export default Header;

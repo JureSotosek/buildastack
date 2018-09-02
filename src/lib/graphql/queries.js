@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const userQuery = gql`
-  query User {
-    user {
+export const viewerQuery = gql`
+  query Viewer {
+    viewer {
       name
     }
   }
@@ -46,11 +46,18 @@ export const suggestionsQuery = gql`
 export const stackQuery = gql`
   query Stack($id: ID!) {
     stack(id: $id) {
-      id
-      dependencies {
+      owner
+      stack {
+        id
         name
-        version
-        dev
+        dependencies {
+          name
+          version
+          dev
+        }
+        user {
+          name
+        }
       }
     }
   }

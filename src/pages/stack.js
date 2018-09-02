@@ -21,6 +21,11 @@ const Wrapper = styled.div`
   font-family: Source Sans Pro;
 `;
 
+const Owner = styled.div`
+  margin-bottom: 15px;
+  font-size: 20px;
+`;
+
 class Stack extends React.Component {
   render() {
     const {
@@ -32,7 +37,6 @@ class Stack extends React.Component {
 
     return (
       <Wrapper>
-        <Title title={'Shared stack.'} />
         <Query query={stackQuery} variables={{ id }}>
           {({ loading, error, data }) => {
             if (error) {
@@ -41,11 +45,13 @@ class Stack extends React.Component {
               return <SelectionPlaceholder msg={'Loading...'} />;
             } else if (!data.stack) {
               return <SelectionPlaceholder msg={'No stack here 🙉'} />;
-            } else if (data.stack.dependencies.length !== 0) {
-              const dependencies = data.stack.dependencies;
+            } else if (data.stack.stack.dependencies.length !== 0) {
+              const { user, name, dependencies } = data.stack.stack;
 
               return (
                 <React.Fragment>
+                  <Title title={name ? name : 'Shared stack.'} />
+                  <Owner>{user ? user.name : null}</Owner>
                   {dependencies.map(dependency => (
                     <StackCard
                       key={dependency.name + dependency.version}
