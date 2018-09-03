@@ -30,11 +30,11 @@ class SelectedPackages extends React.Component {
   constructor() {
     super();
 
-    this.setCoppiedNot = this.setCoppiedNot.bind(this);
+    this.clearMsg = this.clearMsg.bind(this);
   }
 
-  setCoppiedNot() {
-    this.actions.setCoppiedNot();
+  clearMsg() {
+    this.actions.clearMsg();
   }
 
   render() {

@@ -41,6 +41,7 @@ class SelectedPackagesActions extends React.Component {
     };
 
     this.setMsg = this.setMsg.bind(this);
+    this.clearMsg = this.clearMsg.bind(this);
     this.getCommandToCopy = this.getCommandToCopy.bind(this);
     this.handleButtonOnClick = this.handleButtonOnClick.bind(this);
   }
@@ -51,7 +52,7 @@ class SelectedPackagesActions extends React.Component {
     });
   }
 
-  setCoppiedNot() {
+  clearMsg() {
     this.setState({
       msg: false
     });

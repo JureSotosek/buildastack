@@ -3,8 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  max-width: 840px;
-  margin-top: 30px;
   text-align: center;
 `;
 
@@ -18,8 +16,8 @@ const SubTitle = styled.div`
   font-size: 20px;
 `;
 
-const Title = ({ title, subtitle }) => (
-  <Wrapper>
+const Title = ({ className, title, subtitle }) => (
+  <Wrapper className={className}>
     <MainTitle>{title}</MainTitle>
     <SubTitle>{subtitle}</SubTitle>
   </Wrapper>

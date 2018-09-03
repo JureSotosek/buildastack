@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Query } from 'react-apollo';
+import { withApollo } from 'react-apollo';
 import { stackQuery } from '../lib/graphql/queries';
 
 import styled from 'styled-components';
@@ -14,11 +14,11 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
 
+  padding-top: 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  font-family: Source Sans Pro;
 `;
 
 const Content = styled.div`
@@ -30,7 +30,11 @@ const Content = styled.div`
   flex-wrap: wrap-reverse;
 `;
 
-const SearchResultsSection = styled.div`
+const StyledTitle = styled(Title)`
+  max-width: 830px;
+`;
+
+const SearchAndResultsSection = styled.div`
   width: 100%;
   max-width: 900px;
 `;
@@ -42,24 +46,40 @@ class Builder extends React.Component {
     this.state = {
       query: '',
       selectedPackages: [],
-      loadingStack: false
+      loading: false
     };
 
-    this.handleQueryOnCompleted = this.handleQueryOnCompleted.bind(this);
-    this.handleSearchOnChange = this.handleSearchOnChange.bind(this);
+    this.handleQueryOnChange = this.handleQueryOnChange.bind(this);
     this.handleResultsOnSelect = this.handleResultsOnSelect.bind(this);
     this.handleStackOnSelect = this.handleStackOnSelect.bind(this);
   }
 
-  handleQueryOnCompleted(data) {
-    if (data.stack.stack) {
+  async componentDidMount() {
+    const {
+      client,
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    if (id) {
       this.setState({
-        selectedPackages: data.stack.stack.dependencies
+        loading: true
+      });
+
+      const { data } = await client.query({
+        query: stackQuery,
+        variables: { id }
+      });
+
+      this.setState({
+        selectedPackages: data.stack ? data.stack.stack.dependencies : [],
+        loading: false
       });
     }
   }
 
-  handleSearchOnChange(query) {
+  handleQueryOnChange(query) {
     this.setState({
       query
     });
@@ -69,7 +89,7 @@ class Builder extends React.Component {
     const { selectedPackages } = this.state;
 
     if (selectedPackages.length !== 0) {
-      this.selectedPackages.setCoppiedNot();
+      this.selectedPackages.clearMsg();
     }
 
     if (
@@ -89,7 +109,7 @@ class Builder extends React.Component {
   handleStackOnSelect(pkg) {
     const { selectedPackages } = this.state;
 
-    this.selectedPackages.setCoppiedNot();
+    this.selectedPackages.clearMsg();
 
     const newSelectedPackages = selectedPackages.filter(
       myPackage =>
@@ -102,58 +122,43 @@ class Builder extends React.Component {
   }
 
   render() {
-    const { query, selectedPackages } = this.state;
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
+    const { query, selectedPackages, loading } = this.state;
 
     return (
-      <Query
-        query={stackQuery}
-        skip={!id}
-        variables={{ id }}
-        onCompleted={this.handleQueryOnCompleted}
-        fetchPolicy={'network-only'} //TODO
-      >
-        {({ loading }) => (
-          <Wrapper>
-            <Title
-              title={'Build a stack.'}
-              subtitle={
-                '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
-              }
+      <Wrapper>
+        <StyledTitle
+          title={'Build a stack.'}
+          subtitle={
+            '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
+          }
+        />
+        <Content>
+          <SearchAndResultsSection>
+            <Search
+              value={query}
+              onChange={this.handleQueryOnChange}
+              ref={search => {
+                this.search = search;
+              }}
             />
-            <Content>
-              <SearchResultsSection>
-                <Search
-                  value={query}
-                  onChange={this.handleSearchOnChange}
-                  ref={search => {
-                    this.search = search;
-                  }}
-                />
-                <Results
-                  query={query}
-                  selectedPackages={selectedPackages}
-                  onSelect={this.handleResultsOnSelect}
-                />
-              </SearchResultsSection>
-              <SelectedPackages
-                selectedPackages={selectedPackages}
-                onSelect={this.handleStackOnSelect}
-                loading={loading && id}
-                ref={selectedPackages => {
-                  this.selectedPackages = selectedPackages;
-                }}
-              />
-            </Content>
-          </Wrapper>
-        )}
-      </Query>
+            <Results
+              query={query}
+              selectedPackages={selectedPackages}
+              onSelect={this.handleResultsOnSelect}
+            />
+          </SearchAndResultsSection>
+          <SelectedPackages
+            selectedPackages={selectedPackages}
+            onSelect={this.handleStackOnSelect}
+            loading={loading}
+            ref={selectedPackages => {
+              this.selectedPackages = selectedPackages;
+            }}
+          />
+        </Content>
+      </Wrapper>
     );
   }
 }
 
-export default Builder;
+export default withApollo(Builder);

@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import InputField from '../../components/InputField';
+
 const Wrapper = styled.div`
   width: 100%;
 
@@ -9,40 +11,21 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-  font-size: 20px;
+  flex-wrap: wrap;
 `;
 
 const SearchTitle = styled.div`
-  margin: 20px;
-  margin-right: 0px;
+  margin: 10px;
   text-shadow: 1px 1px lightGrey;
-
-  fonts-size: 23px;
+  font-size: 22px;
 `;
 
-const SearchField = styled.div`
+const StyledInputField = styled(InputField)`
   width: 100%;
   max-width: 500px;
-
-  padding: 7px;
-  margin-left: 20px;
-  margin-right: 20px;
-  border-radius: 7px;
-  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.25);
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-
-  border: 0 solid;
-  outline: none;
-
-  background-color: transparent;
-  font-size: 20px;
+  margin: 10px;
 `;
 
 class Search extends React.Component {
@@ -50,29 +33,33 @@ class Search extends React.Component {
     super();
 
     this.focus = this.focus.bind(this);
+    this.handleInputOnChange = this.handleInputOnChange.bind(this);
   }
 
   focus() {
     this.input.focus();
   }
 
+  handleInputOnChange(event) {
+    const { onChange } = this.props;
+
+    onChange(event.target.value);
+  }
+
   render() {
-    const { value, onChange } = this.props;
+    const { value } = this.props;
 
     return (
       <Wrapper>
         <SearchTitle>{'🔎 Search to add packages:'}</SearchTitle>
-        <SearchField>
-          <StyledInput
-            type="text"
-            placeholder="react, react-dom, graphql,..."
-            value={value}
-            onChange={event => onChange(event.target.value)}
-            innerRef={input => {
-              this.input = input;
-            }}
-          />
-        </SearchField>
+        <StyledInputField
+          placeholder="react, react-dom, graphql,..."
+          value={value}
+          onChange={this.handleInputOnChange}
+          innerRef={input => {
+            this.input = input;
+          }}
+        />
       </Wrapper>
     );
   }
