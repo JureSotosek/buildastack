@@ -86,7 +86,9 @@ const Header = ({ history }) => (
                 )}
               </ApolloConsumer>
             );
-          } else if (data) {
+          } else if (history.location.pathname.startsWith('/profile')) {
+            return <div onClick={logout}>{'Logout'}</div>;
+          } else {
             return (
               <div
                 onClick={() => {

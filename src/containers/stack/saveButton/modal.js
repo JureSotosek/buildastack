@@ -3,9 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Mutation } from 'react-apollo';
-import { saveStackNewMutation } from '../../../lib/graphql/mutations';
+import { saveStackFromIdMutation } from '../../../lib/graphql/mutations';
 
-import { formatPackages, isErrorForbidden } from '../../../utils';
+import { isErrorForbidden } from '../../../utils';
 
 import { ApolloConsumer } from 'react-apollo';
 import { loginWithGithub } from '../../../lib/loginWithGithub';
@@ -46,18 +46,6 @@ const SubTitle = styled.div`
   margin-top: 5px;
   font-size: 20px;
   text-align: center;
-`;
-
-const Link = styled.a`
-  margin-top: 10px;
-
-  text-align: center;
-
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  word-break: break-all;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -126,16 +114,17 @@ class Modal extends React.Component {
 
   render() {
     const { name, loginError } = this.state;
-    const { selectedPackages, onSave, closeModal } = this.props;
+    const { id, onSave, closeModal } = this.props;
 
     return (
       <Mutation
-        mutation={saveStackNewMutation}
+        mutation={saveStackFromIdMutation}
         variables={{
-          stack: { dependencies: formatPackages(selectedPackages), name }
+          id,
+          name
         }}
       >
-        {(saveStackNew, { loading, error }) => {
+        {(saveStackFromId, { loading, error }) => {
           return (
             <Background>
               <Wrapper>
@@ -181,7 +170,7 @@ class Modal extends React.Component {
                       </StyledButton>
                       <StyledButton
                         color={'#ff954f'}
-                        onClick={() => saveStackNew().then(onSave)}
+                        onClick={() => saveStackFromId().then(onSave)}
                       >
                         {'Save'}
                       </StyledButton>

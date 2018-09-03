@@ -59,7 +59,7 @@ class Stack extends React.Component {
 
               return (
                 <React.Fragment>
-                  <Title title={name ? name : 'Shared stack.'} />
+                  <Title title={name ? name : 'Shared stack'} />
                   <Owner>{user ? user.name : null}</Owner>
                   <PackagesWrapper>
                     {dependencies.map(dependency => (

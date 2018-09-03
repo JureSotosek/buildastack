@@ -24,6 +24,14 @@ export const saveStackNewMutation = gql`
   }
 `;
 
+export const saveStackFromIdMutation = gql`
+  mutation SaveStackFromId($id: ID!, $name: String!) {
+    saveStackFromId(stackId: $id, name: $name) {
+      id
+    }
+  }
+`;
+
 export const deleteStackMutation = gql`
   mutation DeleteStack($id: ID!) {
     deleteStack(id: $id)

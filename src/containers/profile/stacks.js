@@ -2,13 +2,14 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Query } from 'react-apollo';
+import { Query, ApolloConsumer } from 'react-apollo';
 import { savedStacksQuery } from '../../lib/graphql/queries';
 
 import StackCard from '../../components/StackCard';
 import Button from '../../components/Button';
 
 import { isErrorForbidden } from '../../utils';
+import { loginWithGithub } from '../../lib/loginWithGithub';
 
 const StyledButton = styled(Button)`
   max-width: 400px;
@@ -29,7 +30,16 @@ const Stacks = ({ history }) => (
         return 'Loading';
       } else if (isErrorForbidden(error)) {
         return (
-          <StyledButton color={'white'}>{'Login with github!'}</StyledButton>
+          <ApolloConsumer>
+            {client => (
+              <StyledButton
+                color={'white'}
+                onClick={() => loginWithGithub(client)}
+              >
+                {'Login with github!'}
+              </StyledButton>
+            )}
+          </ApolloConsumer>
         );
       } else if (error) {
         return 'Error';

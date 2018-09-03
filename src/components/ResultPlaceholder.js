@@ -38,11 +38,7 @@ const SkeletonWrapperSmall = styled.div`
 
 const ResultPlaceholder = ({ loading, msg, error }) => {
   const cardBody = () => {
-    if (error) {
-      return <Message>{'❗️An error occured 🤦🏼‍'}</Message>;
-    } else if (msg) {
-      return <Message>{msg}</Message>;
-    } else if (loading) {
+    if (loading) {
       return (
         <div>
           <SkeletonWrapperBig>
@@ -54,6 +50,10 @@ const ResultPlaceholder = ({ loading, msg, error }) => {
           </SkeletonWrapperSmall>
         </div>
       );
+    } else if (error) {
+      return <Message>{'❗️An error occured 🤦🏼‍'}</Message>;
+    } else {
+      return <Message>{msg}</Message>;
     }
   };
 
