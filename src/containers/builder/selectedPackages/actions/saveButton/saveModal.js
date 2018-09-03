@@ -11,6 +11,7 @@ import { withApollo } from 'react-apollo';
 import { loginWithGithub } from '../../../../../lib/loginWithGithub';
 
 import Modal from '../../../../../components/Modal';
+import InputField from '../../../../../components/InputField';
 import Button from '../../../../../components/Button';
 
 const Title = styled.div`
@@ -41,26 +42,10 @@ const StyledButton = styled(Button)`
   margin-left: 5px;
 `;
 
-const SearchField = styled.div`
+const StyledInputField = styled(InputField)`
   width: 100%;
-  max-width: 200px;
-
-  padding: 7px;
   margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  border-radius: 7px;
-  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.25);
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-
-  border: 0 solid;
-  outline: none;
-
-  background-color: transparent;
-  font-size: 20px;
+  max-width: 300px;
 `;
 
 class SaveModal extends React.Component {
@@ -130,16 +115,13 @@ class SaveModal extends React.Component {
             return (
               <React.Fragment>
                 <SubTitle>{'Input name for the stack:'}</SubTitle>
-                <SearchField>
-                  <StyledInput
-                    type="text"
-                    placeholder="Stack name..."
-                    value={name}
-                    onChange={event =>
-                      this.handleOnNameChange(event.target.value)
-                    }
-                  />
-                </SearchField>
+                <StyledInputField
+                  placeholder={'Stack name...'}
+                  value={name}
+                  onChange={event =>
+                    this.handleOnNameChange(event.target.value)
+                  }
+                />
                 <ButtonsWrapper>
                   <StyledButton color={'grey'} onClick={closeModal}>
                     {'Close'}
