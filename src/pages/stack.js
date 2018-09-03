@@ -46,40 +46,55 @@ class Stack extends React.Component {
       <Wrapper>
         <Query query={stackQuery} variables={{ id }}>
           {({ loading, error, data }) => {
-            if (error) {
-              return <SelectionPlaceholder msg={'Error ⛑'} />;
-            } else if (loading) {
-              return <SelectionPlaceholder msg={'Loading...'} />;
-            } else if (!data.stack) {
-              return <SelectionPlaceholder msg={'No stack here 🙉'} />;
-            } else if (data.stack.stack.dependencies.length !== 0) {
-              const { user, name, dependencies } = data.stack.stack;
-
+            if (loading) {
               return (
                 <React.Fragment>
-                  <Title title={name ? name : 'Shared stack'} />
-                  <Owner>{user ? user.name : null}</Owner>
-                  <PackagesWrapper>
-                    {dependencies.map(dependency => (
-                      <PackageCard
-                        key={dependency.name + dependency.version}
-                        name={dependency.name}
-                        version={dependency.version}
-                        dev={dependency.dev}
-                      />
-                    ))}
-                  </PackagesWrapper>
-                  <Actions
-                    id={id}
-                    history={history}
-                    selectedPackages={dependencies}
-                    owner={data.stack.owner}
-                  />
+                  <Title title={name ? name : 'Stack'} />
+                  <SelectionPlaceholder loading />
                 </React.Fragment>
               );
-            } else {
+            }
+
+            if (error) {
+              return <SelectionPlaceholder error />;
+            }
+
+            if (!data.stack) {
+              return (
+                <React.Fragment>
+                  <Title title={name ? name : 'Stack'} />
+                  <SelectionPlaceholder msg={'No stack here 🙉'} />
+                </React.Fragment>
+              );
+            }
+
+            if (data.stack.stack.dependencies.length !== 0) {
               return <SelectionPlaceholder msg={'Sorry, empty stack 😕'} />;
             }
+
+            const { user, name, dependencies } = data.stack.stack;
+            return (
+              <React.Fragment>
+                <Title title={name ? name : 'Shared stack'} />
+                <Owner>{user ? user.name : null}</Owner>
+                <PackagesWrapper>
+                  {dependencies.map(dependency => (
+                    <PackageCard
+                      key={dependency.name + dependency.version}
+                      name={dependency.name}
+                      version={dependency.version}
+                      dev={dependency.dev}
+                    />
+                  ))}
+                </PackagesWrapper>
+                <Actions
+                  id={id}
+                  history={history}
+                  selectedPackages={dependencies}
+                  owner={data.stack.owner}
+                />
+              </React.Fragment>
+            );
           }}
         </Query>
       </Wrapper>

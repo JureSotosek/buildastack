@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { withRouter } from 'react-router-dom';
+import { withApollo } from 'react-apollo';
 
 import styled from 'styled-components';
 
-import { ApolloConsumer } from 'react-apollo';
 import { Query } from 'react-apollo';
 import { viewerQuery } from '../lib/graphql/queries';
 import { loginWithGithub, logout } from '../lib/loginWithGithub';
@@ -19,8 +19,6 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  font-family: Signika Negative;
 `;
 
 const Logo = styled.a`
@@ -58,51 +56,60 @@ const GithubLogo = styled.img`
   height: 35px;
 `;
 
-const Header = ({ history }) => (
-  <Wrapper>
-    <RightSide>
-      <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
-      <Divider />
-      <a href="https://github.com/JureSotosek/buildastack">
-        <GithubLogo
-          src={
-            'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
-          }
-        />
-      </a>
-    </RightSide>
-    <LeftSide>
-      <Query query={viewerQuery} pollInterval={2000}>
-        {({ loading, error, data }) => {
-          if (loading) {
-            return 'Loading...';
-          } else if (error) {
+const DivWithPointer = styled.div`
+  cursor: pointer;
+`;
+
+const Header = ({ history, client }) => {
+  const handleOnLogin = () => {
+    loginWithGithub(client);
+  };
+
+  return (
+    <Wrapper>
+      <RightSide>
+        <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
+        <Divider />
+        <a href="https://github.com/JureSotosek/buildastack">
+          <GithubLogo
+            src={
+              'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
+            }
+          />
+        </a>
+      </RightSide>
+      <LeftSide>
+        <Query query={viewerQuery} pollInterval={1000}>
+          {({ loading, error, data }) => {
+            if (loading) {
+              return 'Loading...';
+            }
+            if (error) {
+              return (
+                <DivWithPointer onClick={handleOnLogin}>
+                  Login with Github!
+                </DivWithPointer>
+              );
+            }
+            if (history.location.pathname.startsWith('/profile')) {
+              return (
+                <DivWithPointer onClick={logout}>{'Logout'}</DivWithPointer>
+              );
+            }
             return (
-              <ApolloConsumer>
-                {client => (
-                  <div onClick={() => loginWithGithub(client)}>
-                    Login with Github!
-                  </div>
-                )}
-              </ApolloConsumer>
-            );
-          } else if (history.location.pathname.startsWith('/profile')) {
-            return <div onClick={logout}>{'Logout'}</div>;
-          } else {
-            return (
-              <div
+              <DivWithPointer
                 onClick={() => {
                   history.push('/profile');
                 }}
               >
                 {data.viewer.name}
-              </div>
+              </DivWithPointer>
             );
-          }
-        }}
-      </Query>
-    </LeftSide>
-  </Wrapper>
-);
+          }}
+        </Query>
+      </LeftSide>
+    </Wrapper>
+  );
+};
 
-export default withRouter(Header);
+export default withApollo(withRouter(Header));

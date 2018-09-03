@@ -2,34 +2,10 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import Modal from '../../../../../components/Modal';
 import Button from '../../../../../components/Button';
 
 import copy from 'copy-to-clipboard';
-
-const Background = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 50px;
-`;
-
-const Wrapper = styled.div`
-  max-width: 500px;
-
-  margin: 0 auto;
-  padding: 30px;
-  padding-bottom: 10px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: #fff;
-  border-radius: 5px;
-`;
 
 const Title = styled.div`
   font-size: 30px;
@@ -67,9 +43,11 @@ const ButtonsWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   height: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
 `;
 
-class Modal extends React.Component {
+class ShareModal extends React.Component {
   constructor() {
     super();
 
@@ -77,10 +55,10 @@ class Modal extends React.Component {
       msg: null
     };
 
-    this.handleCopyLink = this.handleCopyLink.bind(this);
+    this.handleOnCopyLink = this.handleOnCopyLink.bind(this);
   }
 
-  handleCopyLink() {
+  handleOnCopyLink() {
     const { link } = this.props;
 
     copy(link);
@@ -95,24 +73,22 @@ class Modal extends React.Component {
     const { title, subTitle, link, closeModal } = this.props;
 
     return (
-      <Background>
-        <Wrapper>
-          <Title>{title}</Title>
-          <SubTitle>{subTitle}</SubTitle>
-          <Link href={'https://' + link}>{link}</Link>
-          <ButtonsWrapper>
-            <StyledButton color={'grey'} onClick={closeModal}>
-              Close
-            </StyledButton>
-            <StyledButton color={'#ff954f'} onClick={this.handleCopyLink}>
-              Copy link
-            </StyledButton>
-          </ButtonsWrapper>
-          {msg || ' '}
-        </Wrapper>
-      </Background>
+      <Modal>
+        <Title>{title}</Title>
+        <SubTitle>{subTitle}</SubTitle>
+        <Link href={'https://' + link}>{link}</Link>
+        <ButtonsWrapper>
+          <StyledButton color={'grey'} onClick={closeModal}>
+            Close
+          </StyledButton>
+          <StyledButton color={'#ff954f'} onClick={this.handleOnCopyLink}>
+            Copy link
+          </StyledButton>
+        </ButtonsWrapper>
+        {msg || ' '}
+      </Modal>
     );
   }
 }
 
-export default Modal;
+export default ShareModal;

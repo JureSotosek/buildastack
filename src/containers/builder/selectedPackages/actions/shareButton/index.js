@@ -1,12 +1,19 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 import { Mutation } from 'react-apollo';
 import { createStackMutation } from '../../../../../lib/graphql/mutations';
 
-import { formatPackages } from '../../../../../utils';
+import { packagesToDependencies } from '../../../../../utils';
 
 import Button from '../../../../../components/Button';
-import Modal from './modal';
+import ShareModal from './shareModal';
+
+const StyledButton = styled(Button)`
+  margin-right: 5px;
+  margin-left: 5px;
+`;
 
 class ShareButton extends React.Component {
   constructor() {
@@ -30,7 +37,7 @@ class ShareButton extends React.Component {
     const { selectedPackages } = this.props;
 
     createStack({
-      variables: { dependencies: formatPackages(selectedPackages) }
+      variables: { dependencies: packagesToDependencies(selectedPackages) }
     }).then(() =>
       this.setState({
         showModal: true
@@ -43,26 +50,24 @@ class ShareButton extends React.Component {
 
     return (
       <Mutation mutation={createStackMutation}>
-        {(createStack, { data, loading, error }) => {
-          return (
-            <React.Fragment>
-              <Button
-                color={'#ff954f'}
-                onClick={() => this.handleShareOnClick(createStack)}
-              >
-                {loading ? 'Loading...' : error ? 'Error!' : 'Share'}
-              </Button>
-              {showModal && (
-                <Modal
-                  title={'Stack made'}
-                  subTitle={'A shareable link was created: '}
-                  link={'buildastack.io/s/' + data.createStack.id}
-                  closeModal={this.closeModal}
-                />
-              )}
-            </React.Fragment>
-          );
-        }}
+        {(createStack, { data, loading, error }) => (
+          <React.Fragment>
+            <StyledButton
+              color={'#ff954f'}
+              onClick={() => !loading && this.handleShareOnClick(createStack)}
+            >
+              {loading ? 'Loading...' : error ? 'Error' : 'Share'}
+            </StyledButton>
+            {showModal && (
+              <ShareModal
+                title={'Stack made'}
+                subTitle={'A shareable link was created: '}
+                link={'buildastack.io/s/' + (data && data.createStack.id)}
+                closeModal={this.closeModal}
+              />
+            )}
+          </React.Fragment>
+        )}
       </Mutation>
     );
   }

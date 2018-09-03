@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import PackageCard from '../components/PackageCard';
-import Button from '../components/Button';
 
 const Wrapper = styled.div`
   width: 200px;
@@ -56,7 +55,11 @@ const StackCard = ({ id, name, dependencies, history }) => (
     <Name>{name}</Name>
     <PackageCardWrapper>
       {dependencies.map(dependency => (
-        <PackageCard name={dependency.name} version={dependency.name} />
+        <PackageCard
+          key={dependency.name + dependency.version}
+          name={dependency.name}
+          version={dependency.name}
+        />
       ))}
     </PackageCardWrapper>
   </Wrapper>

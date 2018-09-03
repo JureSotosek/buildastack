@@ -27,6 +27,11 @@ const ButtonsWrapper = styled.div`
   flex-direction: row;
 `;
 
+const StyledButton = styled(Button)`
+  margin-right: 5px;
+  margin-left: 5px;
+`;
+
 const ShareSaveButtonsWrapper = styled(ButtonsWrapper)`
   margin-top: 10px;
   margin-bottom: 10px;
@@ -85,7 +90,7 @@ class SelectedPackagesActions extends React.Component {
     return (
       <Wrapper>
         <ButtonsWrapper>
-          <Button
+          <StyledButton
             color={'#5ac8fa'}
             onClick={() =>
               this.handleButtonOnClick(
@@ -95,8 +100,8 @@ class SelectedPackagesActions extends React.Component {
             }
           >
             {'Yarn'}
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             color={'#ff2d55'}
             onClick={() =>
               this.handleButtonOnClick(
@@ -106,7 +111,7 @@ class SelectedPackagesActions extends React.Component {
             }
           >
             {'npm'}
-          </Button>
+          </StyledButton>
         </ButtonsWrapper>
         <ShareSaveButtonsWrapper>
           <ShareButton selectedPackages={selectedPackages} />

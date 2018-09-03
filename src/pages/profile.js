@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Title from '../components/Title';
-import Stacks from '../containers/profile/stacks';
+import StackList from '../containers/profile/stackList';
 
 const Wrapper = styled.div`
   width: 90%;
@@ -27,7 +27,7 @@ const Profile = ({ history }) => (
   <Wrapper>
     <Title title={'Saved stacks'} />
     <StacksWrapper>
-      <Stacks history={history} />
+      <StackList history={history} />
     </StacksWrapper>
   </Wrapper>
 );

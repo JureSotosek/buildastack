@@ -2,12 +2,12 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import SelectedPackagesList from './selectedPackagesList';
+import PackagesList from './packagesList';
 import Actions from './actions';
 
-const StackSection = styled.div`
-  margin-top: 60px;
-  margin-right: 20px;
+const Wrapper = styled.div`
+  margin: 10px;
+  margin-top: 40px;
 
   flex: 1;
   display: flex;
@@ -41,9 +41,9 @@ class SelectedPackages extends React.Component {
     const { selectedPackages, loading, onSelect } = this.props;
 
     return (
-      <StackSection>
+      <Wrapper>
         <StackTitle>{'Your stack:'}</StackTitle>
-        <SelectedPackagesList
+        <PackagesList
           selectedPackages={selectedPackages}
           loading={loading}
           onSelect={onSelect}
@@ -59,7 +59,7 @@ class SelectedPackages extends React.Component {
             />
           </React.Fragment>
         )}
-      </StackSection>
+      </Wrapper>
     );
   }
 }

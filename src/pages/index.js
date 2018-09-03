@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   width: 90%;
   max-width: 1200px;
 
-  padding-top: 40px;
+  padding-top: 60px;
 
   display: flex;
   flex-direction: column;

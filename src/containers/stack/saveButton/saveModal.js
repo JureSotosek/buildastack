@@ -3,14 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Mutation } from 'react-apollo';
-import { saveStackNewMutation } from '../../../../../lib/graphql/mutations';
+import { saveStackFromIdMutation } from '../../../lib/graphql/mutations';
 
-import { formatPackages, isErrorForbidden } from '../../../../../utils';
+import { isErrorForbidden } from '../../../utils';
 
 import { ApolloConsumer } from 'react-apollo';
-import { loginWithGithub } from '../../../../../lib/loginWithGithub';
+import { loginWithGithub } from '../../../lib/loginWithGithub';
 
-import Button from '../../../../../components/Button';
+import Modal from '../../../components/Modal';
+import Button from '../../../components/Button';
 
 const Background = styled.div`
   position: fixed;
@@ -48,18 +49,6 @@ const SubTitle = styled.div`
   text-align: center;
 `;
 
-const Link = styled.a`
-  margin-top: 10px;
-
-  text-align: center;
-
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  word-break: break-all;
-`;
-
 const ButtonsWrapper = styled.div`
   width: 100%;
   max-width: 300px;
@@ -72,7 +61,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  height: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
 `;
 
 const SearchField = styled.div`
@@ -97,7 +87,7 @@ const StyledInput = styled.input`
   font-size: 20px;
 `;
 
-class Modal extends React.Component {
+class SaveModal extends React.Component {
   constructor() {
     super();
 
@@ -126,19 +116,20 @@ class Modal extends React.Component {
 
   render() {
     const { name, loginError } = this.state;
-    const { selectedPackages, onSave, closeModal } = this.props;
+    const { id, onSave, closeModal } = this.props;
 
     return (
-      <Mutation
-        mutation={saveStackNewMutation}
-        variables={{
-          stack: { dependencies: formatPackages(selectedPackages), name }
-        }}
-      >
-        {(saveStackNew, { loading, error }) => {
-          return (
-            <Background>
-              <Wrapper>
+      <Modal>
+        <Mutation
+          mutation={saveStackFromIdMutation}
+          variables={{
+            id,
+            name
+          }}
+        >
+          {(saveStackFromId, { loading, error }) => {
+            return (
+              <React.Fragment>
                 <Title>{'Save this stack'}</Title>
                 {isErrorForbidden(error) ? (
                   <React.Fragment>
@@ -181,7 +172,9 @@ class Modal extends React.Component {
                       </StyledButton>
                       <StyledButton
                         color={'#ff954f'}
-                        onClick={() => saveStackNew().then(onSave)}
+                        onClick={() =>
+                          !loading && saveStackFromId().then(onSave)
+                        }
                       >
                         {'Save'}
                       </StyledButton>
@@ -189,13 +182,13 @@ class Modal extends React.Component {
                     {loading ? 'Loading...' : error ? 'Error!' : null}
                   </React.Fragment>
                 )}
-              </Wrapper>
-            </Background>
-          );
-        }}
-      </Mutation>
+              </React.Fragment>
+            );
+          }}
+        </Mutation>
+      </Modal>
     );
   }
 }
 
-export default Modal;
+export default SaveModal;

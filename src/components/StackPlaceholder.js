@@ -5,20 +5,20 @@ import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 400px;
-  min-width: 300px;
-  min-height: 70px;
+  width: 250px;
 
-  margin-top: 20px;
+  padding: 5px;
+  margin: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+
+  display: flex;
+  flex-direction: column;
 
   background-color: 'white';
 `;
 
 const Message = styled.div`
-  margin-top: 20px;
   text-align: center;
   font-weight: bold;
 `;
@@ -37,7 +37,7 @@ const SkeletonWrapperSmall = styled.div`
   font-size: 15px;
 `;
 
-const ResultPlaceholder = ({ loading, error, msg }) => (
+const StackPlaceholder = ({ loading, error, msg }) => (
   <Wrapper>
     {loading ? (
       <React.Fragment>
@@ -57,4 +57,4 @@ const ResultPlaceholder = ({ loading, error, msg }) => (
   </Wrapper>
 );
 
-export default ResultPlaceholder;
+export default StackPlaceholder;

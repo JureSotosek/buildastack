@@ -48,7 +48,7 @@ export const npmInstallCommand = packages => {
   }
 };
 
-export const formatPackages = packages => {
+export const packagesToDependencies = packages => {
   return packages.map(pkg => ({
     name: pkg.name,
     version: pkg.version,
