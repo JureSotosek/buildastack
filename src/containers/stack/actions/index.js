@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 import DeleteButton from './deleteButton';
 import SaveButton from './saveButton';
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 
 import copy from 'copy-to-clipboard';
-import { npmInstallCommand, yarnAddCommand } from '../../utils';
+import { npmInstallCommand, yarnAddCommand } from '../../../utils';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ const ShareSaveButtonsWrapper = styled(ButtonsWrapper)`
   margin-bottom: 10px;
 `;
 
-class StackActions extends React.Component {
+class Actions extends React.Component {
   constructor() {
     super();
 
@@ -49,7 +49,6 @@ class StackActions extends React.Component {
 
     this.setMsg = this.setMsg.bind(this);
     this.getCommandToCopy = this.getCommandToCopy.bind(this);
-    this.onDelete = this.onDelete.bind(this);
   }
 
   setMsg(msg) {
@@ -76,10 +75,6 @@ class StackActions extends React.Component {
     }
 
     return null;
-  }
-
-  onDelete(client) {
-    const { id } = this.props;
   }
 
   render() {
@@ -131,4 +126,4 @@ class StackActions extends React.Component {
   }
 }
 
-export default StackActions;
+export default Actions;

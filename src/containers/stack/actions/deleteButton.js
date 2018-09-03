@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 
 import { Mutation } from 'react-apollo';
-import { deleteStackMutation } from '../../lib/graphql/mutations';
+import { deleteStackMutation } from '../../../lib/graphql/mutations';
 
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 
 const StyledButton = styled(Button)`
   margin-right: 5px;
@@ -19,13 +19,13 @@ const DeleteButton = ({ id }) => (
     {(deleteStack, { data, loading, error }) => {
       if (data) {
         return <Redirect to="/profile" />;
-      } else {
-        return (
-          <StyledButton color={'#5856d6'} onClick={deleteStack}>
-            {loading ? 'Loading...' : error ? 'Error' : 'Delete'}
-          </StyledButton>
-        );
       }
+
+      return (
+        <StyledButton color={'#5856d6'} onClick={deleteStack}>
+          {loading ? 'Loading...' : error ? 'Error' : 'Delete'}
+        </StyledButton>
+      );
     }}
   </Mutation>
 );

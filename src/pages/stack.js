@@ -7,7 +7,7 @@ import { stackQuery } from '../lib/graphql/queries';
 
 import Title from '../components/Title';
 import Actions from '../containers/stack/actions';
-import PackageCard from '../components/PackageCard';
+import DependenciesList from '../containers/stack/dependenciesList';
 import SelectionPlaceholder from '../components/SelectionPlaceholder';
 
 const Wrapper = styled.div`
@@ -24,15 +24,6 @@ const Owner = styled.div`
   font-size: 20px;
 `;
 
-const PackagesWrapper = styled.div`
-  width: 100%;
-  max-width: 250px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 class Stack extends React.Component {
   render() {
     const {
@@ -46,53 +37,43 @@ class Stack extends React.Component {
       <Wrapper>
         <Query query={stackQuery} variables={{ id }}>
           {({ loading, error, data }) => {
-            if (loading) {
-              return (
-                <React.Fragment>
-                  <Title title={name ? name : 'Stack'} />
-                  <SelectionPlaceholder loading />
-                </React.Fragment>
-              );
-            }
+            const { stack: stackQuery } = data;
 
-            if (error) {
-              return <SelectionPlaceholder error />;
-            }
-
-            if (!data.stack) {
-              return (
-                <React.Fragment>
-                  <Title title={name ? name : 'Stack'} />
-                  <SelectionPlaceholder msg={'No stack here 🙉'} />
-                </React.Fragment>
-              );
-            }
-
-            if (data.stack.stack.dependencies.length !== 0) {
-              return <SelectionPlaceholder msg={'Sorry, empty stack 😕'} />;
-            }
-
-            const { user, name, dependencies } = data.stack.stack;
             return (
               <React.Fragment>
-                <Title title={name ? name : 'Shared stack'} />
-                <Owner>{user ? user.name : null}</Owner>
-                <PackagesWrapper>
-                  {dependencies.map(dependency => (
-                    <PackageCard
-                      key={dependency.name + dependency.version}
-                      name={dependency.name}
-                      version={dependency.version}
-                      dev={dependency.dev}
-                    />
-                  ))}
-                </PackagesWrapper>
-                <Actions
-                  id={id}
-                  history={history}
-                  selectedPackages={dependencies}
-                  owner={data.stack.owner}
+                <Title
+                  title={
+                    loading || error || !data.stack || !stackQuery.stack
+                      ? 'Stack'
+                      : stackQuery.stack.name
+                  }
                 />
+                {loading ? (
+                  <SelectionPlaceholder loading={loading} />
+                ) : error ? (
+                  <SelectionPlaceholder loading={loading} />
+                ) : !data.stack ? (
+                  <SelectionPlaceholder msg={'No stack here 🙉'} />
+                ) : stackQuery.stack.dependencies.length === 0 ? (
+                  <SelectionPlaceholder msg={'Sorry, empty stack 😕'} />
+                ) : (
+                  <React.Fragment>
+                    <Owner>
+                      {stackQuery.stack.user
+                        ? stackQuery.stack.user.name
+                        : null}
+                    </Owner>
+                    <DependenciesList
+                      dependencies={stackQuery.stack.dependencies}
+                    />
+                    <Actions
+                      id={stackQuery.stack.id}
+                      history={history}
+                      selectedPackages={stackQuery.stack.dependencies}
+                      owner={stackQuery.stack.owner}
+                    />
+                  </React.Fragment>
+                )}
               </React.Fragment>
             );
           }}

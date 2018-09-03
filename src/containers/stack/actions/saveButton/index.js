@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import Button from '../../../components/Button';
+import Button from '../../../../components/Button';
 import SaveModal from './saveModal';
 
 const StyledButton = styled(Button)`
