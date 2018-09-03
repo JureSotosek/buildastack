@@ -70,7 +70,7 @@ class Stack extends React.Component {
                       id={stackQuery.stack.id}
                       history={history}
                       selectedPackages={stackQuery.stack.dependencies}
-                      owner={stackQuery.stack.owner}
+                      owner={stackQuery.owner}
                     />
                   </React.Fragment>
                 )}
