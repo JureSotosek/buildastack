@@ -7,7 +7,7 @@ import { stackQuery } from '../lib/graphql/queries';
 
 import Title from '../components/Title';
 import Actions from '../containers/stack/actions';
-import StackCard from '../components/StackCard';
+import PackageCard from '../components/PackageCard';
 import SelectionPlaceholder from '../components/SelectionPlaceholder';
 
 const Wrapper = styled.div`
@@ -24,6 +24,15 @@ const Wrapper = styled.div`
 const Owner = styled.div`
   margin-bottom: 15px;
   font-size: 20px;
+`;
+
+const PackagesWrapper = styled.div`
+  width: 100%;
+  max-width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 class Stack extends React.Component {
@@ -52,18 +61,21 @@ class Stack extends React.Component {
                 <React.Fragment>
                   <Title title={name ? name : 'Shared stack.'} />
                   <Owner>{user ? user.name : null}</Owner>
-                  {dependencies.map(dependency => (
-                    <StackCard
-                      key={dependency.name + dependency.version}
-                      name={dependency.name}
-                      version={dependency.version}
-                      dev={dependency.dev}
-                    />
-                  ))}
+                  <PackagesWrapper>
+                    {dependencies.map(dependency => (
+                      <PackageCard
+                        key={dependency.name + dependency.version}
+                        name={dependency.name}
+                        version={dependency.version}
+                        dev={dependency.dev}
+                      />
+                    ))}
+                  </PackagesWrapper>
                   <Actions
                     id={id}
                     history={history}
                     selectedPackages={dependencies}
+                    owner={data.stack.owner}
                   />
                 </React.Fragment>
               );

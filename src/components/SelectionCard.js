@@ -87,7 +87,7 @@ const RemoveSection = styled.div`
   font-size: 15px;
 `;
 
-const StackCard = ({ name, version, dev, onSelect }) => (
+const SelectionCard = ({ name, version, dev, onSelect }) => (
   <Wrapper onClick={onSelect}>
     <DetailsSection>
       <Detail>
@@ -100,4 +100,4 @@ const StackCard = ({ name, version, dev, onSelect }) => (
   </Wrapper>
 );
 
-export default StackCard;
+export default SelectionCard;

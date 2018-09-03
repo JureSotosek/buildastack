@@ -52,9 +52,9 @@ class Builder extends React.Component {
   }
 
   handleQueryOnCompleted(data) {
-    if (data.stack) {
+    if (data.stack.stack) {
       this.setState({
-        selectedPackages: data.stack.dependencies
+        selectedPackages: data.stack.stack.dependencies
       });
     }
   }

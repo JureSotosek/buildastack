@@ -3,8 +3,8 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { suggestionsQuery } from '../../../lib/graphql/queries';
 
-import PackageCard from '../../../components/PackageCard';
-import PackagePlaceholder from '../../../components/PackagePlaceholder';
+import ResultCard from '../../../components/ResultCard';
+import ResultPlaceholder from '../../../components/ResultPlaceholder';
 
 const SuggestionResults = ({ selectedPackages, onSelect }) => (
   <Query
@@ -21,17 +21,17 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
     {({ loading, error, data }) => {
       if (selectedPackages.length === 0) {
         return (
-          <PackagePlaceholder msg={'Select a package for suggestions 📦'} />
+          <ResultPlaceholder msg={'Select a package for suggestions 📦'} />
         );
       } else if (error) {
-        return <PackagePlaceholder error />;
+        return <ResultPlaceholder error />;
       } else if (loading) {
-        return <PackagePlaceholder loading />;
+        return <ResultPlaceholder loading />;
       } else if (data.suggestions.suggestions.length !== 0) {
         const packages = data.suggestions.suggestions;
 
         return packages.map(pkg => (
-          <PackageCard
+          <ResultCard
             key={pkg.name + pkg.version}
             name={pkg.name}
             version={pkg.version}
@@ -44,7 +44,7 @@ const SuggestionResults = ({ selectedPackages, onSelect }) => (
           />
         ));
       } else {
-        return <PackagePlaceholder msg={'Sorry, no suggestions found 😔'} />;
+        return <ResultPlaceholder msg={'Sorry, no suggestions found 😔'} />;
       }
     }}
   </Query>

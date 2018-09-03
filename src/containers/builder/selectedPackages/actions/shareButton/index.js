@@ -3,16 +3,10 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { createStackMutation } from '../../../../../lib/graphql/mutations';
 
+import { formatPackages } from '../../../../../utils';
+
 import Button from '../../../../../components/Button';
 import Modal from './modal';
-
-const formatPackages = packages => {
-  return packages.map(pkg => ({
-    name: pkg.name,
-    version: pkg.version,
-    dev: pkg.dev
-  }));
-};
 
 class ShareButton extends React.Component {
   constructor() {

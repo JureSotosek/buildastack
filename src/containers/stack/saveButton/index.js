@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../../../components/Button';
+import Button from '../../../components/Button';
 import Modal from './modal';
 
 class SaveButton extends React.Component {
@@ -41,7 +41,7 @@ class SaveButton extends React.Component {
 
   render() {
     const { showModal } = this.state;
-    const { selectedPackages } = this.props;
+    const { id } = this.props;
 
     return (
       <React.Fragment>
@@ -50,7 +50,7 @@ class SaveButton extends React.Component {
         </Button>
         {showModal && (
           <Modal
-            selectedPackages={selectedPackages}
+            id={id}
             onSave={this.handleSaveConfirmation}
             closeModal={this.closeModal}
           />

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { withRouter } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import { ApolloConsumer } from 'react-apollo';
@@ -56,7 +58,7 @@ const GithubLogo = styled.img`
   height: 35px;
 `;
 
-const Header = () => (
+const Header = ({ history }) => (
   <Wrapper>
     <RightSide>
       <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
@@ -88,7 +90,7 @@ const Header = () => (
             return (
               <div
                 onClick={() => {
-                  logout();
+                  history.push('/profile');
                 }}
               >
                 {data.viewer.name}
@@ -101,4 +103,4 @@ const Header = () => (
   </Wrapper>
 );
 
-export default Header;
+export default withRouter(Header);

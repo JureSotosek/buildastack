@@ -47,3 +47,14 @@ export const npmInstallCommand = packages => {
     return '';
   }
 };
+
+export const formatPackages = packages => {
+  return packages.map(pkg => ({
+    name: pkg.name,
+    version: pkg.version,
+    dev: pkg.dev
+  }));
+};
+
+export const isErrorForbidden = error =>
+  error && error.graphQLErrors.some(({ code }) => code === 'FORBIDDEN');

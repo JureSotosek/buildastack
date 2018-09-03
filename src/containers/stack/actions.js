@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import DeleteButton from './deleteButton';
+import SaveButton from './saveButton';
 import Button from '../../components/Button';
 
 import copy from 'copy-to-clipboard';
@@ -42,6 +44,7 @@ class StackActions extends React.Component {
 
     this.setMsg = this.setMsg.bind(this);
     this.getCommandToCopy = this.getCommandToCopy.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   setMsg(msg) {
@@ -70,9 +73,13 @@ class StackActions extends React.Component {
     return null;
   }
 
+  onDelete(client) {
+    const { id } = this.props;
+  }
+
   render() {
     const { msg } = this.state;
-    const { history, id } = this.props;
+    const { history, id, owner } = this.props;
 
     return (
       <Wrapper>
@@ -107,13 +114,11 @@ class StackActions extends React.Component {
           >
             {'Edit'}
           </Button>
-          <Button
-            style={{ color: 'lightGrey' }}
-            color={'grey'}
-            onClick={() => this.setMsg('Save coming Soon!')}
-          >
-            {'Save'}
-          </Button>
+          {owner ? (
+            <DeleteButton id={id} />
+          ) : (
+            <SaveButton id={id} setMsg={this.setMsg} />
+          )}
         </ShareSaveButtonsWrapper>
         {msg || ''}
       </Wrapper>

@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Title from '../components/Title';
+import Stacks from '../containers/profile/stacks';
 
 const Wrapper = styled.div`
   width: 90%;
@@ -15,9 +16,21 @@ const Wrapper = styled.div`
   font-family: Source Sans Pro;
 `;
 
-const Profile = () => (
+const StacksWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Profile = ({ history }) => (
   <Wrapper>
-    <Title title={'Jure Sotošek'} subtitle={'Saved stacks:'} />
+    <Title title={'Saved stacks'} />
+    <StacksWrapper>
+      <Stacks history={history} />
+    </StacksWrapper>
   </Wrapper>
 );
 

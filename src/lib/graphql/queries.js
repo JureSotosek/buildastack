@@ -8,6 +8,23 @@ export const viewerQuery = gql`
   }
 `;
 
+export const savedStacksQuery = gql`
+  query Viewer {
+    viewer {
+      name
+      stacks {
+        id
+        name
+        dependencies {
+          name
+          version
+          dev
+        }
+      }
+    }
+  }
+`;
+
 export const searchQuery = gql`
   query Search($query: String!) {
     search(query: $query) {

@@ -36,7 +36,7 @@ const SkeletonWrapperSmall = styled.div`
   font-size: 15px;
 `;
 
-const ResultsPlaceholder = ({ loading, msg, error }) => {
+const ResultPlaceholder = ({ loading, msg, error }) => {
   const cardBody = () => {
     if (error) {
       return <Message>{'❗️An error occured 🤦🏼‍'}</Message>;
@@ -59,4 +59,4 @@ const ResultsPlaceholder = ({ loading, msg, error }) => {
 
   return <Wrapper>{cardBody()}</Wrapper>;
 };
-export default ResultsPlaceholder;
+export default ResultPlaceholder;

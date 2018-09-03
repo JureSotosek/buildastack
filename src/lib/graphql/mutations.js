@@ -23,3 +23,9 @@ export const saveStackNewMutation = gql`
     }
   }
 `;
+
+export const deleteStackMutation = gql`
+  mutation DeleteStack($id: ID!) {
+    deleteStack(id: $id)
+  }
+`;

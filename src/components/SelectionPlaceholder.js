@@ -18,6 +18,6 @@ const Wrapper = styled.div`
   font-weight: bold;
 `;
 
-const StackPlaceholder = ({ msg }) => <Wrapper>{msg}</Wrapper>;
+const SelectionPlaceholder = ({ msg }) => <Wrapper>{msg}</Wrapper>;
 
-export default StackPlaceholder;
+export default SelectionPlaceholder;
