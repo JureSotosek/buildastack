@@ -28,6 +28,23 @@ const Logo = styled.a`
   color: black;
 `;
 
+const LeftSide = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-size: 20px;
+`;
+
+const DividerLeft = styled.div`
+  height: 30px;
+  width: 2px;
+  margin-right: 10px;
+  margin-left: 13px;
+  margin-bottom: 5px;
+  background-color: black;
+`;
+
 const RightSide = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,20 +53,12 @@ const RightSide = styled.div`
   font-size: 20px;
 `;
 
-const Divider = styled.div`
-  height: 30px;
-  width: 2px;
+const DividerRight = styled.div`
+  height: 25px;
+  width: 1px;
   margin-right: 10px;
   margin-left: 10px;
   background-color: black;
-`;
-
-const LeftSide = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  font-size: 20px;
 `;
 
 const GithubLogo = styled.img`
@@ -67,9 +76,9 @@ const Header = ({ history, client }) => {
 
   return (
     <Wrapper>
-      <RightSide>
+      <LeftSide>
         <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
-        <Divider />
+        <DividerLeft />
         <a href="https://github.com/JureSotosek/buildastack">
           <GithubLogo
             src={
@@ -77,13 +86,14 @@ const Header = ({ history, client }) => {
             }
           />
         </a>
-      </RightSide>
-      <LeftSide>
+      </LeftSide>
+      <RightSide>
         <Query query={viewerQuery} pollInterval={1000}>
           {({ loading, error, data }) => {
             if (loading) {
               return 'Loading...';
             }
+
             if (error) {
               return (
                 <DivWithPointer onClick={handleOnLogin}>
@@ -91,23 +101,23 @@ const Header = ({ history, client }) => {
                 </DivWithPointer>
               );
             }
-            if (history.location.pathname.startsWith('/profile')) {
-              return (
-                <DivWithPointer onClick={logout}>{'Logout'}</DivWithPointer>
-              );
-            }
+
             return (
-              <DivWithPointer
-                onClick={() => {
-                  history.push('/profile');
-                }}
-              >
-                {data.viewer.name}
-              </DivWithPointer>
+              <React.Fragment>
+                <DivWithPointer
+                  onClick={() => {
+                    history.push('/profile');
+                  }}
+                >
+                  {data.viewer.name}
+                </DivWithPointer>
+                <DividerRight />
+                <DivWithPointer onClick={logout}>{'Logout'}</DivWithPointer>
+              </React.Fragment>
             );
           }}
         </Query>
-      </LeftSide>
+      </RightSide>
     </Wrapper>
   );
 };
