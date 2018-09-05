@@ -5,11 +5,11 @@ export const yarnAddCommand = packages => {
   const devDependencies = packages.filter(pkg => pkg.dev);
 
   const dependenciesString = dependencies.reduce(
-    (command, pkg) => command + ' ' + pkg.name,
+    (command, pkg) => command + ' ' + pkg.name + '@' + pkg.version,
     'yarn add'
   );
   const devDependenciesString = devDependencies.reduce(
-    (command, pkg) => command + ' ' + pkg.name,
+    (command, pkg) => command + ' ' + pkg.name + '@' + pkg.version,
     'yarn add --dev'
   );
 
@@ -29,11 +29,11 @@ export const npmInstallCommand = packages => {
   const devDependencies = packages.filter(pkg => pkg.dev);
 
   const dependenciesString = dependencies.reduce(
-    (command, pkg) => command + ' ' + pkg.name,
+    (command, pkg) => command + ' ' + pkg.name + '@' + pkg.version,
     'npm install --save'
   );
   const devDependenciesString = devDependencies.reduce(
-    (command, pkg) => command + ' ' + pkg.name,
+    (command, pkg) => command + ' ' + pkg.name + '@' + pkg.version,
     'npm install --save-dev'
   );
 
