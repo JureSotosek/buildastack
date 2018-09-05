@@ -20,7 +20,6 @@ const Wrapper = styled.div`
 const Message = styled.div`
   margin-top: 20px;
   text-align: center;
-  font-weight: bold;
 `;
 
 const SkeletonWrapperBig = styled.div`

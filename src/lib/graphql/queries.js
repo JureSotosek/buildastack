@@ -8,18 +8,16 @@ export const viewerQuery = gql`
   }
 `;
 
-export const savedStacksQuery = gql`
-  query Viewer {
-    viewer {
+export const templateStacksQuery = gql`
+  query TemplateStacks {
+    templateStacks {
+      id
       name
-      stacks {
-        id
+      color
+      dependencies {
         name
-        dependencies {
-          name
-          version
-          dev
-        }
+        version
+        dev
       }
     }
   }
@@ -74,6 +72,23 @@ export const stackQuery = gql`
         }
         user {
           name
+        }
+      }
+    }
+  }
+`;
+
+export const savedStacksQuery = gql`
+  query Viewer {
+    viewer {
+      name
+      stacks {
+        id
+        name
+        dependencies {
+          name
+          version
+          dev
         }
       }
     }

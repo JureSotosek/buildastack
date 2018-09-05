@@ -13,15 +13,16 @@ const Wrapper = styled.div`
   padding-left: 30px;
   margin: 20px;
   border-radius: 5px;
-  box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+  box-shadow: ${props =>
+    props.color
+      ? `0 3px 15px 5px ` + props.color
+      : '0 5px 15px 0 rgba(37, 44, 97, 0.3)'};
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   align-self: flex-start;
-
-  background-color: 'white';
 
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -50,15 +51,18 @@ const PackageCardWrapper = styled.div`
   align-items: center;
 `;
 
-const StackCard = ({ id, name, dependencies, history }) => (
-  <Wrapper onClick={() => history.push('/s/' + id)}>
+const StackCard = ({ id, name, color, dependencies, template, history }) => (
+  <Wrapper
+    onClick={() => history.push((template ? '/builder/' : '/s/') + id)}
+    color={color}
+  >
     <Name>{name}</Name>
     <PackageCardWrapper>
       {dependencies.map(dependency => (
         <PackageCard
-          key={dependency.name + dependency.version}
           name={dependency.name}
-          version={dependency.name}
+          version={dependency.version}
+          key={dependency.name + dependency.version}
         />
       ))}
     </PackageCardWrapper>

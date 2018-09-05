@@ -15,6 +15,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  background-color: white;
 `;
 
 const Detail = styled.div`

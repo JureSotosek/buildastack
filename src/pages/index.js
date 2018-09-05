@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import TemplateStack from '../containers/index/templateStacks';
 import Title from '../components/Title';
 import Button from '../components/Button';
 
@@ -36,11 +37,10 @@ const Index = ({ history }) => (
         'A tool for building stacks. You can save and share them too 🎉.'
       }
     />
-    {
-      <StyledButton color={'white'} onClick={() => history.push('/builder')}>
-        {'Start building!'}
-      </StyledButton>
-    }
+    <StyledButton color={'white'} onClick={() => history.push('/builder')}>
+      {'Start building!'}
+    </StyledButton>
+    <TemplateStack history={history} />
   </Wrapper>
 );
 
