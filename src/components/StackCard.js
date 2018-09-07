@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import PackageCard from '../components/PackageCard';
+import DependencyCard from './DependencyCard';
 
 const Wrapper = styled.div`
   width: 200px;
@@ -44,7 +44,7 @@ const Name = styled.div`
   font-weight: bold;
 `;
 
-const PackageCardWrapper = styled.div`
+const DependencyCardWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,15 +57,15 @@ const StackCard = ({ id, name, color, dependencies, template, history }) => (
     color={color}
   >
     <Name>{name}</Name>
-    <PackageCardWrapper>
+    <DependencyCardWrapper>
       {dependencies.map(dependency => (
-        <PackageCard
+        <DependencyCard
           name={dependency.name}
           version={dependency.version}
           key={dependency.name + dependency.version}
         />
       ))}
-    </PackageCardWrapper>
+    </DependencyCardWrapper>
   </Wrapper>
 );
 

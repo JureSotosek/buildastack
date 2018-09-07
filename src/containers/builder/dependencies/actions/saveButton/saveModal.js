@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import { saveStackNewMutation } from '../../../../../lib/graphql/mutations';
 
-import { packagesToDependencies, isErrorForbidden } from '../../../../../utils';
+import { formatDependencies, isErrorForbidden } from '../../../../../utils';
 
 import { withApollo } from 'react-apollo';
 import { loginWithGithub } from '../../../../../lib/loginWithGithub';
@@ -77,7 +77,7 @@ class SaveModal extends React.Component {
 
   render() {
     const { name, loginError } = this.state;
-    const { selectedPackages, onSave, closeModal } = this.props;
+    const { dependencies, onSave, closeModal } = this.props;
 
     return (
       <Modal>
@@ -86,7 +86,7 @@ class SaveModal extends React.Component {
           mutation={saveStackNewMutation}
           variables={{
             stack: {
-              dependencies: packagesToDependencies(selectedPackages),
+              dependencies: formatDependencies(dependencies),
               name
             }
           }}

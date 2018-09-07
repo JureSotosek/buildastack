@@ -69,7 +69,7 @@ class Stack extends React.Component {
                     <Actions
                       id={stackQuery.stack.id}
                       history={history}
-                      selectedPackages={stackQuery.stack.dependencies}
+                      dependencies={stackQuery.stack.dependencies}
                       owner={stackQuery.owner}
                     />
                   </React.Fragment>

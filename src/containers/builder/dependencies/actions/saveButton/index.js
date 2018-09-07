@@ -48,7 +48,7 @@ class SaveButton extends React.Component {
 
   render() {
     const { showModal } = this.state;
-    const { selectedPackages } = this.props;
+    const { dependencies } = this.props;
 
     return (
       <React.Fragment>
@@ -57,7 +57,7 @@ class SaveButton extends React.Component {
         </StyledButton>
         {showModal && (
           <SaveModal
-            selectedPackages={selectedPackages}
+            dependencies={dependencies}
             onSave={this.handleSaveConfirmation}
             closeModal={this.closeModal}
           />

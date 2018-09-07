@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Title from '../components/Title';
 import Search from '../containers/builder/search';
 import Results from '../containers/builder/results';
-import SelectedPackages from '../containers/builder/selectedPackages';
+import Dependencies from '../containers/builder/dependencies';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -45,7 +45,7 @@ class Builder extends React.Component {
 
     this.state = {
       query: '',
-      selectedPackages: [],
+      dependencies: [],
       loading: false
     };
 
@@ -73,7 +73,7 @@ class Builder extends React.Component {
       });
 
       this.setState({
-        selectedPackages: data.stack ? data.stack.stack.dependencies : [],
+        dependencies: data.stack ? data.stack.stack.dependencies : [],
         loading: false
       });
     }
@@ -86,20 +86,20 @@ class Builder extends React.Component {
   }
 
   handleResultsOnSelect(pkg, dev) {
-    const { selectedPackages } = this.state;
+    const { dependencies } = this.state;
 
-    if (selectedPackages.length !== 0) {
-      this.selectedPackages.clearMsg();
+    if (dependencies.length !== 0) {
+      this.dependencies.clearMsg();
     }
 
     if (
-      !selectedPackages.some(
+      !dependencies.some(
         myPackage =>
           myPackage.name === pkg.name && myPackage.version === pkg.version
       )
     ) {
       this.setState({
-        selectedPackages: [...selectedPackages, { ...pkg, dev }],
+        dependencies: [...dependencies, { ...pkg, dev }],
         query: ''
       });
     }
@@ -107,22 +107,22 @@ class Builder extends React.Component {
   }
 
   handleStackOnSelect(pkg) {
-    const { selectedPackages } = this.state;
+    const { dependencies } = this.state;
 
-    this.selectedPackages.clearMsg();
+    this.dependencies.clearMsg();
 
-    const newSelectedPackages = selectedPackages.filter(
+    const newDependencies = dependencies.filter(
       myPackage =>
         myPackage.name !== pkg.name || myPackage.version !== pkg.version
     );
 
     this.setState({
-      selectedPackages: newSelectedPackages
+      dependencies: newDependencies
     });
   }
 
   render() {
-    const { query, selectedPackages, loading } = this.state;
+    const { query, dependencies, loading } = this.state;
 
     return (
       <Wrapper>
@@ -143,16 +143,16 @@ class Builder extends React.Component {
             />
             <Results
               query={query}
-              selectedPackages={selectedPackages}
+              dependencies={dependencies}
               onSelect={this.handleResultsOnSelect}
             />
           </SearchAndResultsSection>
-          <SelectedPackages
-            selectedPackages={selectedPackages}
+          <Dependencies
+            dependencies={dependencies}
             onSelect={this.handleStackOnSelect}
             loading={loading}
-            ref={selectedPackages => {
-              this.selectedPackages = selectedPackages;
+            ref={dependencies => {
+              this.dependencies = dependencies;
             }}
           />
         </Content>

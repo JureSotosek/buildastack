@@ -48,7 +48,7 @@ class Actions extends React.Component {
     };
 
     this.setMsg = this.setMsg.bind(this);
-    this.getCommandToCopy = this.getCommandToCopy.bind(this);
+    this.handleButtonOnClick = this.handleButtonOnClick.bind(this);
   }
 
   setMsg(msg) {
@@ -57,24 +57,24 @@ class Actions extends React.Component {
     });
   }
 
-  handleButtonOnClick(toCopy, msg) {
-    copy(toCopy);
+  handleButtonOnClick(installer) {
+    const { dependencies } = this.props;
 
-    this.setMsg(msg);
-  }
+    let commandToCopy;
+    let msg;
 
-  getCommandToCopy(installer) {
-    const { selectedPackages } = this.props;
-
-    switch (installer) {
-      case 'yarn':
-        return yarnAddCommand(selectedPackages);
-
-      case 'npm':
-        return npmInstallCommand(selectedPackages);
+    if (installer === 'yarn') {
+      commandToCopy = yarnAddCommand(dependencies);
+      msg = 'Yarn command coppied!';
     }
 
-    return null;
+    if (installer === 'npm') {
+      commandToCopy = npmInstallCommand(dependencies);
+      msg = 'npm command coppied!';
+    }
+
+    copy(commandToCopy);
+    this.setMsg(msg);
   }
 
   render() {
@@ -86,23 +86,13 @@ class Actions extends React.Component {
         <ButtonsWrapper>
           <StyledButton
             color={'#5ac8fa'}
-            onClick={() =>
-              this.handleButtonOnClick(
-                this.getCommandToCopy('yarn'),
-                'Yarn command coppied!'
-              )
-            }
+            onClick={() => this.handleButtonOnClick('yarn')}
           >
             {'Yarn'}
           </StyledButton>
           <StyledButton
             color={'#ff2d55'}
-            onClick={() =>
-              this.handleButtonOnClick(
-                this.getCommandToCopy('npm'),
-                'npm command coppied!'
-              )
-            }
+            onClick={() => this.handleButtonOnClick('npm')}
           >
             {'npm'}
           </StyledButton>

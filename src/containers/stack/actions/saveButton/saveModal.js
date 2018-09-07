@@ -7,7 +7,7 @@ import { saveStackFromIdMutation } from '../../../../lib/graphql/mutations';
 
 import { isErrorForbidden } from '../../../../utils';
 
-import { ApolloConsumer } from 'react-apollo';
+import { withApollo } from 'react-apollo';
 import { loginWithGithub } from '../../../../lib/loginWithGithub';
 
 import Modal from '../../../../components/Modal';
@@ -66,8 +66,8 @@ class SaveModal extends React.Component {
     });
   }
 
-  async handleLogin(client, saveStackNew) {
-    const { onSave } = this.props;
+  async handleLogin(saveStackNew) {
+    const { client, onSave } = this.props;
 
     loginWithGithub(client)
       .then(() => saveStackNew().then(onSave))
@@ -97,18 +97,12 @@ class SaveModal extends React.Component {
                     <StyledButton color={'grey'} onClick={closeModal}>
                       {'Close'}
                     </StyledButton>
-                    <ApolloConsumer>
-                      {client => (
-                        <StyledButton
-                          color={'#ff954f'}
-                          onClick={() =>
-                            this.handleLogin(client, saveStackFromId)
-                          }
-                        >
-                          {'Login with Github!'}
-                        </StyledButton>
-                      )}
-                    </ApolloConsumer>
+                    <StyledButton
+                      color={'#ff954f'}
+                      onClick={() => this.handleLogin(saveStackFromId)}
+                    >
+                      {'Login with Github!'}
+                    </StyledButton>
                   </ButtonsWrapper>
                   {loginError && 'Error!'}
                 </React.Fragment>
@@ -130,10 +124,9 @@ class SaveModal extends React.Component {
                       color={'#ff954f'}
                       onClick={() => !loading && saveStackFromId().then(onSave)}
                     >
-                      {'Save'}
+                      {loading ? 'Loading...' : error ? 'Error' : 'Save'}
                     </StyledButton>
                   </ButtonsWrapper>
-                  {loading ? 'Loading...' : error ? 'Error!' : null}
                 </React.Fragment>
               )}
             </React.Fragment>
@@ -144,4 +137,4 @@ class SaveModal extends React.Component {
   }
 }
 
-export default SaveModal;
+export default withApollo(SaveModal);

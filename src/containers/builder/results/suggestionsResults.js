@@ -9,16 +9,16 @@ import ResultPlaceholder from '../../../components/ResultPlaceholder';
 const extractNames = (packages, dev = false) =>
   packages.filter(pkg => pkg.dev === dev).map(pkg => pkg.name);
 
-const SuggestionResults = ({ selectedPackages, onSelect }) => (
+const SuggestionResults = ({ dependencies, onSelect }) => (
   <Query
     query={suggestionsQuery}
     variables={{
-      dependencies: extractNames(selectedPackages),
-      devDependencies: extractNames(selectedPackages, true)
+      dependencies: extractNames(dependencies),
+      devDependencies: extractNames(dependencies, true)
     }}
   >
     {({ loading, error, data }) => {
-      if (selectedPackages.length === 0) {
+      if (dependencies.length === 0) {
         return (
           <ResultPlaceholder msg={'Select a package for suggestions 📦'} />
         );

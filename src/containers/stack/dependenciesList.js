@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import PackageCard from '../../components/PackageCard';
+import DependencyCard from '../../components/DependencyCard';
 
 const PackagesWrapper = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ const PackagesWrapper = styled.div`
 const DependenciesList = ({ dependencies }) => (
   <PackagesWrapper>
     {dependencies.map(dependency => (
-      <PackageCard
+      <DependencyCard
         key={dependency.name + dependency.version}
         name={dependency.name}
         version={dependency.version}

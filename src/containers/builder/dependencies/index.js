@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import PackagesList from './packagesList';
+import DependenciesList from './dependenciesList';
 import Actions from './actions';
 
 const Wrapper = styled.div`
@@ -26,7 +26,7 @@ const CommandsTitle = styled.div`
   font-weight: bold;
 `;
 
-class SelectedPackages extends React.Component {
+class Dependencies extends React.Component {
   constructor() {
     super();
 
@@ -38,21 +38,21 @@ class SelectedPackages extends React.Component {
   }
 
   render() {
-    const { selectedPackages, loading, onSelect } = this.props;
+    const { dependencies, loading, onSelect } = this.props;
 
     return (
       <Wrapper>
         <StackTitle>{'Your stack:'}</StackTitle>
-        <PackagesList
-          selectedPackages={selectedPackages}
+        <DependenciesList
+          dependencies={dependencies}
           loading={loading}
           onSelect={onSelect}
         />
-        {selectedPackages.length !== 0 && (
+        {dependencies.length !== 0 && (
           <React.Fragment>
             <CommandsTitle>{'Install Commands:'}</CommandsTitle>
             <Actions
-              selectedPackages={selectedPackages}
+              dependencies={dependencies}
               ref={actions => {
                 this.actions = actions;
               }}
@@ -64,4 +64,4 @@ class SelectedPackages extends React.Component {
   }
 }
 
-export default SelectedPackages;
+export default Dependencies;

@@ -47,7 +47,7 @@ const Version = styled.div`
   color: grey;
 `;
 
-const PackageCard = ({ name, version, dev }) => (
+const DependencyCard = ({ name, version, dev }) => (
   <Wrapper>
     <Detail>
       <Name>{name}</Name>
@@ -57,4 +57,4 @@ const PackageCard = ({ name, version, dev }) => (
   </Wrapper>
 );
 
-export default PackageCard;
+export default DependencyCard;

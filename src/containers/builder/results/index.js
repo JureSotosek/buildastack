@@ -39,7 +39,7 @@ const NpmSuggestionsLogo = styled.a`
   color: black;
 `;
 
-const Results = ({ query, selectedPackages, onSelect }) => (
+const Results = ({ query, dependencies, onSelect }) => (
   <Wrapper>
     <ResultsColumnWrapper>
       {'Search results:'}
@@ -53,10 +53,7 @@ const Results = ({ query, selectedPackages, onSelect }) => (
     </ResultsColumnWrapper>
     <ResultsColumnWrapper>
       {'Suggestions:'}
-      <SuggestionsResults
-        selectedPackages={selectedPackages}
-        onSelect={onSelect}
-      />
+      <SuggestionsResults dependencies={dependencies} onSelect={onSelect} />
       <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
         {'npm-suggestions'}
       </NpmSuggestionsLogo>

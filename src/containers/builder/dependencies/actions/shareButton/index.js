@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import { createStackMutation } from '../../../../../lib/graphql/mutations';
 
-import { packagesToDependencies } from '../../../../../utils';
+import { formatDependencies } from '../../../../../utils';
 
 import Button from '../../../../../components/Button';
 import ShareModal from './shareModal';
@@ -34,10 +34,10 @@ class ShareButton extends React.Component {
   }
 
   handleShareOnClick(createStack) {
-    const { selectedPackages } = this.props;
+    const { dependencies } = this.props;
 
     createStack({
-      variables: { dependencies: packagesToDependencies(selectedPackages) }
+      variables: { dependencies: formatDependencies(dependencies) }
     }).then(() =>
       this.setState({
         showModal: true
