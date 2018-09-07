@@ -30,19 +30,14 @@ const SuggestionResults = ({ dependencies, onSelect }) => (
         return <ResultPlaceholder error />;
       }
       if (data.suggestions.suggestions.length !== 0) {
-        const packages = data.suggestions.suggestions;
+        const hits = data.suggestions.suggestions;
 
-        return packages.map(pkg => (
+        return hits.map(hit => (
           <ResultCard
-            key={pkg.name + pkg.version}
-            name={pkg.name}
-            version={pkg.version}
-            description={pkg.description}
-            author={pkg.owner.name}
-            downloads={pkg.humanDownloadsLast30Days}
-            popular={pkg.popular}
-            onSelect={() => onSelect(pkg, false)}
-            onSelectDev={() => onSelect(pkg, true)}
+            key={hit.name + hit.version}
+            hit={hit}
+            onSelect={() => onSelect(hit, false)}
+            onSelectDev={() => onSelect(hit, true)}
           />
         ));
       }

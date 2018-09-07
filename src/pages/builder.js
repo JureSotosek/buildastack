@@ -94,8 +94,8 @@ class Builder extends React.Component {
 
     if (
       !dependencies.some(
-        myPackage =>
-          myPackage.name === pkg.name && myPackage.version === pkg.version
+        dependency =>
+          dependency.name === pkg.name && dependency.version === pkg.version
       )
     ) {
       this.setState({
@@ -112,8 +112,8 @@ class Builder extends React.Component {
     this.dependencies.clearMsg();
 
     const newDependencies = dependencies.filter(
-      myPackage =>
-        myPackage.name !== pkg.name || myPackage.version !== pkg.version
+      dependency =>
+        dependency.name !== pkg.name || dependency.version !== pkg.version
     );
 
     this.setState({

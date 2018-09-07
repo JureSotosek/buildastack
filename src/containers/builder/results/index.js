@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import SearchResults from './searchResults';
 import SuggestionsResults from './suggestionsResults';
 
+import AlgoliaSearch from './algoliaSearch';
+
 const Wrapper = styled.div`
   width: 100%;
 
@@ -43,7 +45,7 @@ const Results = ({ query, dependencies, onSelect }) => (
   <Wrapper>
     <ResultsColumnWrapper>
       {'Search results:'}
-      <SearchResults query={query} onSelect={onSelect} />
+      <AlgoliaSearch query={query} onSelect={onSelect} />
       <a href="https://www.algolia.com">
         <AlgoliaLogo
           src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
