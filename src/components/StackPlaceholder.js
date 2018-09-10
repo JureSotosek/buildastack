@@ -14,12 +14,13 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background-color: 'white';
 `;
 
 const Message = styled.div`
-  text-align: center;
   font-weight: bold;
 `;
 

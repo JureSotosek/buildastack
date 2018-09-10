@@ -2,7 +2,6 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import SearchResults from './searchResults';
 import SuggestionsResults from './suggestionsResults';
 
 import AlgoliaSearch from './algoliaSearch';

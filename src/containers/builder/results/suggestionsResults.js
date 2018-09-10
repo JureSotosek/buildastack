@@ -23,25 +23,28 @@ const SuggestionResults = ({ dependencies, onSelect }) => (
           <ResultPlaceholder msg={'Select a package for suggestions 📦'} />
         );
       }
+
       if (loading) {
         return <ResultPlaceholder loading />;
       }
+
       if (error) {
         return <ResultPlaceholder error />;
       }
-      if (data.suggestions.suggestions.length !== 0) {
-        const hits = data.suggestions.suggestions;
 
-        return hits.map(hit => (
-          <ResultCard
-            key={hit.name + hit.version}
-            hit={hit}
-            onSelect={() => onSelect(hit, false)}
-            onSelectDev={() => onSelect(hit, true)}
-          />
-        ));
+      if (data.suggestions.suggestions.length === 0) {
+        return <ResultPlaceholder msg={'Sorry, no suggestions found 😔'} />;
       }
-      return <ResultPlaceholder msg={'Sorry, no suggestions found 😔'} />;
+
+      const hits = data.suggestions.suggestions;
+      return hits.map(hit => (
+        <ResultCard
+          key={hit.name + hit.version}
+          hit={hit}
+          onSelect={() => onSelect(hit, false)}
+          onSelectDev={() => onSelect(hit, true)}
+        />
+      ));
     }}
   </Query>
 );

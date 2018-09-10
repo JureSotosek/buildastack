@@ -3,49 +3,57 @@ import {
   InstantSearch,
   Configure,
   connectHits,
-  connectSearchBox
+  connectSearchBox,
+  connectStateResults
 } from 'react-instantsearch-dom';
 
 import ResultCard from '../../../components/ResultCard';
+import ResultPlaceholder from '../../../components/ResultPlaceholder';
 
-const customHitsWithSelect = onSelect =>
-  connectHits(({ hits }) => (
-    <React.Fragment>
-      {hits.map(hit => (
-        <ResultCard
-          key={hit.name + hit.version}
-          hit={hit}
-          onSelect={() => onSelect(hit, false)}
-          onSelectDev={() => onSelect(hit, true)}
-        />
-      ))}
-    </React.Fragment>
-  ));
+const VirtualSearchBox = connectSearchBox(() => null);
 
-const virtualSearchBoxWithQuery = query =>
-  connectSearchBox(({ currentRefinement, refine }) => {
-    console.log('current: ', currentRefinement);
-    console.log('future: ', query);
-    if (currentRefinement !== query) {
-      refine(query);
+const ContentWithSelect = onSelect =>
+  connectStateResults(({ searching, error, searchState, searchResults }) => {
+    if (searchState.query.length === 0) {
+      return <ResultPlaceholder msg={'Start typing to get results 📝'} />;
     }
-    return null;
+
+    if (searching) {
+      return <ResultPlaceholder loading />;
+    }
+
+    if (error) {
+      return <ResultPlaceholder error />;
+    }
+
+    if (searchResults.hits.length === 0) {
+      return <ResultPlaceholder msg={'Sorry, search yielded nothing 😕'} />;
+    }
+
+    const hits = searchResults.hits;
+    return hits.map(hit => (
+      <ResultCard
+        key={hit.name + hit.version}
+        hit={hit}
+        onSelect={() => onSelect(hit, false)}
+        onSelectDev={() => onSelect(hit, true)}
+      />
+    ));
   });
 
 const AlgoliaSearch = ({ query, onSelect }) => {
-  const CustomHits = customHitsWithSelect(onSelect);
-
-  const VirtualSearchBox = virtualSearchBoxWithQuery(query);
+  const Content = ContentWithSelect(onSelect);
 
   return (
     <InstantSearch
+      searchState={{ query }}
       appId="OFCNCOG2CU"
       apiKey="6fe4476ee5a1832882e326b506d14126"
       indexName="npm-search"
     >
       <Configure hitsPerPage={5} />
-      <CustomHits />
       <VirtualSearchBox />
+      <Content />
     </InstantSearch>
   );
 };
