@@ -1,7 +1,7 @@
 import Cookie from 'universal-cookie';
 
 import LoginWithGithub from 'github-oauth-popup';
-import { authenticateMutation } from '../graphql/mutations';
+import { authenticateMutation } from './graphql/mutations';
 
 const cookies = new Cookie();
 
