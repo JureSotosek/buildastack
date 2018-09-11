@@ -2,9 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import SuggestionsResults from './suggestionsResults';
-
-import AlgoliaSearch from './algoliaSearch';
+import AlgoliaSearch from './AlgoliaSearch';
+import NpmSuggestions from './npmSuggestions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -54,7 +53,7 @@ const Results = ({ query, dependencies, onSelect }) => (
     </ResultsColumnWrapper>
     <ResultsColumnWrapper>
       {'Suggestions:'}
-      <SuggestionsResults dependencies={dependencies} onSelect={onSelect} />
+      <NpmSuggestions dependencies={dependencies} onSelect={onSelect} />
       <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
         {'npm-suggestions'}
       </NpmSuggestionsLogo>

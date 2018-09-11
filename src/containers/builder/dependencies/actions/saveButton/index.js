@@ -1,14 +1,7 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import Button from '../../../../../components/Button';
 import SaveModal from './saveModal';
-
-const StyledButton = styled(Button)`
-  margin-right: 5px;
-  margin-left: 5px;
-`;
 
 class SaveButton extends React.Component {
   constructor() {
@@ -52,9 +45,9 @@ class SaveButton extends React.Component {
 
     return (
       <React.Fragment>
-        <StyledButton color={'#5856d6'} onClick={this.handleSaveOnClick}>
+        <Button color={'#5856d6'} onClick={this.handleSaveOnClick}>
           {'Save'}
-        </StyledButton>
+        </Button>
         {showModal && (
           <SaveModal
             dependencies={dependencies}

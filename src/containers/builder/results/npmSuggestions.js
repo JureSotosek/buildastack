@@ -9,7 +9,7 @@ import ResultPlaceholder from '../../../components/ResultPlaceholder';
 const extractNames = (packages, dev = false) =>
   packages.filter(pkg => pkg.dev === dev).map(pkg => pkg.name);
 
-const SuggestionResults = ({ dependencies, onSelect }) => (
+const NpmSuggestions = ({ dependencies, onSelect }) => (
   <Query
     query={suggestionsQuery}
     variables={{
@@ -49,4 +49,4 @@ const SuggestionResults = ({ dependencies, onSelect }) => (
   </Query>
 );
 
-export default SuggestionResults;
+export default NpmSuggestions;

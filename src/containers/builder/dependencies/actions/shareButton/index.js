@@ -1,7 +1,5 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 import { Mutation } from 'react-apollo';
 import { createStackMutation } from '../../../../../lib/graphql/mutations';
 
@@ -9,11 +7,6 @@ import { formatDependencies } from '../../../../../utils';
 
 import Button from '../../../../../components/Button';
 import ShareModal from './shareModal';
-
-const StyledButton = styled(Button)`
-  margin-right: 5px;
-  margin-left: 5px;
-`;
 
 class ShareButton extends React.Component {
   constructor() {
@@ -52,12 +45,12 @@ class ShareButton extends React.Component {
       <Mutation mutation={createStackMutation}>
         {(createStack, { data, loading, error }) => (
           <React.Fragment>
-            <StyledButton
+            <Button
               color={'#ff954f'}
               onClick={() => !loading && this.handleShareOnClick(createStack)}
             >
               {loading ? 'Loading...' : error ? 'Error' : 'Share'}
-            </StyledButton>
+            </Button>
             {showModal && (
               <ShareModal
                 title={'Stack made'}

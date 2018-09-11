@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 `;
 
 const SkeletonWrapper = styled.div`
+  width: 100%;
   padding-top: 0;
   font-size: 15px;
 `;

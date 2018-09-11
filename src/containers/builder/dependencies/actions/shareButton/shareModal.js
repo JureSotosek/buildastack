@@ -34,8 +34,7 @@ const ButtonsWrapper = styled.div`
   width: 100%;
   max-width: 300px;
 
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 
   display: flex;
   flex-direction: row;
@@ -43,8 +42,10 @@ const ButtonsWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   height: 30px;
-  margin-right: 5px;
-  margin-left: 5px;
+`;
+
+const Msg = styled.div`
+  margin-top: 5px;
 `;
 
 class ShareModal extends React.Component {
@@ -79,13 +80,13 @@ class ShareModal extends React.Component {
         <Link href={'https://' + link}>{link}</Link>
         <ButtonsWrapper>
           <StyledButton color={'grey'} onClick={closeModal}>
-            Close
+            {'Close'}
           </StyledButton>
           <StyledButton color={'#ff954f'} onClick={this.handleOnCopyLink}>
-            Copy link
+            {'Copy link'}
           </StyledButton>
         </ButtonsWrapper>
-        {msg || ' '}
+        <Msg>{msg || ' '}</Msg>
       </Modal>
     );
   }

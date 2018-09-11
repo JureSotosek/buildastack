@@ -19,6 +19,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
+  padding: 10px;
+
   font-family: Source Sans Pro;
 `;
 

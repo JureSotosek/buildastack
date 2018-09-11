@@ -7,7 +7,7 @@ import Skeleton from 'react-loading-skeleton';
 const Wrapper = styled.div`
   width: 250px;
 
-  padding: 5px;
+  padding: 10px;
   margin: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
@@ -25,7 +25,8 @@ const Message = styled.div`
 `;
 
 const SkeletonWrapperBig = styled.div`
-  padding: 5px;
+  width: 100%;
+
   padding-right: 10px;
   padding-left: 10px;
 
@@ -33,8 +34,8 @@ const SkeletonWrapperBig = styled.div`
 `;
 
 const SkeletonWrapperSmall = styled.div`
-  padding: 10px;
-  padding-top: 0;
+  width: 100%;
+  margin-top: 5px;
   font-size: 15px;
 `;
 

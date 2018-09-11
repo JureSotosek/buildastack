@@ -14,13 +14,15 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
 
+  padding-top: 40px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const Owner = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-size: 20px;
 `;
 
@@ -43,7 +45,11 @@ class Stack extends React.Component {
               <React.Fragment>
                 <Title
                   title={
-                    loading || error || !data.stack || !stackQuery.stack
+                    loading ||
+                    error ||
+                    !data.stack ||
+                    !stackQuery.stack ||
+                    !stackQuery.stack.name
                       ? 'Stack'
                       : stackQuery.stack.name
                   }
