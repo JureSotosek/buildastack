@@ -1,6 +1,6 @@
 import Cookie from 'universal-cookie';
 
-import GithubPopup from './githubPopup';
+import LoginWithGithub from 'github-oauth-popup';
 import { authenticateMutation } from '../graphql/mutations';
 
 const cookies = new Cookie();
@@ -26,14 +26,12 @@ export const loginWithGithub = client => {
       }
     };
 
-    const clientId = 'ca97343db8b729b071dd';
+    const client_id = 'ca97343db8b729b071dd';
     const scope = 'read:user';
-    const popup = GithubPopup.open({
-      client_id: clientId,
-      scope
-    });
 
-    popup.then(handleSuccess, reject);
+    LoginWithGithub({ client_id, scope })
+      .then(handleSuccess)
+      .catch(reject);
   });
 };
 
