@@ -5,34 +5,33 @@ import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 400px;
-  min-width: 300px;
-  min-height: 70px;
+  width: 100vh;
+  max-width: 380px;
+  min-width: 280px;
+  min-height: 60px;
 
   margin-top: 20px;
+  padding: 10px;
+  padding-top: 5px;
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background-color: 'white';
 `;
 
-const Message = styled.div`
-  margin-top: 20px;
-  text-align: center;
-`;
-
 const SkeletonWrapperBig = styled.div`
-  padding: 5px;
-  padding-right: 10px;
-  padding-left: 10px;
-
+  width: 100%;
   font-size: 25px;
 `;
 
 const SkeletonWrapperSmall = styled.div`
-  padding: 10px;
-  padding-top: 0;
+  width: 100%;
+  margin-top: 5px;
   font-size: 15px;
 `;
 
@@ -49,9 +48,9 @@ const ResultPlaceholder = ({ loading, error, msg }) => (
         </SkeletonWrapperSmall>
       </React.Fragment>
     ) : error ? (
-      <Message>{'❗️An error occured 🤦🏼‍'}</Message>
+      '❗️An error occured 🤦🏼‍'
     ) : (
-      <Message>{msg}</Message>
+      msg
     )}
   </Wrapper>
 );

@@ -3866,21 +3866,6 @@ react-instantsearch-dom@^5.2.3:
     prop-types "^15.5.10"
     react-instantsearch-core "^5.2.3"
 
-react-instantsearch-native@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/react-instantsearch-native/-/react-instantsearch-native-5.2.3.tgz#982d15c18f8c29cae7efc1e41837c4fa23d25f33"
-  dependencies:
-    algoliasearch "^3.27.1"
-    react-instantsearch-core "^5.2.3"
-
-react-instantsearch@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/react-instantsearch/-/react-instantsearch-5.2.3.tgz#77b95a894d839785d1ae8ec14e81e9f208f463ae"
-  dependencies:
-    react-instantsearch-core "^5.2.3"
-    react-instantsearch-dom "^5.2.3"
-    react-instantsearch-native "^5.2.3"
-
 react-is@^16.3.1:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"

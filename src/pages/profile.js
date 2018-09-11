@@ -6,8 +6,10 @@ import Title from '../components/Title';
 import StackList from '../containers/profile/stackList';
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
+
+  padding-top: 40px;
 
   display: flex;
   flex-direction: column;

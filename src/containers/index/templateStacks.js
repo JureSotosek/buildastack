@@ -10,7 +10,9 @@ import StackPlaceholder from '../../components/StackPlaceholder';
 
 const Wrapper = styled.div`
   width: 100%;
+
   margin-top: 30px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +26,7 @@ const Title = styled.div`
 
 const StacksWrapper = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -44,7 +47,8 @@ const TemplateStacks = ({ history }) => (
             return <StackPlaceholder error />;
           }
 
-          return data.templateStacks.map(stack => (
+          const stacks = data.templateStacks;
+          return stacks.map(stack => (
             <StackCard
               id={stack.id}
               name={stack.name}

@@ -13,10 +13,11 @@ import { isErrorForbidden } from '../../utils';
 import { loginWithGithub } from '../../lib/loginWithGithub';
 
 const StyledButton = styled(Button)`
+  width: 100%;
   max-width: 400px;
   height: 50px;
 
-  margin-top: 30px;
+  margin-top: 25px;
   border-radius: 10px;
 
   text-decoration: none;
@@ -53,7 +54,8 @@ const StackList = ({ history, client }) => (
         return <StackPlaceholder msg={'No stacks saved 🙉'} />;
       }
 
-      return data.viewer.stacks.map(stack => (
+      const stacks = data.viewer.stacks;
+      return stacks.map(stack => (
         <StackCard
           key={stack.id}
           id={stack.id}

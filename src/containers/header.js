@@ -13,8 +13,6 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
 
-  margin-top: 10px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,9 +37,11 @@ const LeftSide = styled.div`
 const DividerLeft = styled.div`
   height: 30px;
   width: 2px;
+
   margin-right: 10px;
   margin-left: 13px;
   margin-bottom: 5px;
+
   background-color: black;
 `;
 
@@ -56,8 +56,10 @@ const RightSide = styled.div`
 const DividerRight = styled.div`
   height: 25px;
   width: 1px;
+
   margin-right: 10px;
   margin-left: 10px;
+
   background-color: black;
 `;
 

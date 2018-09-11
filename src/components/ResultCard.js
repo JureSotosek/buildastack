@@ -80,12 +80,14 @@ const AddSection = styled.div`
 `;
 
 const ResultCard = ({
-  name,
-  description,
-  author,
-  version,
-  downloads,
-  popular,
+  hit: {
+    name,
+    description,
+    owner: { name: author },
+    version,
+    humanDownloadsLast30Days,
+    popular
+  },
   onSelect,
   onSelectDev
 }) => (
@@ -96,7 +98,7 @@ const ResultCard = ({
         <DetailGrey>
           {popular && '🔥'}
           {'📉'}
-          {downloads}
+          {humanDownloadsLast30Days}
         </DetailGrey>
       </DetailsTopSection>
       <Decription>{description}</Decription>

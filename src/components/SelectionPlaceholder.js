@@ -13,13 +13,17 @@ const Wrapper = styled.div`
   border-radius: 5px;
   box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.3);
 
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   font-size: 15px;
   font-weight: bold;
 `;
 
 const SkeletonWrapper = styled.div`
+  width: 100%;
   padding-top: 0;
   font-size: 15px;
 `;

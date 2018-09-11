@@ -29,23 +29,20 @@ const ButtonsWrapper = styled.div`
   width: 100%;
   max-width: 300px;
 
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 
   display: flex;
   flex-direction: row;
-`;
-
-const StyledButton = styled(Button)`
-  height: 30px;
-  margin-right: 5px;
-  margin-left: 5px;
 `;
 
 const StyledInputField = styled(InputField)`
   width: 100%;
   margin-top: 10px;
   max-width: 300px;
+`;
+
+const Msg = styled.div`
+  margin-top: 5px;
 `;
 
 class SaveModal extends React.Component {
@@ -97,17 +94,17 @@ class SaveModal extends React.Component {
                 <React.Fragment>
                   <SubTitle>{'You need to log in to save.'}</SubTitle>
                   <ButtonsWrapper>
-                    <StyledButton color={'grey'} onClick={closeModal}>
+                    <Button color={'grey'} onClick={closeModal}>
                       {'Close'}
-                    </StyledButton>
-                    <StyledButton
+                    </Button>
+                    <Button
                       color={'#ff954f'}
                       onClick={() => this.handleLogin(saveStackNew)}
                     >
                       {'Login with Github!'}
-                    </StyledButton>
+                    </Button>
                   </ButtonsWrapper>
-                  {loginError && 'Error!'}
+                  <Msg>{loginError && 'Error!'}</Msg>
                 </React.Fragment>
               );
             }
@@ -123,15 +120,15 @@ class SaveModal extends React.Component {
                   }
                 />
                 <ButtonsWrapper>
-                  <StyledButton color={'grey'} onClick={closeModal}>
+                  <Button color={'grey'} onClick={closeModal}>
                     {'Close'}
-                  </StyledButton>
-                  <StyledButton
+                  </Button>
+                  <Button
                     color={'#ff954f'}
                     onClick={() => !loading && saveStackNew().then(onSave)}
                   >
                     {loading ? 'Loading...' : error ? 'Error' : 'Save'}
-                  </StyledButton>
+                  </Button>
                 </ButtonsWrapper>
               </React.Fragment>
             );
