@@ -2217,9 +2217,9 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
 
-github-oauth-popup@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/github-oauth-popup/-/github-oauth-popup-1.0.1.tgz#9b246915344a0a04e6576d53dfae3020e8ba1eff"
+github-oauth-popup@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/github-oauth-popup/-/github-oauth-popup-1.1.0.tgz#a2ff7ac191512dcdb4a0beba7f77467ed607b138"
 
 glob-parent@^3.1.0:
   version "3.1.0"

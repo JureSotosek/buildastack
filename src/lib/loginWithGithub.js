@@ -1,6 +1,6 @@
 import Cookie from 'universal-cookie';
 
-import LoginWithGithub from 'github-oauth-popup';
+import { loginWithGithub as openPopup } from 'github-oauth-popup';
 import { authenticateMutation } from './graphql/mutations';
 
 const cookies = new Cookie();
@@ -29,7 +29,7 @@ export const loginWithGithub = client => {
     const client_id = 'ca97343db8b729b071dd';
     const scope = 'read:user';
 
-    LoginWithGithub({ client_id, scope })
+    openPopup({ client_id, scope })
       .then(handleSuccess)
       .catch(reject);
   });
