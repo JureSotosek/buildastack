@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 100%;
   max-width: 400px;
-  min-width: 300px;
+  min-width: 330px;
 
   margin-top: 20px;
   border-radius: 5px;
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 `;
 
 const DetailsSection = styled.div`
-  width: 100vh;
+  width: 100%;
 
   margin: 5px;
   margin-left: 15px;
