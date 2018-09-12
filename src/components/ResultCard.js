@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 `;
 
 const DetailsSection = styled.div`
-  width: 100%;
+  width: 100vh;
 
   margin: 5px;
   margin-left: 15px;

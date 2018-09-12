@@ -21,6 +21,7 @@
     "apollo-link-http": "^1.5.4",
     "copy-to-clipboard": "^3.0.8",
     "express-session": "^1.15.6",
+    "github-oauth-popup": "^1.1.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.1",

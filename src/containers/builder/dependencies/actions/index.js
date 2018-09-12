@@ -27,6 +27,10 @@ const ButtonsWrapper = styled.div`
   flex-direction: row;
 `;
 
+const Msg = styled.div`
+  margin-top: 5px;
+`;
+
 class Actions extends React.Component {
   constructor() {
     super();
@@ -96,7 +100,7 @@ class Actions extends React.Component {
           <ShareButton dependencies={dependencies} />
           <SaveButton dependencies={dependencies} setMsg={this.setMsg} />
         </ButtonsWrapper>
-        {msg || ''}
+        <Msg>{msg || ''}</Msg>
       </Wrapper>
     );
   }
