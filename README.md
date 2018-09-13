@@ -6,4 +6,8 @@ An app that helps you build your stack with search provided by [Algolia's](https
 
 It is accesible at https://buildastack.io.
 
+## License
+
+MIT © [Jure Sotosek](https://github.com/JureSotosek)
+
 <p align="center"><a href="https://www.algolia.com"><img src="media/algolia.svg" width="400" /></a></p>
