@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import InputField from '../../components/InputField';
+import TextField from 'react-shadow-textfield';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -22,7 +22,7 @@ const SearchTitle = styled.div`
   font-size: 22px;
 `;
 
-const StyledInputField = styled(InputField)`
+const StyledTextField = styled(TextField)`
   width: 100%;
   max-width: 500px;
   margin: 10px;
@@ -51,8 +51,9 @@ class Search extends React.Component {
 
     return (
       <Wrapper>
-        <SearchTitle>{'🔎 Search to add packages:'}</SearchTitle>
-        <StyledInputField
+        <SearchTitle>{'Search to add packages:'}</SearchTitle>
+        <StyledTextField
+          labelLeft={'🔎'}
           placeholder="react, react-dom, graphql,..."
           value={value}
           onChange={this.handleInputOnChange}

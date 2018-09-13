@@ -2217,9 +2217,9 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
 
-github-oauth-popup@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/github-oauth-popup/-/github-oauth-popup-1.1.0.tgz#a2ff7ac191512dcdb4a0beba7f77467ed607b138"
+github-oauth-popup@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/github-oauth-popup/-/github-oauth-popup-1.1.2.tgz#7218ca57395c5bdc566ef9027c897bb73560801e"
 
 glob-parent@^3.1.0:
   version "3.1.0"
@@ -3707,6 +3707,12 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
+react-shadow-textfield@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-shadow-textfield/-/react-shadow-textfield-0.1.1.tgz#abc5551e597d66dd044e893da33360f05d1f14fb"
+  dependencies:
+    styled-components "^3.4.6"
+
 react@^16.4.1:
   version "16.5.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.0.tgz#f2c1e754bf9751a549d9c6d9aca41905beb56575"
@@ -4281,7 +4287,7 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-components@^3.4.2:
+styled-components@^3.4.2, styled-components@^3.4.6:
   version "3.4.6"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.6.tgz#134f1ab89ed732686bf7de3ff8fca557283cbd60"
   dependencies:

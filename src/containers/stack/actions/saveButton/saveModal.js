@@ -11,7 +11,7 @@ import { withApollo } from 'react-apollo';
 import { loginWithGithub } from '../../../../lib/loginWithGithub';
 
 import Modal from '../../../../components/Modal';
-import InputField from '../../../../components/InputField';
+import TextField from 'react-shadow-textfield';
 import Button from '../../../../components/Button';
 
 const Title = styled.div`
@@ -35,7 +35,7 @@ const ButtonsWrapper = styled.div`
   flex-direction: row;
 `;
 
-const StyledInputField = styled(InputField)`
+const StyledTextField = styled(TextField)`
   width: 100%;
   margin-top: 10px;
   max-width: 300px;
@@ -107,7 +107,7 @@ class SaveModal extends React.Component {
               ) : (
                 <React.Fragment>
                   <SubTitle>{'Input name for the stack:'}</SubTitle>
-                  <StyledInputField
+                  <StyledTextField
                     placeholder={'Stack name...'}
                     value={name}
                     onChange={event =>
