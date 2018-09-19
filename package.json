@@ -36,13 +36,11 @@
     "universal-cookie": "^3.0.4"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
     "babel-plugin-styled-components": "^1.5.1",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "react-hot-loader": "^4.3.3",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
