@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: 100%;
   width: 250px;
 
   margin-top: 10px;

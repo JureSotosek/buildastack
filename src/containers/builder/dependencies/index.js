@@ -6,10 +6,12 @@ import DependenciesList from './dependenciesList';
 import Actions from './actions';
 
 const Wrapper = styled.div`
-  margin: 10px;
-  margin-top: 40px;
+  grid-area: dependencies;
 
-  flex: 1;
+  @media screen and (min-width: 1000px) {
+    margin-top: 40px;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: center;

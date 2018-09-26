@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import TextField from 'react-shadow-textfield';
 
 const Wrapper = styled.div`
-  width: 100%;
+  grid-area: search;
 
-  margin-top: 20px;
+  width: 100%;
 
   display: flex;
   flex-direction: row;
@@ -25,7 +25,6 @@ const SearchTitle = styled.div`
 const StyledTextField = styled(TextField)`
   width: 100%;
   max-width: 500px;
-  margin: 10px;
 `;
 
 class Search extends React.Component {

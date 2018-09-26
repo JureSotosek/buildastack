@@ -2,22 +2,11 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import AlgoliaSearch from './AlgoliaSearch';
-import NpmSuggestions from './npmSuggestions';
+import AlgoliaSearch from './algoliaSearch';
 
 const Wrapper = styled.div`
-  width: 100%;
+  grid-area: results;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
-
-const ResultsColumnWrapper = styled.div`
-  margin: 20px;
-
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,34 +19,16 @@ const AlgoliaLogo = styled.img`
   margin-top: 30px;
 `;
 
-const NpmSuggestionsLogo = styled.a`
-  margin-top: 25px;
-
-  text-decoration: none;
-  font-family: Signika Negative;
-  font-size: 36px;
-  color: black;
-`;
-
-const Results = ({ query, dependencies, onSelect }) => (
+const Results = ({ query, onSelect }) => (
   <Wrapper>
-    <ResultsColumnWrapper>
-      {'Search results:'}
-      <AlgoliaSearch query={query} onSelect={onSelect} />
-      <a href="https://www.algolia.com">
-        <AlgoliaLogo
-          src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
-          alt="Powered by Algolia"
-        />
-      </a>
-    </ResultsColumnWrapper>
-    <ResultsColumnWrapper>
-      {'Suggestions:'}
-      <NpmSuggestions dependencies={dependencies} onSelect={onSelect} />
-      <NpmSuggestionsLogo href="https://github.com/JureSotosek/npm-suggestions">
-        {'npm-suggestions'}
-      </NpmSuggestionsLogo>
-    </ResultsColumnWrapper>
+    {'Search results:'}
+    <AlgoliaSearch query={query} onSelect={onSelect} />
+    <a href="https://www.algolia.com">
+      <AlgoliaLogo
+        src="https://www.algolia.com/static_assets/images/pricing/pricing_new/algolia-powered-by-14773f38.svg"
+        alt="Powered by Algolia"
+      />
+    </a>
   </Wrapper>
 );
 

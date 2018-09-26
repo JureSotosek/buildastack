@@ -7,8 +7,9 @@ import styled from 'styled-components';
 
 import Title from '../components/Title';
 import Search from '../containers/builder/search';
-import Results from '../containers/builder/results';
 import Dependencies from '../containers/builder/dependencies';
+import Results from '../containers/builder/results';
+import Suggestions from '../containers/builder/suggestions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -16,27 +17,39 @@ const Wrapper = styled.div`
 
   padding-top: 40px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+  display: grid;
+  grid-gap: 20px;
 
-const Content = styled.div`
-  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'dependencies'
+    'search'
+    'results'
+    'suggestions';
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap-reverse;
+  @media screen and (min-width: 750px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'title title'
+      'dependencies dependencies'
+      'search search'
+      'results suggestions';
+  }
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-areas:
+      'title title title'
+      'search search dependencies'
+      'results suggestions dependencies';
+  }
 `;
 
 const StyledTitle = styled(Title)`
+  grid-area: title;
+  justify-self: center;
   max-width: 830px;
-`;
-
-const SearchAndResultsSection = styled.div`
-  width: 100%;
-  max-width: 900px;
 `;
 
 class Builder extends React.Component {
@@ -132,30 +145,26 @@ class Builder extends React.Component {
             '🥞 A tool for building an npm stack. 🎯Suggestions are packages that best suit your existing stack. To add a developer dependency press 💻.'
           }
         />
-        <Content>
-          <SearchAndResultsSection>
-            <Search
-              value={query}
-              onChange={this.handleQueryOnChange}
-              ref={search => {
-                this.search = search;
-              }}
-            />
-            <Results
-              query={query}
-              dependencies={dependencies}
-              onSelect={this.handleResultsOnSelect}
-            />
-          </SearchAndResultsSection>
-          <Dependencies
-            dependencies={dependencies}
-            onSelect={this.handleStackOnSelect}
-            loading={loading}
-            ref={dependencies => {
-              this.dependencies = dependencies;
-            }}
-          />
-        </Content>
+        <Dependencies
+          dependencies={dependencies}
+          onSelect={this.handleStackOnSelect}
+          loading={loading}
+          ref={dependencies => {
+            this.dependencies = dependencies;
+          }}
+        />
+        <Search
+          value={query}
+          onChange={this.handleQueryOnChange}
+          ref={search => {
+            this.search = search;
+          }}
+        />
+        <Results query={query} onSelect={this.handleResultsOnSelect} />
+        <Suggestions
+          dependencies={dependencies}
+          onSelect={this.handleResultsOnSelect}
+        />
       </Wrapper>
     );
   }
