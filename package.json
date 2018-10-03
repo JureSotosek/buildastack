@@ -21,7 +21,7 @@
     "apollo-link-http": "^1.5.4",
     "copy-to-clipboard": "^3.0.8",
     "express-session": "^1.15.6",
-    "github-oauth-popup": "^1.1.1",
+    "github-oauth-popup": "^1.2.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "react": "^16.4.1",
@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
