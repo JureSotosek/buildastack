@@ -6,9 +6,7 @@ import Cookie from 'universal-cookie';
 
 const Cookies = new Cookie();
 
-const httpLink = new HttpLink({
-  uri: 'https://buildastack-5e801ac025.herokuapp.com'
-});
+const httpLink = new HttpLink({ uri: 'https://buildastack-api.herokuapp.com' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const token = Cookies.get('token');
