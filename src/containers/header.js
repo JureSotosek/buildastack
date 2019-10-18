@@ -9,6 +9,8 @@ import { Query } from 'react-apollo';
 import { viewerQuery } from '../lib/graphql/queries';
 import { loginWithGithub, logout } from '../lib/loginWithGithub';
 
+import GithubLogSrc from '../../media/github.png';
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
@@ -82,11 +84,7 @@ const Header = ({ history, client }) => {
         <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
         <DividerLeft />
         <a href="https://github.com/JureSotosek/buildastack">
-          <GithubLogo
-            src={
-              'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png'
-            }
-          />
+          <GithubLogo src={GithubLogSrc} />
         </a>
       </LeftSide>
       <RightSide>
