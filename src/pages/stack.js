@@ -39,44 +39,43 @@ class Stack extends React.Component {
       <Wrapper>
         <Query query={stackQuery} variables={{ id }}>
           {({ loading, error, data }) => {
-            const { stack: stackQuery } = data;
-
             return (
               <React.Fragment>
                 <Title
                   title={
                     loading ||
                     error ||
+                    !data ||
                     !data.stack ||
-                    !stackQuery.stack ||
-                    !stackQuery.stack.name
+                    !data.stack.stack ||
+                    !data.stack.stack.name
                       ? 'Stack'
-                      : stackQuery.stack.name
+                      : data.stack.stack.name
                   }
                 />
                 {loading ? (
                   <SelectionPlaceholder loading={loading} />
                 ) : error ? (
                   <SelectionPlaceholder loading={loading} />
-                ) : !data.stack ? (
+                ) : !data || !data.stack ? (
                   <SelectionPlaceholder msg={'No stack here 🙉'} />
-                ) : stackQuery.stack.dependencies.length === 0 ? (
+                ) : data.stack.stack.dependencies.length === 0 ? (
                   <SelectionPlaceholder msg={'Sorry, empty stack 😕'} />
                 ) : (
                   <React.Fragment>
                     <Owner>
-                      {stackQuery.stack.user
-                        ? stackQuery.stack.user.name
+                      {data.stack.stack.user
+                        ? data.stack.stack.user.name
                         : null}
                     </Owner>
                     <DependenciesList
-                      dependencies={stackQuery.stack.dependencies}
+                      dependencies={data.stack.stack.dependencies}
                     />
                     <Actions
-                      id={stackQuery.stack.id}
+                      id={data.stack.stack.id}
                       history={history}
-                      dependencies={stackQuery.stack.dependencies}
-                      owner={stackQuery.owner}
+                      dependencies={data.stack.stack.dependencies}
+                      owner={data.stack.owner}
                     />
                   </React.Fragment>
                 )}
