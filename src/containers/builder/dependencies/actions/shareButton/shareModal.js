@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -18,7 +19,7 @@ const SubTitle = styled.div`
   text-align: center;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   margin-top: 10px;
 
   text-align: center;
