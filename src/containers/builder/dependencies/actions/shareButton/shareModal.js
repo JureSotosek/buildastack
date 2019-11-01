@@ -18,7 +18,7 @@ const SubTitle = styled.div`
   text-align: center;
 `;
 
-const Link = styled.a`
+const StyledLink = styled.a`
   margin-top: 10px;
 
   text-align: center;
@@ -62,7 +62,7 @@ class ShareModal extends React.Component {
   handleOnCopyLink() {
     const { link } = this.props;
 
-    copy(link);
+    copy('https://buildastack.io' + link);
 
     this.setState({
       msg: 'Link coppied!'
@@ -77,7 +77,7 @@ class ShareModal extends React.Component {
       <Modal>
         <Title>{title}</Title>
         <SubTitle>{subTitle}</SubTitle>
-        <Link href={'https://' + link}>{link}</Link>
+        <StyledLink to={link}>buildastack.io{link}</StyledLink>
         <ButtonsWrapper>
           <StyledButton color={'grey'} onClick={closeModal}>
             {'Close'}

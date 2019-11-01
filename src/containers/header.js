@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { withApollo } from 'react-apollo';
 
 import styled from 'styled-components';
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   padding-bottom: 7px;
   text-decoration: none;
   font-size: 25px;
@@ -81,7 +81,7 @@ const Header = ({ history, client }) => {
   return (
     <Wrapper>
       <LeftSide>
-        <Logo href={'https://buildastack.io/'}>{'Buildastack'}</Logo>
+        <Logo to={'/'}>{'Buildastack'}</Logo>
         <DividerLeft />
         <a href="https://github.com/JureSotosek/buildastack">
           <GithubLogo src={GithubLogSrc} />
