@@ -54,7 +54,7 @@ const ResultPlaceholder = ({ loading, error, msg }) => (
         </SkeletonWrapperSmall>
       </React.Fragment>
     ) : error ? (
-      <Msg>{'❗️An error occured 🤦🏼‍'}</Msg>
+      <Msg>{'Discontinued 😔'}</Msg>
     ) : (
       <Msg>{msg}</Msg>
     )}

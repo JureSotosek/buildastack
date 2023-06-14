@@ -40,7 +40,7 @@ const SelectionPlaceholder = ({ loading, error, msg }) => (
         <Skeleton />
       </SkeletonWrapper>
     ) : error ? (
-      <Message>{'❗️An error occured 🤦🏼‍'}</Message>
+      <Message>{'Discontinued 😔‍'}</Message>
     ) : (
       <Message>{msg}</Message>
     )}

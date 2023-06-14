@@ -52,7 +52,7 @@ const StackPlaceholder = ({ loading, error, msg }) => (
         </SkeletonWrapperSmall>
       </React.Fragment>
     ) : error ? (
-      <Message>{'❗️An error occured 🤦🏼‍'}</Message>
+      <Message>{'Discontinued 😔'}</Message>
     ) : (
       <Message>{msg}</Message>
     )}
