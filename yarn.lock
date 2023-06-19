@@ -3408,7 +3408,7 @@ react-instantsearch-core@6.40.0:
 
 react-instantsearch-dom@^6.40.0:
   version "6.40.0"
-  resolved "https://registry.npmjs.org/react-instantsearch-dom/-/react-instantsearch-dom-6.40.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-instantsearch-dom/-/react-instantsearch-dom-6.40.0.tgz#b9bb6a79cb46d0fa1310938cbff5f698e3697777"
   integrity sha512-bD+xIi05DeQ47svD4bMgv7rKpl2eKoDOjBU2rcQNBz9N9ryE1IOe6NWAHaDZWBd99eWX9Opwa1JHr3KtNtv2yA==
   dependencies:
     "@babel/runtime" "^7.1.2"

@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
-    contentBase: './dist',
+    static: './dist',
     hot: true,
     historyApiFallback: true
   }
